@@ -252,7 +252,7 @@ li::before {
   .slide {
     position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-    padding: 40px 18px 70px;
+    padding: 40px 18px 90px;
     display: flex; flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -265,7 +265,7 @@ li::before {
   .slide.active { opacity: 1; pointer-events: all; }
 
   .slide.cover {
-    padding: 30px 18px 70px;
+    padding: 30px 18px 90px;
     justify-content: center;
   }
 
@@ -322,16 +322,35 @@ li::before {
     max-width: 100%; width: 100%;
   }
 
-  /* Navigation — big touch-friendly buttons */
+  /* Navigation — large full-width bar at bottom */
   .nav {
-    bottom: 12px; gap: 16px;
+    bottom: 0; left: 0; right: 0;
+    transform: none;
+    gap: 0;
+    width: 100%;
+    padding: 10px 20px calc(env(safe-area-inset-bottom, 8px) + 10px);
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    justify-content: space-between;
   }
   .nav button {
-    width: 48px; height: 48px; font-size: 18px;
+    width: 60px; height: 60px; font-size: 22px;
     border-radius: 50%;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    border: 2px solid var(--red);
+    background: white; color: var(--red);
   }
+  .nav button:active {
+    background: var(--red); color: white;
+    transform: scale(0.95);
+  }
+  /* Override cover nav style on mobile */
+  .slide.cover ~ .nav { background: rgba(0,0,0,0.3); border-top-color: rgba(255,255,255,0.1); }
+  .slide.cover ~ .nav button { border-color: white; color: white; background: transparent; }
+  .slide.cover ~ .nav button:active { background: white; color: var(--red); }
 
   /* Decorative 3D elements — smaller on mobile */
   .deco { opacity: 0.4; }
@@ -344,23 +363,18 @@ li::before {
   .slide.cover p[style] { max-width: 100% !important; font-size: 13px !important; }
   .slide.cover h1 { font-size: 28px !important; }
 
-  /* Swipe hint on first slide */
-  .swipe-hint {
-    position: absolute; bottom: 70px;
-    font-size: 12px; color: rgba(255,255,255,0.6);
-    animation: pulse 2s ease-in-out 3;
-  }
-  @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+  /* Hide swipe hint on mobile — buttons only */
+  .swipe-hint { display: none; }
 }
 
 /* Extra small phones (iPhone SE, etc.) */
 @media (max-width: 380px) {
-  .slide { padding: 35px 14px 65px; }
+  .slide { padding: 35px 14px 85px; }
   h1 { font-size: 22px !important; }
   h2 { font-size: 17px !important; }
   p, li { font-size: 12px !important; }
   .deco { display: none; }
-  .nav button { width: 42px; height: 42px; font-size: 16px; }
+  .nav button { width: 52px; height: 52px; font-size: 18px; }
   .dot { width: 6px; height: 6px; }
 }
 </style>
@@ -709,30 +723,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') prev();
 });
 
-// Touch support (iPhone-optimized)
-let touchX = 0, touchY = 0, swiping = false;
-document.addEventListener('touchstart', e => {
-  touchX = e.touches[0].clientX;
-  touchY = e.touches[0].clientY;
-  swiping = false;
-}, {passive: true});
-document.addEventListener('touchmove', e => {
-  if (!swiping) {
-    const dx = Math.abs(e.touches[0].clientX - touchX);
-    const dy = Math.abs(e.touches[0].clientY - touchY);
-    if (dx > dy && dx > 10) { swiping = true; }
-  }
-  if (swiping) e.preventDefault();
-}, {passive: false});
-document.addEventListener('touchend', e => {
-  const diff = touchX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 40) {
-    diff > 0 ? next() : prev();
-    // Hide swipe hint after first swipe
-    const hint = document.querySelector('.swipe-hint');
-    if (hint) hint.style.display = 'none';
-  }
-});
+// Touch: no swipe navigation on mobile — use buttons only
 
 show(0);
 </script>
