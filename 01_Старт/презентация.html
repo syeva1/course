@@ -233,78 +233,135 @@ li::before {
   backdrop-filter: blur(4px);
 }
 
-/* ===== MOBILE ADAPTIVE ===== */
+/* ===== MOBILE / iPHONE ADAPTIVE ===== */
 @media (max-width: 768px) {
-  html, body { overflow-y: auto; overflow-x: hidden; }
+  /* Fix Safari 100vh bug — use dvh + fallback */
+  html, body {
+    overflow: hidden;
+    height: 100%;
+    height: 100dvh;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Slides stay fullscreen, one at a time */
+  .slides {
+    width: 100%; height: 100%;
+    position: relative; overflow: hidden;
+  }
 
   .slide {
-    padding: 50px 20px 80px;
-    height: auto; min-height: 100vh; min-height: 100dvh;
-    position: relative;
-    display: none; flex-direction: column;
-    justify-content: flex-start;
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    padding: 40px 18px 70px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: none !important;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s ease;
   }
-  .slide.active { display: flex; opacity: 1; }
+  .slide.active { opacity: 1; pointer-events: all; }
 
-  .slide.cover { padding: 40px 20px 80px; }
+  .slide.cover {
+    padding: 30px 18px 70px;
+    justify-content: center;
+  }
 
-  /* Pagination dots */
-  .pagination { top: 10px; left: 50%; transform: translateX(-50%); gap: 6px; }
-  .dot { width: 10px; height: 10px; }
+  /* Pagination dots — top center */
+  .pagination {
+    top: 8px; left: 50%;
+    transform: translateX(-50%);
+    gap: 5px;
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .slide.cover ~ .pagination { background: rgba(0,0,0,0.2); }
+  .dot { width: 8px; height: 8px; border-width: 1.5px; }
 
-  /* Counter */
-  .counter { top: 12px; right: 15px; font-size: 12px; }
+  /* Counter — hide on mobile, dots are enough */
+  .counter { display: none; }
 
-  /* Logo */
-  .logo { bottom: auto; top: 12px; right: 15px; font-size: 14px; display: none; }
+  /* Logo — small, bottom right */
+  .logo { bottom: 10px; right: 14px; top: auto; font-size: 12px; display: block; }
 
-  /* Typography adjustments */
-  h1 { font-size: 28px !important; margin-bottom: 12px; }
-  h2 { font-size: 20px !important; margin-bottom: 10px; }
-  h3 { font-size: 16px !important; }
-  p, li { font-size: 14px !important; line-height: 1.45; }
-  .subtitle { font-size: 15px !important; margin-bottom: 16px; }
+  /* Typography — readable on small screens */
+  h1 { font-size: 26px !important; margin-bottom: 10px; line-height: 1.15 !important; }
+  h2 { font-size: 19px !important; margin-bottom: 8px; line-height: 1.2 !important; }
+  h3 { font-size: 15px !important; margin-bottom: 6px; }
+  p, li { font-size: 13px !important; line-height: 1.4; }
+  .subtitle { font-size: 14px !important; margin-bottom: 12px; }
 
   /* Two-column → single column */
-  .two-col { grid-template-columns: 1fr !important; gap: 16px; }
+  .two-col { grid-template-columns: 1fr !important; gap: 12px; }
 
   /* Code blocks */
-  .code-block { font-size: 12px; padding: 12px 14px; word-break: break-word; }
+  .code-block {
+    font-size: 11px; padding: 10px 12px;
+    word-break: break-word; white-space: pre-wrap;
+    border-left-width: 3px;
+  }
 
   /* Steps */
-  .step-num { width: 28px; height: 28px; font-size: 13px; }
-  .steps li { gap: 8px; }
-  li { padding: 6px 0 6px 24px; }
-  li::before { left: 6px; top: 8px; }
+  .step-num { width: 26px; height: 26px; font-size: 12px; min-width: 26px; }
+  .steps li { gap: 8px; padding: 5px 0; }
+  li { padding: 5px 0 5px 22px; font-size: 13px !important; }
+  li::before { left: 5px; top: 6px; font-size: 1em; }
 
   /* Tags */
-  .tag { font-size: 0.7em; padding: 3px 8px; }
+  .tag { font-size: 0.65em; padding: 2px 7px; margin-right: 4px; }
+  .highlight { padding: 1px 5px; font-size: 0.9em; }
 
   /* Card lists */
-  .slide.content ul { padding: 10px 14px; border-radius: 12px; }
+  .slide.content ul {
+    padding: 8px 12px; border-radius: 10px;
+    max-width: 100%; width: 100%;
+  }
 
-  /* Navigation buttons */
-  .nav { bottom: 16px; gap: 10px; }
-  .nav button { width: 42px; height: 42px; font-size: 16px; }
+  /* Navigation — big touch-friendly buttons */
+  .nav {
+    bottom: 12px; gap: 16px;
+  }
+  .nav button {
+    width: 48px; height: 48px; font-size: 18px;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
 
-  /* Decorative elements – shrink */
-  .deco { opacity: 0.5; }
-  .deco img { max-width: 60px; }
+  /* Decorative 3D elements — smaller on mobile */
+  .deco { opacity: 0.4; }
+  .deco img { max-width: 50px; }
 
   /* Accent line under h2 */
-  .slide.content h2::after { width: 35px; height: 2px; margin-top: 6px; }
+  .slide.content h2::after { width: 30px; height: 2px; margin-top: 5px; }
 
-  /* Inline styles overrides for title slide */
-  .slide.cover p[style] { max-width: 100% !important; font-size: 14px !important; }
+  /* Fix inline styles on cover */
+  .slide.cover p[style] { max-width: 100% !important; font-size: 13px !important; }
+  .slide.cover h1 { font-size: 28px !important; }
+
+  /* Swipe hint on first slide */
+  .swipe-hint {
+    position: absolute; bottom: 70px;
+    font-size: 12px; color: rgba(255,255,255,0.6);
+    animation: pulse 2s ease-in-out 3;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
 }
 
-@media (max-width: 400px) {
-  .slide { padding: 45px 14px 75px; }
-  h1 { font-size: 24px !important; }
-  h2 { font-size: 18px !important; }
+/* Extra small phones (iPhone SE, etc.) */
+@media (max-width: 380px) {
+  .slide { padding: 35px 14px 65px; }
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 17px !important; }
+  p, li { font-size: 12px !important; }
   .deco { display: none; }
-  .nav button { width: 38px; height: 38px; font-size: 14px; }
+  .nav button { width: 42px; height: 42px; font-size: 16px; }
+  .dot { width: 6px; height: 6px; }
 }
 </style>
 </head>
@@ -331,6 +388,8 @@ li::before {
   <p class="subtitle" style="color:rgba(255,255,255,0.8);font-size:clamp(14px,1.5vw,20px);">Модуль 01</p>
   <h1 style="color:white;">УСТАНОВКА<br><span class="light">и первый проект</span></h1>
   <p style="color:rgba(255,255,255,0.7);max-width:500px;margin-top:20px;">От скачивания до работающего AI-помощника, настроенного под твой бизнес</p>
+
+  <div class="swipe-hint">← свайпни →</div>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">01 / 12</div>
@@ -650,12 +709,29 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') prev();
 });
 
-// Touch support
-let touchX = 0;
-document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+// Touch support (iPhone-optimized)
+let touchX = 0, touchY = 0, swiping = false;
+document.addEventListener('touchstart', e => {
+  touchX = e.touches[0].clientX;
+  touchY = e.touches[0].clientY;
+  swiping = false;
+}, {passive: true});
+document.addEventListener('touchmove', e => {
+  if (!swiping) {
+    const dx = Math.abs(e.touches[0].clientX - touchX);
+    const dy = Math.abs(e.touches[0].clientY - touchY);
+    if (dx > dy && dx > 10) { swiping = true; }
+  }
+  if (swiping) e.preventDefault();
+}, {passive: false});
 document.addEventListener('touchend', e => {
   const diff = touchX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); }
+  if (Math.abs(diff) > 40) {
+    diff > 0 ? next() : prev();
+    // Hide swipe hint after first swipe
+    const hint = document.querySelector('.swipe-hint');
+    if (hint) hint.style.display = 'none';
+  }
 });
 
 show(0);
