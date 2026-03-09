@@ -57,7 +57,7 @@ html, body {
 
 .slide.content {
   background: var(--bg);
-  background-image: radial-gradient(ellipse at top center, var(--pink-glow) 0%, transparent 60%);
+  /* no gradient */
   align-items: center;
   text-align: center;
 }
@@ -136,8 +136,9 @@ li::before {
   margin-right: 12px; flex-shrink: 0;
 }
 
-.steps li { display: flex; align-items: flex-start; padding-left: 0; }
+.steps li { display: flex; align-items: flex-start; padding-left: 0; gap: 12px; }
 .steps li::before { content: none; }
+.steps li .step-num { flex-shrink: 0; }
 
 .highlight {
   background: var(--red); color: white;
@@ -210,18 +211,6 @@ li::before {
 .float-slow { animation: float 6s ease-in-out 0.5s infinite; }
 
 /* Extra decorative CSS shapes */
-.slide.content::before {
-  content: ""; position: absolute;
-  width: 200px; height: 200px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(230,50,41,0.06) 0%, transparent 70%);
-  top: -60px; left: -60px; pointer-events: none; z-index: 0;
-}
-.slide.content::after {
-  content: ""; position: absolute;
-  width: 150px; height: 150px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(230,50,41,0.05) 0%, transparent 70%);
-  bottom: 80px; right: -30px; pointer-events: none; z-index: 0;
-}
 
 /* Accent line under h2 */
 .slide.content h2::after {
