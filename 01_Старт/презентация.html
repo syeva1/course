@@ -24,6 +24,7 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   background: var(--bg);
   color: var(--black);
+  position: relative;
 }
 
 .slides { position: relative; width: 100%; height: 100%; }
@@ -57,8 +58,8 @@ html, body {
 .slide.content {
   background: var(--bg);
   background-image:
-    radial-gradient(circle, rgba(0,0,0,0.07) 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
+    radial-gradient(circle, rgba(200,200,210,0.5) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
   align-items: center;
   text-align: center;
 }
@@ -71,10 +72,10 @@ html, body {
 }
 .dot {
   width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid #ccc; background: transparent;
-  transition: all 0.3s;
+  border: 2px solid #ccc; background: rgba(255,255,255,0.8);
+  transition: all 0.3s; cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
-.dot { cursor: pointer; }
 .dot.active { background: var(--red); border-color: var(--red); }
 .dot.passed { background: var(--red); border-color: var(--red); opacity: 0.5; }
 
