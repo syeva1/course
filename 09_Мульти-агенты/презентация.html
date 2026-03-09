@@ -357,23 +357,26 @@ li::before {
 
 <!-- SLIDE 4: Content Factory Миши -->
 <div class="slide content">
-  <h2>Content Factory Миши:<br><span class="red">5 агентов в цепочке</span></h2>
+  <h2>Content Factory:<br><span class="red">5 «сотрудников» пишут статью</span></h2>
+  <p style="max-width:650px;margin-bottom:12px;">Представь: ты нанял 5 человек, и каждый делает свой кусок работы по очереди. Только это не люди — это AI-агенты.</p>
   <div class="flow">
-    <div class="flow-box">📋 Planner</div>
+    <div class="flow-box">📋 Планировщик</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">✅ Plan-Checker</div>
+    <div class="flow-box">✅ Проверщик плана</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">✍️ Writer</div>
+    <div class="flow-box">✍️ Писатель</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">🔍 Text-Checker</div>
+    <div class="flow-box">🔍 Редактор</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">🏆 Final-Reviewer</div>
+    <div class="flow-box">🏆 Финальная проверка</div>
   </div>
   <ul style="max-width:650px;">
-    <li>Каждый агент видит только свой этап</li>
-    <li>Промежуточные файлы: plan.md → draft.md → final.md</li>
-    <li>Ошибки ловятся на каждом шаге</li>
-    <li>Результат — как от редакции, а не от одного человека</li>
+    <li><b>Планировщик</b> — придумывает структуру статьи (как шеф-редактор)</li>
+    <li><b>Проверщик плана</b> — «а ты ничего не забыл? а ЦА правильная?»</li>
+    <li><b>Писатель</b> — пишет текст по готовому плану</li>
+    <li><b>Редактор</b> — убирает воду, проверяет факты, улучшает стиль</li>
+    <li><b>Финальная проверка</b> — итоговый контроль качества</li>
+    <li><span class="tag tip">Результат</span> Качество как от редакции из 5 человек, а делает один ты</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
@@ -381,18 +384,15 @@ li::before {
 
 <!-- SLIDE 5: Параллельная работа -->
 <div class="slide content">
-  <h2>Параллельная работа:<br><span class="red">5 задач одновременно</span></h2>
-  <p style="max-width:650px;margin-bottom:16px;">Пока один агент пишет статью #1 — другой уже проверяет статью #2, третий планирует статью #3</p>
-  <div class="code-block" style="max-width:600px;">
-Время  | Агент 1  | Агент 2  | Агент 3  | Агент 4  | Агент 5
-─────────────────────────────────────────────────────────────
-10:00  | План #1  |   —      |   —      |   —      |   —
-10:05  | Пишет #1 | План #2  |   —      |   —      |   —
-10:10  | Проверка | Пишет #2 | План #3  |   —      |   —
-10:15  | Финал #1 | Провер.  | Пишет #3 | План #4  |   —
-10:20  | ✅ Готово | Финал #2 | Провер.  | Пишет #4 | План #5
+  <h2>Параллельная работа:<br><span class="red">3 задачи одновременно</span></h2>
+  <p style="max-width:650px;margin-bottom:16px;"><b>Простой пример:</b> тебе нужно подготовить пост для соцсетей. Запускаешь 3 агента одновременно:</p>
+  <div class="agent-grid">
+    <div class="agent-card"><div class="emoji">✍️</div><div class="name">Агент 1: пишет текст поста</div></div>
+    <div class="agent-card"><div class="emoji">🖼️</div><div class="name">Агент 2: ищет подходящие картинки</div></div>
+    <div class="agent-card"><div class="emoji">🔍</div><div class="name">Агент 3: проверяет факты и цифры</div></div>
   </div>
-  <p><span class="tag tip">Результат</span> 5 статей за время ~2-х последовательных</p>
+  <p style="max-width:650px;margin-top:12px;">Все трое работают <b>одновременно</b> — не ждут друг друга. Через 5 минут у тебя: готовый текст + картинки + проверенные факты. Без параллельности это заняло бы 15 минут.</p>
+  <p style="margin-top:8px;"><span class="tag tip">Аналогия</span> Один повар готовит обед 1 час. Три повара (суп, горячее, десерт) — за 20 минут.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
@@ -415,26 +415,26 @@ li::before {
 
 <!-- SLIDE 7: ccpm -->
 <div class="slide content">
-  <h2>ccpm — Claude Code как<br><span class="red">менеджер проектов</span></h2>
+  <h2>ccpm — автоматический<br><span class="red">менеджер проектов</span></h2>
+  <p style="max-width:650px;margin-bottom:12px;"><b>Зачем обычному человеку:</b> ты говоришь «хочу сделать лендинг», а ccpm сам разбивает это на задачи и раздаёт агентам</p>
   <div class="flow">
-    <div class="flow-box">📄 PRD</div>
+    <div class="flow-box">💡 Твоя идея</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">🧱 Эпики</div>
+    <div class="flow-box">📋 План задач</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">📌 Issues</div>
+    <div class="flow-box">🤖 Агенты работают</div>
     <div class="flow-arrow">→</div>
-    <div class="flow-box">🤖 Агенты</div>
+    <div class="flow-box">✅ Готовый результат</div>
   </div>
   <ul style="max-width:650px;">
-    <li>PRD (Product Requirements Document) → детальный план</li>
-    <li>Разбивка на эпики и задачи (Issues)</li>
-    <li>Каждый Issue — отдельный агент в Claude Code</li>
-    <li>Агенты работают параллельно, результат — в git</li>
+    <li><b>Было:</b> ты сам думаешь, что делать, в каком порядке, кому поручить</li>
+    <li><b>Стало:</b> написал «сделай лендинг для HR-агентства» → ccpm сам создал 8 задач → 4 агента работают параллельно</li>
+    <li>Это как нанять менеджера проектов, который сам раздаёт задачи</li>
   </ul>
   <div class="code-block" style="max-width:500px;">
-ccpm init "Мой проект"
-ccpm plan         # PRD → эпики → issues
-ccpm run --agents 4   # запуск агентов
+ccpm init "Лендинг АССИСТ+"
+ccpm plan         # AI разбивает на задачи
+ccpm run --agents 4   # 4 агента делают параллельно
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
@@ -442,19 +442,18 @@ ccpm run --agents 4   # запуск агентов
 
 <!-- SLIDE 8: agtx -->
 <div class="slide content">
-  <h2>agtx — <span class="red">канбан-доска</span> в терминале</h2>
-  <p style="max-width:650px;margin-bottom:16px;">Визуальный менеджер задач для мульти-агентных воркфлоу прямо в CLI</p>
+  <h2>agtx — <span class="red">доска задач</span> для агентов</h2>
+  <p style="max-width:650px;margin-bottom:16px;"><b>Зачем обычному человеку:</b> видишь в реальном времени, что делает каждый агент — как Trello, но для AI-помощников</p>
   <div class="code-block" style="max-width:550px;">
-┌─ TODO ──────┬─ IN PROGRESS ─┬─ DONE ────────┐
+┌─ ЖДЁТ ──────┬─ ДЕЛАЕТСЯ ────┬─ ГОТОВО ──────┐
 │ Статья #5   │ 🤖 Статья #3  │ ✅ Статья #1  │
 │ Статья #6   │ 🤖 Статья #4  │ ✅ Статья #2  │
-│             │               │               │
 └─────────────┴───────────────┴───────────────┘
   </div>
   <ul style="max-width:550px;">
-    <li>Отслеживание прогресса каждого агента</li>
-    <li>Автоматический переход задач между колонками</li>
-    <li>Интеграция с Claude Code субагентами</li>
+    <li><b>Проблема без agtx:</b> запустил 5 агентов и не понимаешь, кто что делает, кто застрял</li>
+    <li><b>С agtx:</b> видишь прогресс, как на канбан-доске. Задача сама «переезжает» из колонки в колонку</li>
+    <li>Если агент застрял — сразу видно, можно перезапустить</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>

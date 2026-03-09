@@ -320,45 +320,49 @@ li::before {
 
 <!-- SLIDE 3 -->
 <div class="slide content">
-  <h2>Claude Code — <span style="color:var(--red)">AI в терминале</span></h2>
-  <div class="subtitle">Терминальный агент от Anthropic</div>
+  <h2>Claude Code — <span style="color:var(--red)">голосом «сделай сайт»</span></h2>
+  <div class="subtitle">Представь: говоришь «сделай мне сайт-визитку» — и он делает. Без Cursor, без интерфейса.</div>
   <ul>
-    <li>Работает прямо в командной строке — без GUI</li>
-    <li>Читает, пишет и запускает код автономно</li>
-    <li>Понимает весь проект целиком через контекст репозитория</li>
-    <li>Может выполнять цепочки задач без вмешательства</li>
+    <li><strong>Что это:</strong> AI-агент, который работает в терминале (чёрное окно с текстом)</li>
+    <li><strong>Как работает:</strong> пишешь задачу текстом → он сам создаёт файлы, пишет код, запускает</li>
+    <li><strong>Зачем:</strong> для сложных задач, где Cursor не справляется — рефакторинг, деплой, автоматизация</li>
+    <li><strong>Пример:</strong> «Создай Telegram-бота, который сохраняет голосовые в текст» → он сам напишет весь код</li>
+    <li><strong>С голосом:</strong> Wispr Flow + Claude Code = диктуешь задачу голосом → агент выполняет</li>
   </ul>
-  <p style="margin-top:16px;"><span class="tag tip">ФАКТ</span> Разработчики с Claude Code делают 10–30 pull-request'ов в день. Один человек заменяет целый отдел.</p>
+  <p style="margin-top:16px;"><span class="tag tip">ЦЕНА</span> $20/мес (Claude Max) или по API. Один человек с Claude Code делает работу отдела из 5 человек.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
 <!-- SLIDE 4 -->
 <div class="slide content">
-  <h2>Cline — <span style="color:var(--red)">бесплатная</span> альтернатива</h2>
-  <div class="subtitle">Открытое расширение для VS Code</div>
+  <h2>Cline — <span style="color:var(--red)">бесплатно</span>, работает с любой моделью</h2>
+  <div class="subtitle">Для тех, кто не хочет платить $20/мес за Cursor Pro</div>
   <ul>
-    <li>Поддерживает все модели: Claude, GPT, Gemini, локальные LLM</li>
-    <li>Работает как агент — читает файлы, пишет код, запускает команды</li>
-    <li>Можно использовать со своим API-ключом — платишь только за токены</li>
-    <li>Идеально для тех, кто хочет экономить и экспериментировать</li>
+    <li><strong>Что это:</strong> расширение для VS Code (бесплатный аналог Cursor)</li>
+    <li><strong>Главный плюс:</strong> подключаешь ЛЮБУЮ модель — Claude, GPT, Gemini, или бесплатные локальные</li>
+    <li><strong>Как начать:</strong> установи VS Code → Extensions → Cline → вставь API-ключ → готово</li>
+    <li><strong>Пример:</strong> подключил бесплатную модель Qwen → пишешь «создай лендинг» → работает!</li>
+    <li><strong>Для кого:</strong> если не готов платить за Cursor, но хочешь AI-ассистента в редакторе кода</li>
   </ul>
-  <p style="margin-top:16px;"><span class="tag tip">БЕСПЛАТНО</span> Cline + бесплатные модели = $0 на старте</p>
+  <p style="margin-top:16px;"><span class="tag tip">ЭКОНОМИЯ</span> Cline + бесплатная модель = $0. Cline + API Claude = ~$5-10/мес (вместо $20 за Cursor)</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
 <!-- SLIDE 5 -->
 <div class="slide content">
-  <h2>Conductor — <span style="color:var(--red)">параллельные</span> Claude Code</h2>
-  <div class="subtitle">Несколько агентов работают одновременно</div>
+  <h2>Conductor — <span style="color:var(--red)">5 агентов одновременно</span></h2>
+  <div class="subtitle">Открыл 5 окон — в каждом свой агент. Один делает сайт, второй пишет тексты, третий ищет конкурентов.</div>
   <ul>
-    <li>Запуск нескольких Claude Code сессий параллельно</li>
-    <li>Каждый агент работает над своей задачей</li>
-    <li>Ты — дирижёр, агенты — оркестр</li>
-    <li>Один человек управляет десятком агентов параллельно</li>
+    <li><strong>Как это выглядит:</strong> 5 терминалов на экране, в каждом Claude Code с отдельной задачей</li>
+    <li><strong>Агент 1:</strong> «Сделай лендинг для курса» — пишет HTML/CSS</li>
+    <li><strong>Агент 2:</strong> «Напиши 10 постов для Telegram» — генерирует контент</li>
+    <li><strong>Агент 3:</strong> «Найди 5 конкурентов и сравни цены» — делает ресерч</li>
+    <li><strong>Агент 4:</strong> «Создай email-рассылку на 5 писем» — пишет цепочку</li>
+    <li><strong>Агент 5:</strong> «Проверь сайт на ошибки» — делает аудит</li>
   </ul>
-  <p style="margin-top:16px;"><span class="tag important">МОЩЬ</span> Conductor позволяет масштабировать одного человека в команду</p>
+  <p style="margin-top:12px;"><span class="tag important">РЕЗУЛЬТАТ</span> За 1 час ты получаешь работу, которую команда из 5 человек делала бы неделю</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>

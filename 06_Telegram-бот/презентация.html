@@ -330,51 +330,45 @@ li::before {
     <li><span class="step-num">4</span> Придумай username (например, <code>anton_assist_bot</code>)</li>
     <li><span class="step-num">5</span> Получи <strong>токен</strong> — скопируй и сохрани!</li>
   </ul>
+  <p style="margin-top:12px;"><span class="tag tip">ЧТО ПОЛУЧИШЬ</span> Готовый бот в Telegram — пока пустой, но уже существует. Ты можешь найти его по username и написать ему.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
 <!-- SLIDE 4: Токен -->
 <div class="slide content">
-  <h2>Токен — <span style="color:var(--red)">что это и как хранить</span></h2>
-  <div class="subtitle">Ключ доступа к вашему боту</div>
+  <h2>Токен — <span style="color:var(--red)">пароль от бота</span></h2>
+  <div class="subtitle">Кто знает токен — управляет ботом</div>
+  <p style="max-width:700px;margin-bottom:12px;"><span class="tag tip">Аналогия</span> Токен — это как пароль от почты. Кто его знает — может читать, отправлять, удалять. То же с ботом: токен = полный контроль.</p>
   <div class="code-block" style="max-width:700px;">
 # Пример токена (НЕ настоящий!)
 7234567890:AAH1234abcDEF_ghijklMNOPqrstuvWXYZ
+
+# Храни его ТОЛЬКО в файле .env:
+TELEGRAM_TOKEN=7234567890:AAH1234abcDEF...
   </div>
   <ul style="max-width:700px;">
-    <li><span class="tag important">Важно</span> Токен = пароль от бота. Не публикуйте его!</li>
-    <li><span class="tag tip">Совет</span> Храните в <code>.env</code> файле или переменных окружения</li>
-    <li><span class="tag warn">Утечка?</span> Перевыпустите через @BotFather → <code>/revoke</code></li>
+    <li><span class="tag important">Важно</span> Никогда не публикуй токен в коде — иначе любой сможет захватить бота</li>
+    <li><span class="tag tip">Утечка?</span> Перевыпусти через @BotFather → <code>/revoke</code> (старый токен перестанет работать)</li>
   </ul>
+  <p style="margin-top:12px;"><span class="tag tip">ЧТО ПОЛУЧИШЬ</span> Безопасный бот, который никто не угонит</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
 <!-- SLIDE 5: Структура бота -->
 <div class="slide content">
-  <h2>Структура <span style="color:var(--red)">Telegram-бота</span></h2>
-  <div class="subtitle">Как бот обрабатывает сообщения</div>
-  <div class="two-col">
-    <div>
-      <h3>Компоненты</h3>
-      <ul>
-        <li><strong>Обработчики</strong> — реагируют на события</li>
-        <li><strong>Команды</strong> — /start, /help, /menu</li>
-        <li><strong>Сообщения</strong> — обычный текст от пользователя</li>
-        <li><strong>Callback</strong> — нажатия на кнопки</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Поток работы</h3>
-      <ul>
-        <li>Пользователь пишет боту</li>
-        <li>Telegram отправляет update на сервер</li>
-        <li>Бот обрабатывает и отвечает</li>
-        <li>Ответ приходит в чат</li>
-      </ul>
-    </div>
-  </div>
+  <h2>Обработчики — <span style="color:var(--red)">секретари бота</span></h2>
+  <div class="subtitle">Каждый тип сообщения — свой «секретарь»</div>
+  <p style="max-width:700px;margin-bottom:12px;"><span class="tag tip">Аналогия</span> Представь, что у тебя в офисе сидят секретари. Один принимает звонки, другой — почту, третий — посетителей. Обработчики бота работают так же:</p>
+  <ul style="max-width:700px;">
+    <li>📝 Пришёл <b>текст</b> → обработчик сохраняет его как .md файл</li>
+    <li>🎤 Пришло <b>голосовое</b> → обработчик транскрибирует в текст</li>
+    <li>📎 Пришёл <b>файл</b> (PDF, DOCX) → обработчик сохраняет в папку</li>
+    <li>🖼 Пришла <b>картинка</b> → обработчик сохраняет с датой в названии</li>
+    <li>🔗 Пришла <b>ссылка</b> → обработчик парсит заголовок и сохраняет</li>
+  </ul>
+  <p style="margin-top:12px;"><span class="tag tip">ЧТО ПОЛУЧИШЬ</span> Бот, который автоматически сортирует всё, что ты ему скидываешь</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
@@ -400,14 +394,15 @@ app.add_handler(MessageHandler(filters.TEXT, echo))
 app.run_polling()
   </div>
   <p><span class="tag tip">12 строк</span> — и бот уже работает!</p>
+  <p style="margin-top:8px;"><span class="tag tip">ЧТО ПОЛУЧИШЬ</span> Рабочий бот, который отвечает тебе в Telegram. Проверка: написал «привет» — получил «привет» в ответ.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
 <!-- SLIDE 7: Добавляем AI -->
 <div class="slide content">
-  <h2>Добавляем <span style="color:var(--red)">AI</span> в бота</h2>
-  <div class="subtitle">Подключаем нейросеть — бот становится умным</div>
+  <h2>Добавляем <span style="color:var(--red)">AI</span> — бот становится умным</h2>
+  <div class="subtitle">Теперь бот не просто повторяет, а думает и отвечает по-человечески</div>
   <div class="code-block" style="max-width:750px;">
 from openai import OpenAI
 
@@ -425,6 +420,7 @@ async def ai_reply(update, ctx):
         response.choices[0].message.content
     )
   </div>
+  <p style="margin-top:8px;"><span class="tag tip">ЧТО ПОЛУЧИШЬ</span> Бот, который отвечает осмысленно: спросил «Какие у вас цены?» — получил развёрнутый ответ, а не «Какие у вас цены?»</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
@@ -500,25 +496,27 @@ async def start(update, ctx):
 <!-- SLIDE 11: Деплой -->
 <div class="slide content">
   <h2>Деплой — <span style="color:var(--red)">бот работает 24/7</span></h2>
-  <div class="subtitle">Чтобы бот не выключался, когда вы закрываете ноутбук</div>
+  <div class="subtitle">Бот работает только когда комп включён. Хочешь 24/7 — нужен сервер.</div>
+  <p style="max-width:700px;margin-bottom:12px;"><span class="tag tip">Простыми словами</span> Сейчас бот крутится на твоём компьютере. Закрыл ноутбук — бот «уснул». Чтобы он работал всегда — нужно арендовать сервер. Это как квартира для бота: он там живёт и работает, пока ты спишь.</p>
   <div class="two-col">
     <div>
-      <h3>Варианты хостинга</h3>
+      <h3>Варианты</h3>
       <ul>
-        <li><strong>VPS</strong> — свой сервер (от 300 ₽/мес)</li>
-        <li><strong>Railway / Render</strong> — бесплатно для старта</li>
-        <li><strong>PythonAnywhere</strong> — просто для новичков</li>
+        <li><strong>VPS</strong> — свой сервер (от 300 ₽/мес, самый надёжный)</li>
+        <li><strong>Railway</strong> — бесплатно для старта, проще всего</li>
+        <li><strong>Render</strong> — бесплатный план, но бот «засыпает» через 15 мин без запросов</li>
       </ul>
     </div>
     <div>
-      <h3>Минимальный деплой</h3>
-      <div class="code-block">
-# На сервере:
-pip install python-telegram-bot openai
-nohup python bot.py &amp;
-      </div>
+      <h3>Что делать</h3>
+      <ul>
+        <li>Для начала — Railway (0 ₽, работает сразу)</li>
+        <li>Для серьёзного бота — VPS за 300 ₽/мес</li>
+        <li>Cursor поможет настроить деплой по ТЗ</li>
+      </ul>
     </div>
   </div>
+  <p style="margin-top:12px;"><span class="tag tip">ЧТО ПОЛУЧИШЬ</span> Бот отвечает клиентам даже ночью, пока ты спишь</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>

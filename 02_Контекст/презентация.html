@@ -370,12 +370,20 @@ li::before {
   <h2>@Codebase</h2>
   <p class="subtitle">Весь проект как контекст</p>
   <ul>
-    <li>AI анализирует <b>все файлы</b> проекта</li>
-    <li>Видит связи между компонентами</li>
+    <li>AI анализирует <b>все файлы</b> проекта — видит связи между ними</li>
     <li>Идеально для: рефакторинг, обзор, глобальные вопросы</li>
     <li><span class="tag warn">⚠️</span> Не используй для мелких задач — медленнее и дороже</li>
   </ul>
-  <div class="code-block" style="max-width:600px;margin:16px auto;">@Codebase Опиши структуру проекта<br>и предложи улучшения</div>
+  <div class="two-col" style="max-width:800px;margin-top:12px;">
+    <div>
+      <h3>❌ Без @Codebase</h3>
+      <div class="code-block" style="font-size:12px;">«Почему кнопка "Отправить" не работает?»<br><br>→ AI: «Проверьте обработчик клика...»<br>(общий совет, не видит ваш код)</div>
+    </div>
+    <div>
+      <h3>✅ С @Codebase</h3>
+      <div class="code-block" style="font-size:12px;">«@Codebase Почему кнопка "Отправить" не работает?»<br><br>→ AI: «В form.js строка 42 — опечатка в<br>названии функции sendForm vs sendForms»</div>
+    </div>
+  </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">05 / 18</div>
 </div>
@@ -388,9 +396,17 @@ li::before {
     <li>AI ищет <b>актуальную информацию</b> в реальном времени</li>
     <li>Обходит ограничение «устаревших знаний»</li>
     <li>Автоматически обобщает найденное</li>
-    <li>Идеально для: тренды, новости, свежая документация</li>
   </ul>
-  <div class="code-block" style="max-width:600px;margin:16px auto;">@Web Какие тренды в подборе<br>бизнес-ассистентов в 2025?</div>
+  <div class="two-col" style="max-width:800px;margin-top:12px;">
+    <div>
+      <h3>❌ Без @Web</h3>
+      <div class="code-block" style="font-size:12px;">«Какой сейчас курс доллара?»<br><br>→ AI: «Я не могу проверить текущий<br>курс, мои данные устарели»</div>
+    </div>
+    <div>
+      <h3>✅ С @Web</h3>
+      <div class="code-block" style="font-size:12px;">«@Web Какой сейчас курс доллара<br>и прогноз на неделю?»<br><br>→ AI: «Курс 92.5₽, аналитики ожидают<br>снижение до 91₽ к пятнице»</div>
+    </div>
+  </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">06 / 18</div>
 </div>
@@ -398,14 +414,14 @@ li::before {
 <!-- SLIDE 7 -->
 <div class="slide content" id="s7">
   <h2>@Doc</h2>
-  <p class="subtitle">Документация любого сервиса</p>
+  <p class="subtitle">Документация любого сервиса — без гугления</p>
   <ul>
-    <li>Подключает <b>официальную документацию</b></li>
-    <li>AI знает API, параметры, примеры</li>
+    <li>Подключает <b>официальную документацию</b> — AI отвечает по ней</li>
     <li>Можно добавить <b>свою документацию</b> по URL</li>
     <li>Settings → Features → Docs → Add new doc</li>
   </ul>
-  <div class="code-block" style="max-width:600px;margin:16px auto;">@Doc Tailwind CSS Как сделать<br>адаптивную сетку из 3 колонок?</div>
+  <p style="margin-top:12px;max-width:700px;"><b>Реальный пример:</b> Ты делаешь Telegram-бота. Спрашиваешь «как отправить фото?» — AI выдаёт устаревший код. Добавляешь <span class="highlight">@Doc python-telegram-bot</span> — и получаешь рабочий код из актуальной документации.</p>
+  <div class="code-block" style="max-width:600px;margin:16px auto;">@Doc python-telegram-bot<br>Как отправить фото пользователю с подписью?</div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">07 / 18</div>
 </div>
@@ -413,14 +429,15 @@ li::before {
 <!-- SLIDE 8 -->
 <div class="slide content" id="s8">
   <h2>@Git</h2>
-  <p class="subtitle">История изменений проекта</p>
+  <p class="subtitle">История изменений — кто, когда, что менял</p>
   <ul>
     <li>AI видит <b>все коммиты и изменения</b></li>
-    <li>Может провести code review</li>
     <li>Поможет найти, когда появилась ошибка</li>
     <li>Составит changelog автоматически</li>
   </ul>
-  <div class="code-block" style="max-width:600px;margin:16px auto;">@Git Покажи изменения за последнюю<br>неделю и составь краткий changelog</div>
+  <p style="margin-top:12px;max-width:700px;"><b>Реальный пример:</b> Вчера сайт работал, сегодня — сломался. Вместо того чтобы часами искать причину, спрашиваешь:</p>
+  <div class="code-block" style="max-width:600px;margin:16px auto;">@Git Что изменилось за последние 2 дня?<br>Найди, какой коммит мог сломать форму заявки</div>
+  <p style="margin-top:8px;max-width:600px;">→ AI: «В коммите от вчера удалена строка с обработчиком submit в form.js»</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">08 / 18</div>
 </div>
@@ -450,11 +467,11 @@ li::before {
 <!-- SLIDE 10 -->
 <div class="slide content" id="s10">
   <h2>Notepad</h2>
-  <p class="subtitle">Блокнот для заметок AI</p>
+  <p class="subtitle">Зачем: чтобы не повторять одно и то же в каждом запросе</p>
   <ul>
     <li>Встроенный блокнот, который AI видит через <b>@Notepad</b></li>
-    <li>Храни здесь: описание проекта, ЦА, ограничения</li>
-    <li>Не нужно повторять контекст в каждом запросе</li>
+    <li><b>Проблема:</b> каждый раз пишешь «я — владелец HR-агентства, ЦА — предприниматели…»</li>
+    <li><b>Решение:</b> записал в Notepad один раз → AI знает это всегда</li>
     <li>Открой: <b>Cmd+Shift+P</b> → «Notepad»</li>
   </ul>
   <div class="code-block" style="max-width:550px;margin:16px auto;">## О проекте<br>Агентство по подбору бизнес-ассистентов<br>ЦА: предприниматели с выручкой от 1 млн/мес<br>Тон: профессиональный, но дружелюбный</div>

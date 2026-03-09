@@ -331,11 +331,11 @@ li::before {
 <div class="slide content">
   <h2>5 принципов хорошего промпта</h2>
   <ul class="steps" style="max-width:700px;">
-    <li><span class="step-num">1</span><span><strong>Будь конкретным</strong> — не «напиши текст», а «напиши пост на 200 слов для Telegram»</span></li>
-    <li><span class="step-num">2</span><span><strong>Дай контекст</strong> — кто ты, для кого это, какая цель</span></li>
-    <li><span class="step-num">3</span><span><strong>Покажи пример</strong> — один образец стоит десяти объяснений</span></li>
-    <li><span class="step-num">4</span><span><strong>Укажи формат</strong> — список, таблица, текст на N слов, JSON</span></li>
-    <li><span class="step-num">5</span><span><strong>Итерируй</strong> — доводи ответ до идеала за 2–3 шага</span></li>
+    <li><span class="step-num">1</span><span><strong>Будь конкретным</strong><br>❌ «напиши текст» → ✅ «напиши пост на 200 слов для Telegram про экономию времени с ассистентом»</span></li>
+    <li><span class="step-num">2</span><span><strong>Дай контекст</strong><br>❌ «напиши письмо клиенту» → ✅ «напиши письмо клиенту, который оставил заявку на подбор ассистента вчера, но не ответил на звонок»</span></li>
+    <li><span class="step-num">3</span><span><strong>Покажи пример</strong><br>❌ «напиши в нашем стиле» → ✅ «вот пример нашего поста: [пример]. Напиши в таком же стиле»</span></li>
+    <li><span class="step-num">4</span><span><strong>Укажи формат</strong><br>❌ «дай идеи» → ✅ «дай 5 идей списком, к каждой — одно предложение, почему сработает»</span></li>
+    <li><span class="step-num">5</span><span><strong>Итерируй</strong> — доводи ответ до идеала за 2–3 шага, не бери первый ответ</span></li>
   </ul>
   <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
@@ -361,29 +361,30 @@ li::before {
 <!-- SLIDE 5: XML-теги -->
 <div class="slide content">
   <h2>XML-теги: структура для сложных задач</h2>
-  <p class="subtitle">Чёткие границы = чёткий ответ</p>
+  <p class="subtitle">Зачем: AI точно понимает, где контекст, где задача, где формат</p>
   <div class="two-col" style="max-width:850px;">
     <div>
-      <h3>Зачем?</h3>
+      <h3>Когда нужны XML-теги?</h3>
       <ul>
-        <li>AI точнее понимает, где что</li>
-        <li>Легко отделить контекст от задачи</li>
-        <li>Можно вставлять большие тексты без путаницы</li>
-        <li>Работает как разметка — AI это «нативно»</li>
+        <li>Задача сложная (анализ + написание + формат)</li>
+        <li>Нужно вставить большой текст и не запутать AI</li>
+        <li>Результат без тегов — мимо. С тегами — в точку</li>
       </ul>
     </div>
     <div>
-      <h3>Пример</h3>
-      <div class="code-block" style="font-size:13px;">
+      <h3>Реальный промпт</h3>
+      <div class="code-block" style="font-size:12px;">
+&lt;role&gt;Ты — HR-копирайтер&lt;/role&gt;<br><br>
 &lt;context&gt;<br>
-&nbsp;&nbsp;HR-агентство, 50 клиентов<br>
+&nbsp;&nbsp;Агентство АССИСТ+ подбирает ассистентов<br>
+&nbsp;&nbsp;для предпринимателей. ЦА: владельцы<br>
+&nbsp;&nbsp;бизнеса с выручкой от 1 млн/мес<br>
 &lt;/context&gt;<br><br>
 &lt;task&gt;<br>
-&nbsp;&nbsp;Напиши FAQ для сайта<br>
+&nbsp;&nbsp;Напиши 5 вопросов для FAQ на сайте<br>
+&nbsp;&nbsp;с ответами. Каждый ответ — 2-3 предложения<br>
 &lt;/task&gt;<br><br>
-&lt;format&gt;<br>
-&nbsp;&nbsp;10 вопросов и ответов<br>
-&lt;/format&gt;
+&lt;style&gt;Дружелюбный, без канцелярита&lt;/style&gt;
       </div>
     </div>
   </div>
@@ -411,27 +412,27 @@ li::before {
 <!-- SLIDE 7: Chain-of-thought -->
 <div class="slide content">
   <h2>Chain-of-thought: «давай по шагам»</h2>
-  <p class="subtitle">Заставь AI думать, а не угадывать</p>
+  <p class="subtitle">Как это меняет результат: поверхностный ответ → глубокий анализ</p>
   <div class="two-col" style="max-width:800px;">
     <div>
-      <h3>Без CoT</h3>
-      <div class="code-block" style="font-size:13px;">
+      <h3>❌ Без «по шагам»</h3>
+      <div class="code-block" style="font-size:12px;">
 Какой канал лучше для рекламы<br>
 нашего HR-агентства?
       </div>
-      <p style="font-size:13px;color:var(--gray-light);margin-top:8px;">→ Поверхностный ответ</p>
+      <p style="font-size:12px;color:var(--gray-light);margin-top:8px;">→ «Попробуйте Telegram и Instagram» — и всё. Общий совет без аргументов.</p>
     </div>
     <div>
-      <h3>С CoT</h3>
-      <div class="code-block" style="font-size:13px;">
+      <h3>✅ С «по шагам»</h3>
+      <div class="code-block" style="font-size:12px;">
 Проанализируй, какой канал лучше.<br>
 Рассуждай по шагам:<br>
 1. Определи ЦА каждого канала<br>
-2. Сравни с нашей аудиторией<br>
-3. Оцени вовлечённость<br>
-4. Дай рекомендацию
+2. Сравни с нашей ЦА (предприниматели 30–45)<br>
+3. Оцени стоимость привлечения<br>
+4. Дай рекомендацию с цифрами
       </div>
-      <p style="font-size:13px;color:var(--gray-light);margin-top:8px;">→ Глубокий анализ</p>
+      <p style="font-size:12px;color:var(--gray-light);margin-top:8px;">→ Развёрнутый анализ: «Telegram — ЦА 28–45, CPL ~200₽. Instagram — ЦА 18–35, CPL ~400₽. Рекомендация: Telegram»</p>
     </div>
   </div>
   <div class="counter"></div>
@@ -483,7 +484,7 @@ li::before {
 <!-- SLIDE 10: Почему AI выходит из роли -->
 <div class="slide content">
   <h2>Почему AI «выходит из роли»</h2>
-  <p class="subtitle">Исследование Anthropic: код держит, эмоции уводят</p>
+  <p class="subtitle">Исследования показывают: чёткие инструкции держат, эмоции уводят</p>
   <ul style="max-width:700px;">
     <li><strong>Чёткие инструкции</strong> (формат, шаги, ограничения) — AI следует им стабильно</li>
     <li><strong>Эмоциональное давление</strong> («ну пожалуйста», «это очень важно») — AI начинает «угождать» вместо того, чтобы думать</li>
