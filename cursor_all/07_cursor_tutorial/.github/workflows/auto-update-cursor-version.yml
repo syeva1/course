@@ -1,0 +1,47 @@
+name: Fully Automated Cursor Version Update
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC (check for new releases weekly)
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual triggering
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/auto-update-cursor-version.yml'
+
+jobs:
+  fully-automated-update:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run fully automated update
+      env:
+        CI: true
+        GITHUB_ACTIONS: true
+      run: |
+        echo "🚀 Running fully automated Cursor version update..."
+        node scripts/fully-automated-update.js
+
+    - name: Summary
+      run: |
+        echo "## 🤖 Fully Automated Update Complete" >> $GITHUB_STEP_SUMMARY
+        echo "- **Status:** Automated version detection and update completed" >> $GITHUB_STEP_SUMMARY
+        echo "- **No manual steps required**" >> $GITHUB_STEP_SUMMARY
+        echo "- **Check the logs above for details**" >> $GITHUB_STEP_SUMMARY

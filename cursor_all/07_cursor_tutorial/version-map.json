@@ -1,0 +1,15 @@
+{
+  "note": "Maps Cursor build versions (0.x.x from ToDesktop) to display versions (1.7.x from changelog). Last updated from https://cursor.com/changelog",
+  "lastUpdated": "2025-10-08",
+  "source": "https://cursor.com/changelog",
+  "latest": {
+    "build": "0.45.14",
+    "display": "1.7.39"
+  },
+  "mappings": {
+    "0.45.14": "1.7.39"
+  },
+  "history": [
+    { "build": "0.45.14", "display": "1.7.39", "releaseDate": "2025-02-19" }
+  ]
+}

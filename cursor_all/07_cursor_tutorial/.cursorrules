@@ -1,0 +1,483 @@
+# Cursor Rules for Cursor Tutorial Codebase
+
+## Project Overview
+This is a Next.js 15 tutorial website for learning Cursor AI editor, featuring AI-powered search, voice recognition, and comprehensive tutorials.
+
+## Tech Stack
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: Supabase with pgvector
+- **AI**: OpenAI embeddings + Claude 3.5 Haiku
+- **Authentication**: NextAuth.js with Google OAuth
+- **Caching**: Upstash Redis (with memory fallback)
+- **Email**: Resend + EmailJS fallback
+
+## Code Style & Standards
+
+### TypeScript
+- Use strict TypeScript with proper type definitions
+- Prefer interfaces over types for object shapes
+- Always define return types for functions
+- Use proper error handling with typed errors
+- Avoid `any` type - use `unknown` or proper typing
+
+### React/Next.js
+- Use functional components with hooks
+- Prefer `"use client"` only when necessary
+- Use proper error boundaries for API routes
+- Implement proper loading states and error handling
+- Use Next.js 15 features (App Router, Server Components)
+
+### API Routes
+- Always validate input data
+- Implement proper error handling and logging
+- Use appropriate HTTP status codes
+- Add rate limiting where needed
+- Include proper TypeScript types for request/response
+
+### Database & Search
+- Use Supabase client with proper error handling
+- Implement vector search with proper dimension matching
+- Always validate embedding dimensions (512 vs 1536)
+- Use proper indexing for performance
+- Implement caching with Redis fallback
+
+## File Organization
+
+### Components
+- Place in `/src/components/`
+- Use PascalCase for component files
+- Co-locate related components in subdirectories
+- Export components as default exports
+
+### API Routes
+- Place in `/src/app/api/`
+- Use proper HTTP methods (GET, POST, etc.)
+- Include proper error handling
+- Add JSDoc comments for complex endpoints
+
+### Utilities & Libraries
+- Place in `/src/lib/`
+- Group related functionality (search, auth, etc.)
+- Use proper error handling and logging
+- Export functions, not classes where possible
+
+## Environment Variables
+
+### Required Variables
+```bash
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# AI Services
+OPENAI_API_KEY=your_openai_key
+Claude_My_Secret_Key=your_claude_key
+
+# Authentication
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+# Caching
+UPSTASH_REDIS_REST_URL=your_redis_url
+UPSTASH_REDIS_REST_TOKEN=your_redis_token
+
+# Email Services
+RESEND_API_KEY=your_resend_key
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+```
+
+## Best Practices
+
+### Error Handling
+- Always wrap async operations in try-catch
+- Log errors with proper context
+- Provide user-friendly error messages
+- Use proper HTTP status codes
+
+### Performance
+- Implement proper caching strategies
+- Use React.memo for expensive components
+- Optimize bundle size with dynamic imports
+- Use proper image optimization
+
+### Security
+- Validate all user inputs
+- Use proper authentication checks
+- Sanitize data before database operations
+- Implement rate limiting for API routes
+
+### Search & AI
+- Always validate embedding dimensions
+- Implement proper fallbacks for AI services
+- Use appropriate model parameters
+- Cache search results when possible
+
+## Common Patterns
+
+### API Route Pattern
+```typescript
+export async function POST(request: NextRequest) {
+  try {
+    // Validate input
+    const body = await request.json();
+    if (!body.requiredField) {
+      return NextResponse.json(
+        { error: 'Missing required field' },
+        { status: 400 }
+      );
+    }
+
+    // Process request
+    const result = await processRequest(body);
+
+    // Return success
+    return NextResponse.json({ success: true, data: result });
+  } catch (error) {
+    console.error('API Error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+```
+
+### Component Pattern
+```typescript
+interface ComponentProps {
+  title: string;
+  onAction?: () => void;
+}
+
+export function Component({ title, onAction }: ComponentProps) {
+  const [loading, setLoading] = useState(false);
+
+  const handleAction = async () => {
+    setLoading(true);
+    try {
+      await onAction?.();
+    } catch (error) {
+      console.error('Action failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <h2>{title}</h2>
+      <button onClick={handleAction} disabled={loading}>
+        {loading ? 'Loading...' : 'Action'}
+      </button>
+    </div>
+  );
+}
+```
+
+## Debugging & Development
+
+### Console Logging
+- Use structured logging with context
+- Include timestamps and request IDs
+- Log errors with stack traces
+- Use different log levels (info, warn, error)
+
+### Testing
+- Test API routes with proper error scenarios
+- Test components with different prop combinations
+- Test search functionality with various queries
+- Test authentication flows
+
+## Deployment Considerations
+
+### Environment Setup
+- Ensure all environment variables are set
+- Test database connections
+- Verify AI service configurations
+- Check Redis connectivity
+
+### Performance Monitoring
+- Monitor API response times
+- Track search query performance
+- Monitor error rates
+- Check cache hit rates
+
+## Code Quality
+
+### Linting
+- Use ESLint with Next.js config
+- Fix all linting errors before committing
+- Use Prettier for code formatting
+- Maintain consistent code style
+
+### Type Safety
+- Enable strict TypeScript
+- Use proper type definitions
+- Avoid type assertions unless necessary
+- Use proper error types
+
+## AI Integration
+
+### Embeddings
+- Always use consistent dimensions (512 or 1536)
+- Validate embedding arrays before storage
+- Use proper similarity thresholds
+- Implement proper error handling
+
+### Claude Integration
+- Use appropriate model parameters
+- Implement proper timeout handling
+- Use structured prompts
+- Handle rate limits gracefully
+
+## Search System
+
+### Vector Search
+- Use proper similarity functions
+- Implement proper indexing
+- Handle dimension mismatches
+- Use appropriate thresholds
+
+### Caching
+- Cache search results appropriately
+- Implement proper cache invalidation
+- Use Redis with memory fallback
+- Monitor cache performance
+
+## Voice Features
+
+### Speech Recognition
+- Check browser compatibility
+- Implement proper error handling
+- Use appropriate language settings
+- Handle permission requests
+
+### Fallbacks
+- Provide text input alternatives
+- Handle unsupported browsers
+- Implement proper error messages
+- Use progressive enhancement
+
+## Email Services
+
+### Resend Integration
+- Use proper API key validation
+- Implement proper error handling
+- Use appropriate email templates
+- Handle rate limits
+
+### EmailJS Fallback
+- Validate configuration
+- Implement proper error handling
+- Use appropriate templates
+- Handle service failures
+
+## Database Operations
+
+### Supabase
+- Use proper client initialization
+- Implement proper error handling
+- Use appropriate indexes
+- Handle connection failures
+
+### Vector Operations
+- Validate embedding dimensions
+- Use proper similarity functions
+- Implement proper error handling
+- Monitor performance
+
+## Security Considerations
+
+### Authentication
+- Validate JWT tokens properly
+- Implement proper session handling
+- Use secure cookie settings
+- Handle authentication errors
+
+### Data Validation
+- Validate all inputs
+- Sanitize user data
+- Use proper SQL parameterization
+- Implement proper access controls
+
+## Performance Optimization
+
+### Caching Strategy
+- Use Redis for search results
+- Implement proper cache keys
+- Use appropriate TTL values
+- Monitor cache performance
+
+### Bundle Optimization
+- Use dynamic imports
+- Optimize images
+- Minimize bundle size
+- Use proper code splitting
+
+## Monitoring & Analytics
+
+### Error Tracking
+- Log all errors with context
+- Use proper error boundaries
+- Monitor error rates
+- Track performance metrics
+
+### Search Analytics
+- Track search queries
+- Monitor response times
+- Track user ratings
+- Analyze popular queries
+
+## Maintenance
+
+### Regular Tasks
+- Update dependencies regularly
+- Monitor error logs
+- Check performance metrics
+- Update documentation
+
+### Database Maintenance
+- Monitor query performance
+- Check index usage
+- Clean up old data
+- Optimize queries
+
+## Documentation
+
+### Code Comments
+- Use JSDoc for functions
+- Explain complex logic
+- Document API endpoints
+- Include examples
+
+### README Updates
+- Keep setup instructions current
+- Document environment variables
+- Include troubleshooting guides
+- Update feature descriptions
+
+## Testing Strategy
+
+### Unit Tests
+- Test utility functions
+- Test component logic
+- Test API route handlers
+- Test error scenarios
+
+### Integration Tests
+- Test API endpoints
+- Test database operations
+- Test authentication flows
+- Test search functionality
+
+### End-to-End Tests
+- Test user workflows
+- Test search functionality
+- Test authentication
+- Test error handling
+
+## Deployment Checklist
+
+### Pre-deployment
+- [ ] All environment variables set
+- [ ] Database schema up to date
+- [ ] All tests passing
+- [ ] No linting errors
+- [ ] Build successful
+
+### Post-deployment
+- [ ] Health checks passing
+- [ ] Search functionality working
+- [ ] Authentication working
+- [ ] Email services working
+- [ ] Performance monitoring active
+
+## Common Issues & Solutions
+
+### Search Not Working
+- Check Supabase configuration
+- Verify embedding dimensions
+- Check API keys
+- Monitor error logs
+
+### Authentication Issues
+- Check environment variables
+- Verify OAuth configuration
+- Check session handling
+- Monitor authentication logs
+
+### Performance Issues
+- Check Redis connectivity
+- Monitor database performance
+- Check API response times
+- Optimize queries
+
+### Email Issues
+- Check API keys
+- Verify service configuration
+- Check rate limits
+- Monitor error logs
+
+## Code Review Guidelines
+
+### Before Submitting
+- Run linting and fix errors
+- Test functionality locally
+- Check type safety
+- Verify error handling
+
+### Review Checklist
+- [ ] Code follows patterns
+- [ ] Error handling implemented
+- [ ] Type safety maintained
+- [ ] Performance considered
+- [ ] Security reviewed
+- [ ] Documentation updated
+
+## Resources
+
+### Documentation
+- Next.js 15: https://nextjs.org/docs
+- Supabase: https://supabase.com/docs
+- Tailwind CSS: https://tailwindcss.com/docs
+- NextAuth.js: https://next-auth.js.org
+
+### Tools
+- TypeScript: https://www.typescriptlang.org/docs
+- ESLint: https://eslint.org/docs
+- Prettier: https://prettier.io/docs
+
+## Support
+
+### Getting Help
+- Check error logs first
+- Review this documentation
+- Check GitHub issues
+- Ask in team chat
+
+### Common Commands
+```bash
+# Development
+npm run dev
+
+# Build
+npm run build
+
+# Lint
+npm run lint
+
+# Type check
+npm run type-check
+
+# Test search
+npm run search:health
+```
+
+Remember: Always prioritize user experience, performance, and maintainability in your code decisions.
+

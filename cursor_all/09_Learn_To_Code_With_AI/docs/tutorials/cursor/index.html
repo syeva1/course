@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Tutorial - Learn To Code With AI</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1><a href="../../index.html">Learn To Code With AI</a></h1>
+            </div>
+            <div class="main-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../cursor/" class="active">Cursor</a>
+                <a href="../chatgpt/">ChatGPT</a>
+                <a href="../claude/">Claude</a>
+                <a href="../../playground/">Playground</a>
+            </div>
+            <div class="theme-toggle">
+                <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="hero">
+            <h2>Cursor Tutorial</h2>
+            <p>Learn how to use Cursor.sh for intelligent code completion and refactoring.</p>
+        </div>
+        
+        <section class="tutorial-section content-section">
+            <h3>Getting Started with Cursor</h3>
+            <div class="tutorial-content">
+                <p>Cursor is an AI-powered code editor that helps you write better code faster. It integrates with various AI models to provide smart completions, refactoring suggestions, and code explanations as you work.</p>
+                <ul class="feature-list">
+                    <li>Install Cursor from <a href="https://cursor.sh" class="link-highlight">cursor.sh</a></li>
+                    <li>Set up your OpenAI API key or other model provider keys</li>
+                    <li>Start coding with AI assistance and explore the features</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tutorial-section content-section">
+            <h3>Compatible AI Models</h3>
+            <div class="tutorial-content">
+                <p>Cursor supports a wide range of AI models from various providers. Here's a comprehensive list of compatible models:</p>
+                
+                <div class="models-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Provider</th>
+                                <th>Features/Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Anthropic Models -->
+                            <tr class="model-category">
+                                <td colspan="3"><strong>Anthropic Claude Models</strong></td>
+                            </tr>
+                            <tr>
+                                <td>claude-3-5-sonnet-20241022</td>
+                                <td>Anthropic</td>
+                                <td>Latest Claude 3.5 Sonnet model with specific version</td>
+                            </tr>
+                            <tr>
+                                <td>claude-3-opus</td>
+                                <td>Anthropic</td>
+                                <td>Most powerful Claude model, excellent for complex coding tasks</td>
+                            </tr>
+                            <tr>
+                                <td>claude-3-5-haiku</td>
+                                <td>Anthropic</td>
+                                <td>Fastest Claude model, good for simple coding tasks</td>
+                            </tr>
+                            <tr>
+                                <td>claude-3-5-sonnet</td>
+                                <td>Anthropic</td>
+                                <td>Balanced performance and speed for daily coding</td>
+                            </tr>
+                            <tr>
+                                <td>claude-3-7-sonnet</td>
+                                <td>Anthropic</td>
+                                <td>Latest Claude 3.7 model with improved coding capabilities</td>
+                            </tr>
+                            <tr>
+                                <td>claude-3-7-sonnet-max</td>
+                                <td>Anthropic</td>
+                                <td>Claude 3.7 with extended context window</td>
+                            </tr>
+                            
+                            <!-- Google Models -->
+                            <tr class="model-category">
+                                <td colspan="3"><strong>Google Gemini Models</strong></td>
+                            </tr>
+                            <tr>
+                                <td>gemini-2-0-flash</td>
+                                <td>Google</td>
+                                <td>Fast response times with good code understanding</td>
+                            </tr>
+                            <tr>
+                                <td>gemini-2-0-flash-exp</td>
+                                <td>Google</td>
+                                <td>Experimental flash model with additional features</td>
+                            </tr>
+                            <tr>
+                                <td>gemini-2-0-pro-exp</td>
+                                <td>Google</td>
+                                <td>Experimental professional model with enhanced capabilities</td>
+                            </tr>
+                            <tr>
+                                <td>gemini-2-5-flash-preview-04-17</td>
+                                <td>Google</td>
+                                <td>Preview version of next-gen flash model</td>
+                            </tr>
+                            <tr>
+                                <td>gemini-2-5-pro-exp-03-25</td>
+                                <td>Google</td>
+                                <td>Experimental pro model with specific version</td>
+                            </tr>
+                            <tr>
+                                <td>gemini-2-5-pro-max</td>
+                                <td>Google</td>
+                                <td>Maximum context window and capabilities</td>
+                            </tr>
+                            <tr>
+                                <td>gemini-exp-1206</td>
+                                <td>Google</td>
+                                <td>Experimental model with specific version</td>
+                            </tr>
+                            
+                            <!-- OpenAI Models -->
+                            <tr class="model-category">
+                                <td colspan="3"><strong>OpenAI GPT Models</strong></td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4</td>
+                                <td>OpenAI</td>
+                                <td>Powerful language model with strong coding abilities</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4.1</td>
+                                <td>OpenAI</td>
+                                <td>Updated GPT-4 with incremental improvements</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4.5-preview</td>
+                                <td>OpenAI</td>
+                                <td>Preview of next generation GPT-4.5</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4o</td>
+                                <td>OpenAI</td>
+                                <td>Latest "Omni" model, optimized for coding</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4o-mini</td>
+                                <td>OpenAI</td>
+                                <td>Smaller, faster version of GPT-4o</td>
+                            </tr>
+                            
+                            <!-- Anthropic API Alternative -->
+                            <tr class="model-category">
+                                <td colspan="3"><strong>Alternative API Models</strong></td>
+                            </tr>
+                            <tr>
+                                <td>o1</td>
+                                <td>Anthropic</td>
+                                <td>Alternative API for Claude</td>
+                            </tr>
+                            <tr>
+                                <td>o1-mini</td>
+                                <td>Anthropic</td>
+                                <td>Smaller alternative API for Claude</td>
+                            </tr>
+                            <tr>
+                                <td>o1-preview</td>
+                                <td>Anthropic</td>
+                                <td>Preview of newer alternative API</td>
+                            </tr>
+                            <tr>
+                                <td>o3</td>
+                                <td>Anthropic</td>
+                                <td>Latest alternative API version</td>
+                            </tr>
+                            <tr>
+                                <td>o3-mini</td>
+                                <td>Anthropic</td>
+                                <td>Smaller version of the latest API</td>
+                            </tr>
+                            <tr>
+                                <td>o4-mini</td>
+                                <td>Anthropic</td>
+                                <td>Next-gen mini model via alternative API</td>
+                            </tr>
+                            
+                            <!-- Other Models -->
+                            <tr class="model-category">
+                                <td colspan="3"><strong>Additional Models</strong></td>
+                            </tr>
+                            <tr>
+                                <td>cursor-small</td>
+                                <td>Cursor</td>
+                                <td>Lightweight model developed by Cursor</td>
+                            </tr>
+                            <tr>
+                                <td>deepseek-r1</td>
+                                <td>DeepSeek</td>
+                                <td>Specialized coding model from DeepSeek</td>
+                            </tr>
+                            <tr>
+                                <td>deepseek-v3</td>
+                                <td>DeepSeek</td>
+                                <td>Updated DeepSeek model</td>
+                            </tr>
+                            <tr>
+                                <td>deepseek-v3.1</td>
+                                <td>DeepSeek</td>
+                                <td>Latest increment of DeepSeek model</td>
+                            </tr>
+                            <tr>
+                                <td>grok-3-beta</td>
+                                <td>xAI</td>
+                                <td>Beta version of Grok AI model</td>
+                            </tr>
+                            <tr>
+                                <td>grok-3-mini-beta</td>
+                                <td>xAI</td>
+                                <td>Lightweight version of Grok AI model</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="model-note">Note: Model availability may change as providers update their offerings. You can add custom model names in Cursor's settings.</p>
+            </div>
+        </section>
+
+        <section class="tutorial-section content-section">
+            <h3>Setting Up Your Preferred Model</h3>
+            <div class="tutorial-content">
+                <p>To configure which AI model Cursor uses:</p>
+                <ol class="feature-list">
+                    <li>Click on the settings icon in the bottom left corner</li>
+                    <li>Select "AI" from the settings menu</li>
+                    <li>Choose your preferred model from the dropdown</li>
+                    <li>Enter any required API keys for the selected provider</li>
+                </ol>
+                <div class="tip-box">
+                    <h4>Pro Tip</h4>
+                    <p>You can switch between models based on your tasks. Use faster models like GPT-3.5 or Claude Haiku for simple completions, and more powerful models like GPT-4 or Claude Opus for complex problems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutorial-section content-section">
+            <h3>Key Features</h3>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h4>Smart Code Completion</h4>
+                    <p>Cursor provides intelligent code suggestions based on your project's context, helping you write code faster and with fewer errors.</p>
+                    <div class="card-example">
+                        <p class="example-prompt">Press Ctrl+K to trigger AI completion</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h4>AI-Powered Refactoring</h4>
+                    <p>Ask Cursor to improve your existing code's structure, readability, and performance without changing functionality.</p>
+                    <div class="card-example">
+                        <p class="example-prompt">"Refactor this function to be more efficient"</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <h4>Real-time Suggestions</h4>
+                    <p>Get instant feedback and suggestions while you code, including best practices, potential bugs, and optimization tips.</p>
+                    <div class="card-example">
+                        <p class="example-prompt">"Explain potential issues in this code"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutorial-section content-section">
+            <h3>System Prompts in Cursor</h3>
+            <div class="tutorial-content">
+                <p>System prompts are instructions that guide how AI models behave when assisting with your code. In Cursor, you can customize system prompts to:
+                </p>
+                <ul class="feature-list">
+                    <li>Make AI follow specific coding standards</li>
+                    <li>Specify preferred frameworks or libraries</li>
+                    <li>Set boundaries for AI responses</li>
+                    <li>Include project-specific context</li>
+                </ul>
+                <div class="tip-box">
+                    <h4>Pro Tip</h4>
+                    <p>A well-crafted system prompt can dramatically improve the quality and relevance of AI assistance. Be specific about your coding style, error handling preferences, and documentation requirements.</p>
+                </div>
+                <p>To set a custom system prompt in Cursor:</p>
+                <ol class="feature-list">
+                    <li>Click on the settings icon in the bottom left corner</li>
+                    <li>Select "AI" from the settings menu</li>
+                    <li>Scroll to the "System Prompt" section</li>
+                    <li>Edit the default prompt or add your custom instructions</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="tutorial-section content-section">
+            <h3>Using .cursorrules Files</h3>
+            <div class="tutorial-content">
+                <p>A <code>.cursorrules</code> file is a powerful way to configure AI behavior for specific projects or repositories in Cursor. This file allows you to define project-specific AI settings that will be applied automatically when working within that project.</p>
+                
+                <h4>Creating a .cursorrules File</h4>
+                <p>To create a .cursorrules file:</p>
+                <ol class="feature-list">
+                    <li>Create a new file named <code>.cursorrules</code> in your project root directory</li>
+                    <li>Format the file using JSON syntax</li>
+                    <li>Define your custom rules and settings</li>
+                </ol>
+                
+                <h4>Example .cursorrules File</h4>
+                <div class="code-example">
+<pre><code>{
+  <span class="property">"systemPrompt"</span>: <span class="string">"You are a helpful assistant that specializes in this project. Follow these guidelines:
+- Use TypeScript for all new code
+- Follow the repository's existing code style
+- Use React functional components with hooks
+- Document all functions with JSDoc comments"</span>,
+  <span class="property">"defaultModel"</span>: <span class="string">"claude-3-opus"</span>,
+  <span class="property">"excludeFromContext"</span>: [
+    <span class="string">"node_modules/**"</span>,
+    <span class="string">"build/**"</span>,
+    <span class="string">"*.log"</span>
+  ],
+  <span class="property">"includeInContext"</span>: [
+    <span class="string">"src/**/*.ts"</span>,
+    <span class="string">"src/**/*.tsx"</span>
+  ]
+}</code></pre>
+                </div>
+                
+                <h4>Key Configuration Options</h4>
+                <ul class="feature-list">
+                    <li><strong>systemPrompt</strong>: Custom instructions for the AI when working in this project</li>
+                    <li><strong>defaultModel</strong>: The preferred AI model to use for this project</li>
+                    <li><strong>excludeFromContext</strong>: File patterns to exclude from AI context</li>
+                    <li><strong>includeInContext</strong>: File patterns to prioritize in AI context</li>
+                    <li><strong>aiCommand</strong>: Custom slash command configuration</li>
+                    <li><strong>autoComplete</strong>: Settings for auto-completion behavior</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <h4>Pro Tip</h4>
+                    <p>Use .cursorrules files to standardize AI behavior across your team. This ensures all developers receive consistent AI assistance that aligns with project requirements and coding standards.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TMHSDigital. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/TMHSDigital/Learn_To_Code_With_AI">GitHub</a>
+                <a href="../../about/">About</a>
+                <a href="../../contact/">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../scripts/main.js"></script>
+</body>
+</html> 

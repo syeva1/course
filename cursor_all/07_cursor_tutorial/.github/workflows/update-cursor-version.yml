@@ -1,0 +1,123 @@
+name: Update Cursor Version
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Fetch latest Cursor version
+        id: cursor-version
+        run: |
+          # Fetch from ToDesktop manifest (RELIABLE SOURCE)
+          echo "Fetching version from ToDesktop manifest..."
+          
+          VERSION=$(curl -s https://download.todesktop.com/230313mzl4w4u92/latest-mac.yml | grep "^version:" | awk '{print $2}' | tr -d '\r\n' || echo "")
+          
+          if [ -z "$VERSION" ]; then
+            echo "Failed to fetch Cursor version from ToDesktop"
+            echo "⚠️  Please update version manually:"
+            echo "1. Check Cursor → Settings → About for version"
+            echo "2. Run: npm run update-version <version>"
+            exit 1
+          fi
+          
+          echo "Found ToDesktop build version: $VERSION"
+          
+          # NOTE: ToDesktop version (0.x.x) may differ from display version (1.7.x)
+          # For now, output what we found
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+          # Also try to detect from local installation if running on mac
+          if [[ "$RUNNER_OS" == "macOS" ]] && [[ -f "/Applications/Cursor.app/Contents/Info.plist" ]]; then
+            DISPLAY_VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "/Applications/Cursor.app/Contents/Info.plist" 2>/dev/null || echo "")
+            if [ -n "$DISPLAY_VERSION" ]; then
+              echo "Found display version from local install: $DISPLAY_VERSION"
+              echo "display_version=$DISPLAY_VERSION" >> $GITHUB_OUTPUT
+            fi
+          fi
+      
+      - name: Read current version
+        id: current-version
+        run: |
+          # Extract current version from Hero.tsx
+          CURRENT=$(grep -oP 'Cursor \K[\d\.]+' src/components/Hero.tsx | head -1)
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          echo "Current version in codebase: $CURRENT"
+      
+      - name: Update version in files
+        if: steps.cursor-version.outputs.version != steps.current-version.outputs.current
+        run: |
+          NEW_VERSION="${{ steps.cursor-version.outputs.version }}"
+          OLD_VERSION="${{ steps.current-version.outputs.current }}"
+          
+          echo "Updating from $OLD_VERSION to $NEW_VERSION"
+          
+          # Run the update script
+          node scripts/update-version.js "$NEW_VERSION"
+      
+      - name: Commit and push changes
+        if: steps.cursor-version.outputs.version != steps.current-version.outputs.current
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          git add -A
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          git commit -m "🤖 Auto-update: Cursor version ${{ steps.cursor-version.outputs.version }}"
+          
+          # Push with retry logic
+          for i in {1..3}; do
+            if git push; then
+              echo "Successfully pushed changes"
+              exit 0
+            fi
+            echo "Push attempt $i failed, retrying..."
+            sleep 2
+          done
+          
+          echo "Failed to push after 3 attempts"
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Create summary
+        run: |
+          echo "## Cursor Version Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Previous Version:** ${{ steps.current-version.outputs.current }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **New Version:** ${{ steps.cursor-version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.cursor-version.outputs.version }}" != "${{ steps.current-version.outputs.current }}" ]; then
+            echo "- **Status:** ✅ Updated" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Status:** ℹ️ Already up to date" >> $GITHUB_STEP_SUMMARY
+          fi
+
