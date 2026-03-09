@@ -487,18 +487,55 @@ globs: ["**/*"]
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 11: PDF Anthropic -->
+<!-- SLIDE 11: Воркфлоу vs Агенты -->
 <div class="slide content">
-  <h2>Гайд Anthropic по скиллам</h2>
-  <p class="subtitle">Полное руководство — 33 страницы</p>
-  <ul>
-    <li><strong>Структура скилла:</strong> SKILL.md + скрипты + ресурсы</li>
-    <li><strong>Принципы:</strong> модульность, переиспользование, версионирование</li>
-    <li><strong>Паттерны:</strong> цепочки, параллельные агенты, оркестрация</li>
-    <li><strong>Тестирование:</strong> как проверять качество агентов</li>
-    <li><strong>Безопасность:</strong> границы, права доступа, аудит</li>
-  </ul>
-  <p style="margin-top:16px;"><span class="tag important">Источник</span> Anthropic — «Building Effective Agents» (2025)</p>
+  <h2><span style="color:var(--red)">Воркфлоу</span> vs <span style="color:var(--red)">Агенты</span></h2>
+  <p class="subtitle">Два подхода — когда какой использовать</p>
+
+  <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px;max-width:800px;">
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
+      <p style="margin:0;"><b>Воркфлоу</b> — заранее известные шаги</p>
+      <p style="margin:4px 0 0;font-size:0.9em;">Ты знаешь точную последовательность: сначала план → потом текст → потом проверка. Каждый шаг — отдельный запрос. <b>Точнее, проще тестировать</b></p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
+      <p style="margin:0;"><b>Агент</b> — свободный исполнитель</p>
+      <p style="margin:4px 0 0;font-size:0.9em;">Ты даёшь задачу + набор инструментов. AI сам решает, как их комбинировать. <b>Гибче, но менее предсказуем</b></p>
+    </div>
+  </div>
+
+  <p style="margin-top:14px;"><span class="tag important">ПРАВИЛО</span> Используй воркфлоу, где можешь. Агентов — только когда задача непредсказуема. Пользователям важен результат, а не «крутой агент».</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 11.5: Абстрактные инструменты -->
+<div class="slide content">
+  <h2>Секрет хороших агентов — <span style="color:var(--red)">абстрактные</span> инструменты</h2>
+  <p class="subtitle">Давай агенту простые универсальные инструменты</p>
+
+  <div class="two-col" style="margin-top:16px;">
+    <div>
+      <h3 style="color:#4CAF50;">✅ Правильно</h3>
+      <ul>
+        <li>Читать файлы</li>
+        <li>Писать файлы</li>
+        <li>Выполнять команды</li>
+        <li>Искать в интернете</li>
+      </ul>
+      <p style="font-size:0.85em;color:var(--gray-light);">Простые, универсальные — агент сам комбинирует их под задачу</p>
+    </div>
+    <div>
+      <h3 style="color:var(--red);">❌ Неправильно</h3>
+      <ul>
+        <li>Инструмент «рефакторинг»</li>
+        <li>Инструмент «установи зависимости»</li>
+        <li>Инструмент «напиши пост»</li>
+      </ul>
+      <p style="font-size:0.85em;color:var(--gray-light);">Узкоспециализированные — ограничивают агента</p>
+    </div>
+  </div>
+
+  <p style="margin-top:12px;"><span class="tag tip">ПРИМЕР</span> Cursor даёт агенту всего 5-6 инструментов: чтение, запись, терминал, поиск. И агент создаёт целые проекты, комбинируя их.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
