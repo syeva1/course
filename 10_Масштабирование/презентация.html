@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>АССИСТ+ | Модуль 10 — Масштабирование</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E63229;
+  --red-light: #EF4444;
+  --red-dark: #C41E1E;
+  --black: #1A1A1A;
+  --gray: #333333;
+  --gray-light: #666666;
+  --white: #FFFFFF;
+  --bg: #F8F8F8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%; overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--black);
+  position: relative;
+}
+
+.slides { position: relative; width: 100%; height: 100%; }
+
+.slide {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.4s ease;
+  transform: translateX(40px);
+  background: var(--bg);
+}
+
+.slide.active {
+  opacity: 1; pointer-events: all;
+  transform: translateX(0);
+}
+
+.slide.cover {
+  background: linear-gradient(135deg, #E63229 0%, #D42020 40%, #C41E1E 100%);
+  color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.content {
+  background: var(--bg);
+  background-image: radial-gradient(circle, rgba(200,200,210,0.5) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  align-items: center;
+  text-align: center;
+}
+
+.pagination {
+  position: fixed; top: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 10px; z-index: 100;
+}
+.dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid #ccc; background: rgba(255,255,255,0.8);
+  transition: all 0.3s; cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.dot.active { background: var(--red); border-color: var(--red); }
+.dot.passed { background: var(--red); border-color: var(--red); opacity: 0.5; }
+
+.logo {
+  position: absolute; bottom: 30px; right: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; font-size: 20px;
+  letter-spacing: 0.02em; z-index: 10;
+}
+.logo .plus { color: var(--red); font-size: 0.55em; vertical-align: super; font-weight: 700; }
+.slide.cover .logo { color: white; }
+.slide.cover .logo .plus { color: white; }
+.slide.cover li::before { color: white; }
+.slide.cover li { color: rgba(255,255,255,0.95); border-bottom-color: rgba(255,255,255,0.15); }
+.slide.content .logo { color: var(--black); }
+
+h1 {
+  font-weight: 900; font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05; margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+h1 .light { font-weight: 300; font-style: italic; }
+h1 .red { color: var(--red); }
+
+h2 {
+  font-weight: 800; font-size: clamp(22px, 2.5vw, 36px);
+  line-height: 1.15; margin-bottom: 14px;
+}
+
+h3 {
+  font-weight: 700; font-size: clamp(16px, 1.8vw, 24px);
+  margin-bottom: 10px; color: var(--red);
+}
+
+p, li {
+  font-weight: 400; font-size: clamp(14px, 1.3vw, 19px);
+  line-height: 1.5; color: var(--gray);
+}
+
+.subtitle {
+  font-weight: 300; font-style: italic;
+  font-size: clamp(16px, 1.8vw, 24px);
+  color: var(--gray-light); margin-bottom: 30px;
+}
+
+ul { list-style: none; padding: 0; text-align: left; }
+li {
+  padding: 8px 0 8px 30px; position: relative;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+li::before {
+  content: "▸"; color: var(--red);
+  position: absolute; left: 10px; top: 10px;
+  font-weight: bold; font-size: 1.2em;
+}
+
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--red); color: white;
+  font-weight: 800; font-size: 16px;
+  margin-right: 12px; flex-shrink: 0;
+}
+
+.steps li { display: flex; align-items: flex-start; padding-left: 0; gap: 12px; }
+.steps li::before { content: none; }
+
+.highlight {
+  background: var(--red); color: white;
+  padding: 2px 8px; border-radius: 4px;
+  font-weight: 600;
+}
+
+.tag {
+  display: inline-block; padding: 4px 12px;
+  border-radius: 20px; font-size: 0.8em;
+  font-weight: 700; margin-right: 8px;
+}
+.tag.tip { background: #E8F5E9; color: #2E7D32; }
+.tag.warn { background: #FFF3E0; color: #E65100; }
+.tag.important { background: #FFEBEE; color: #C62828; }
+
+.code-block {
+  background: #ECEDF2; color: var(--red);
+  padding: 20px 24px; border-radius: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px; margin: 16px 0;
+  position: relative; overflow-x: auto;
+  border-left: 4px solid var(--red);
+  line-height: 1.6;
+}
+
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+  text-align: left; width: 100%; max-width: 900px;
+}
+.steps { text-align: left; }
+.code-block { text-align: left; }
+
+.deco-circle {
+  position: absolute; border-radius: 50%; pointer-events: none; z-index: 1;
+}
+.deco-star {
+  position: absolute; font-size: 40px; pointer-events: none; z-index: 1;
+}
+
+.nav {
+  position: fixed; bottom: 30px; left: 50%;
+  transform: translateX(-50%); z-index: 100;
+  display: flex; gap: 12px;
+}
+.nav button {
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 2px solid var(--red); background: white;
+  color: var(--red); font-size: 20px; cursor: pointer;
+  font-weight: bold; transition: all 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+.nav button:hover { background: var(--red); color: white; }
+
+.counter {
+  position: absolute; top: 30px; right: 50px;
+  font-size: 14px; font-weight: 600;
+  color: var(--gray-light); z-index: 10;
+}
+.slide.cover .counter { color: rgba(255,255,255,0.6); }
+
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+.float { animation: float 4s ease-in-out infinite; }
+.float-delay { animation: float 4s ease-in-out 1s infinite; }
+.float-slow { animation: float 6s ease-in-out 0.5s infinite; }
+
+.slide.content h2::after {
+  content: ""; display: block;
+  width: 50px; height: 3px; border-radius: 2px;
+  background: var(--red); margin: 10px auto 0;
+}
+
+.slide.content ul {
+  background: rgba(255,255,255,0.85);
+  border-radius: 16px; padding: 16px 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+}
+
+.quote-block {
+  background: rgba(255,255,255,0.9);
+  border-left: 4px solid var(--red);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 16px 0;
+  text-align: left;
+  max-width: 800px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.quote-block .author {
+  font-weight: 700; color: var(--red); margin-top: 12px; font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  html, body { height: 100%; height: 100dvh; -webkit-overflow-scrolling: touch; }
+  .slides { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .slide {
+    padding: 40px 18px 90px;
+    align-items: center; overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: none !important; transition: opacity 0.35s ease;
+  }
+  .slide.cover { padding: 30px 18px 90px; justify-content: center; }
+  .pagination {
+    top: 8px; gap: 5px; padding: 4px 10px;
+    background: rgba(255,255,255,0.7); border-radius: 20px;
+    backdrop-filter: blur(6px);
+  }
+  .dot { width: 8px; height: 8px; border-width: 1.5px; }
+  .counter { display: none; }
+  .logo { bottom: 10px; right: 14px; font-size: 12px; }
+  h1 { font-size: 26px !important; margin-bottom: 10px; line-height: 1.15 !important; }
+  h2 { font-size: 19px !important; margin-bottom: 8px; line-height: 1.2 !important; }
+  h3 { font-size: 15px !important; }
+  p, li { font-size: 13px !important; line-height: 1.4; }
+  .subtitle { font-size: 14px !important; margin-bottom: 12px; }
+  .two-col { grid-template-columns: 1fr !important; gap: 12px; }
+  .code-block { font-size: 11px; padding: 10px 12px; word-break: break-word; white-space: pre-wrap; border-left-width: 3px; }
+  .step-num { width: 26px; height: 26px; font-size: 12px; min-width: 26px; }
+  li { padding: 5px 0 5px 22px; font-size: 13px !important; }
+  li::before { left: 5px; top: 6px; font-size: 1em; }
+  .tag { font-size: 0.65em; padding: 2px 7px; }
+  .slide.content ul { padding: 8px 12px; border-radius: 10px; max-width: 100%; width: 100%; }
+  .nav {
+    bottom: 0; left: 0; right: 0; transform: none; gap: 0; width: 100%;
+    padding: 10px 20px calc(env(safe-area-inset-bottom, 8px) + 10px);
+    background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(0,0,0,0.08); justify-content: space-between;
+  }
+  .nav button { width: 60px; height: 60px; font-size: 22px; border: 2px solid var(--red); background: white; color: var(--red); }
+  .slide.cover ~ .nav { background: rgba(0,0,0,0.3); border-top-color: rgba(255,255,255,0.1); }
+  .slide.cover ~ .nav button { border-color: white; color: white; background: transparent; }
+  .slide.cover p[style] { max-width: 100% !important; font-size: 13px !important; }
+  .slide.cover h1 { font-size: 28px !important; }
+  .quote-block { padding: 14px 16px; }
+}
+@media (max-width: 380px) {
+  .slide { padding: 35px 14px 85px; }
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 17px !important; }
+  p, li { font-size: 12px !important; }
+  .nav button { width: 52px; height: 52px; font-size: 18px; }
+  .dot { width: 6px; height: 6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="pagination" id="pag"></div>
+
+<div class="slides">
+
+<!-- SLIDE 1: COVER -->
+<div class="slide cover active">
+  <div class="deco-circle float" style="top:8%;right:8%;width:120px;height:120px;background:rgba(255,255,255,0.1);"></div>
+  <div class="deco-circle float-delay" style="bottom:15%;left:5%;width:80px;height:80px;background:rgba(255,255,255,0.08);"></div>
+  <div class="deco-star float-slow" style="top:20%;left:12%;color:rgba(255,255,255,0.15);">✦</div>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">Модуль 10 — Курс АССИСТ+</p>
+  <h1>Масштабирование<br><span class="light">Следующий уровень</span></h1>
+  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Claude Code, другие инструменты и дорожная карта развития</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide content">
+  <h2>Ты прошёл <span style="color:var(--red)">9 модулей</span> — что дальше?</h2>
+  <div class="subtitle">Cursor — только начало. Мир AI-инструментов огромен.</div>
+  <ul>
+    <li>Ты умеешь работать с Cursor, промптами, API, агентами</li>
+    <li>Ты построил Telegram-бота и мульти-агентные системы</li>
+    <li>Теперь пора выйти за рамки одного инструмента</li>
+    <li>Этот модуль — карта территории, которую предстоит освоить</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide content">
+  <h2>Claude Code — <span style="color:var(--red)">AI в терминале</span></h2>
+  <div class="subtitle">Терминальный агент от Anthropic</div>
+  <ul>
+    <li>Работает прямо в командной строке — без GUI</li>
+    <li>Читает, пишет и запускает код автономно</li>
+    <li>Понимает весь проект целиком через контекст репозитория</li>
+    <li>Может выполнять цепочки задач без вмешательства</li>
+  </ul>
+  <div class="quote-block">
+    «С Claude Code я делаю 10–30 pull-request'ов в день. Один человек заменяет целый отдел разработки.»
+    <div class="author">— Борис Черный, экс-Meta, автор Programming TypeScript</div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide content">
+  <h2>Cline — <span style="color:var(--red)">бесплатная</span> альтернатива</h2>
+  <div class="subtitle">Открытое расширение для VS Code</div>
+  <ul>
+    <li>Поддерживает все модели: Claude, GPT, Gemini, локальные LLM</li>
+    <li>Работает как агент — читает файлы, пишет код, запускает команды</li>
+    <li>Можно использовать со своим API-ключом — платишь только за токены</li>
+    <li>Идеально для тех, кто хочет экономить и экспериментировать</li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag tip">БЕСПЛАТНО</span> Cline + бесплатные модели = $0 на старте</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide content">
+  <h2>Conductor — <span style="color:var(--red)">параллельные</span> Claude Code</h2>
+  <div class="subtitle">Несколько агентов работают одновременно</div>
+  <ul>
+    <li>Запуск нескольких Claude Code сессий параллельно</li>
+    <li>Каждый агент работает над своей задачей</li>
+    <li>Ты — дирижёр, агенты — оркестр</li>
+    <li>Подход Бориса Черного: один человек управляет десятком агентов</li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag important">МОЩЬ</span> Conductor позволяет масштабировать одного человека в команду</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide content">
+  <h2>Wispr Flow — <span style="color:var(--red)">голосовой</span> ввод</h2>
+  <div class="subtitle">Диктуй текст вместо набора</div>
+  <ul>
+    <li>Распознаёт речь и превращает в текст в любом приложении</li>
+    <li>Работает на macOS и Windows</li>
+    <li>Ускоряет написание промптов, писем, документов в 3–5 раз</li>
+    <li>Поддерживает русский и английский языки</li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag tip">СКОРОСТЬ</span> Говоришь — Wispr печатает. Без рук.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide content">
+  <h2>GenSpark, Parallel.ai — <span style="color:var(--red)">глубокий</span> ресерч</h2>
+  <div class="subtitle">Исследования, на которые раньше уходили дни</div>
+  <ul>
+    <li><b>GenSpark</b> — AI-поисковик, который собирает и анализирует информацию из десятков источников</li>
+    <li><b>Parallel.ai</b> — запускает несколько AI-моделей параллельно для сравнения ответов</li>
+    <li>Идеально для анализа рынка, конкурентов, трендов</li>
+    <li>Один запрос = отчёт, на который раньше нужен был аналитик</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide content">
+  <h2>Weavy, OpenCreator — <span style="color:var(--red)">визуальные</span> холсты</h2>
+  <div class="subtitle">Создавай интерфейсы и прототипы голосом и текстом</div>
+  <ul>
+    <li><b>Weavy</b> — визуальный редактор, который генерирует UI по описанию</li>
+    <li><b>OpenCreator</b> — создаёт дизайн-компоненты и целые страницы</li>
+    <li>Не нужно знать CSS или Figma — описываешь словами</li>
+    <li>От идеи до прототипа за минуты, а не дни</li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag tip">NO-CODE</span> Визуальные холсты = следующий уровень после Cursor</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide content">
+  <h2>NotebookLM — <span style="color:var(--red)">ответы</span> по своим документам</h2>
+  <div class="subtitle">Google AI, который читает твои файлы</div>
+  <ul>
+    <li>Загружаешь PDF, документы, статьи — получаешь AI-эксперта по ним</li>
+    <li>Задаёшь вопросы — получаешь ответы с цитатами из источников</li>
+    <li>Создаёт саммари, FAQ, даже подкасты по материалам</li>
+    <li>Бесплатный инструмент от Google</li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag tip">БЕСПЛАТНО</span> notebooklm.google.com — загрузи и спрашивай</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide content">
+  <h2>Философия: <span style="color:var(--red)">дженералисты</span> побеждают</h2>
+  <div class="subtitle">Советы от Бориса Черного</div>
+  <div class="quote-block">
+    «Не нужно быть лучшим программистом в мире. Нужно уметь формулировать задачи, проверять результат и управлять AI-агентами. Дженералист, который умеет всего понемногу, становится невероятно эффективным.»
+    <div class="author">— Борис Черный</div>
+  </div>
+  <ul style="margin-top:16px;">
+    <li>Широкие знания > узкая специализация в эпоху AI</li>
+    <li>Умение формулировать задачи важнее умения их выполнять</li>
+    <li>Проверка и коррекция результата — ключевой навык</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide content">
+  <h2>Марк Андриссен: <span style="color:var(--red)">оркестраторы</span> AI</h2>
+  <div class="subtitle">Будут невероятно важны</div>
+  <div class="quote-block">
+    «Люди, которые умеют управлять AI-агентами, координировать их работу и направлять к результату — это новый класс профессионалов. Они будут невероятно ценны и востребованы.»
+    <div class="author">— Марк Андриссен, сооснователь a16z</div>
+  </div>
+  <ul style="margin-top:16px;">
+    <li>AI не заменит людей — AI заменит тех, кто не использует AI</li>
+    <li>Оркестратор AI = менеджер команды из AI-агентов</li>
+    <li>Этот навык сейчас редкий, но скоро станет обязательным</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide content">
+  <h2>Рынок труда: <span style="color:var(--red)">цифры</span> говорят</h2>
+  <div class="subtitle">Революция уже происходит</div>
+  <ul>
+    <li>Jack Dorsey (Block) уволил <b>40% сотрудников</b> — их задачи выполняет AI</li>
+    <li>AI проник в <b>75% задач</b> программистов (GitHub Copilot Research)</li>
+    <li>Средний рост продуктивности с AI: <b>+30–50%</b></li>
+    <li>Компании, внедрившие AI, растут в <b>2–3 раза быстрее</b></li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag important">ТРЕНД</span> Это не будущее — это уже настоящее</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide content">
+  <h2>Человек-оркестр: <span style="color:var(--red)">чем больше</span> навыков</h2>
+  <div class="subtitle">Тем ценнее ты становишься</div>
+  <ul>
+    <li>Маркетинг + AI = автоматические воронки и контент</li>
+    <li>Продажи + AI = персонализация и скоринг лидов</li>
+    <li>HR + AI = автоматический подбор и скрининг</li>
+    <li>Финансы + AI = прогнозы и автоматические отчёты</li>
+    <li>Операционка + AI = боты, уведомления, дашборды</li>
+  </ul>
+  <p style="margin-top:16px;"><span class="tag tip">ФОРМУЛА</span> Один навык + AI = хорошо. Пять навыков + AI = незаменимо.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide content">
+  <h2>Один человек + AI = <span style="color:var(--red)">10 сотрудников</span></h2>
+  <div class="subtitle">Это не преувеличение</div>
+  <ul>
+    <li>Claude Code пишет код за команду разработчиков</li>
+    <li>NotebookLM заменяет аналитика</li>
+    <li>Wispr Flow ускоряет коммуникацию в 3–5 раз</li>
+    <li>GenSpark делает ресерч за маркетолога</li>
+    <li>Cursor создаёт продукты, которые раньше требовали студию</li>
+  </ul>
+  <div class="quote-block" style="margin-top:16px;">
+    «Стартап одного человека» — уже не фантастика. Это стратегия.
+    <div class="author">— АССИСТ+</div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide content">
+  <h2>Дорожная карта: <span style="color:var(--red)">куда расти</span></h2>
+  <div class="subtitle">Твой план на следующие 3–6 месяцев</div>
+  <div class="two-col">
+    <div>
+      <h3>🚀 Ближайшие шаги</h3>
+      <ul class="steps">
+        <li><span class="step-num">1</span> Освой Claude Code или Cline для автономной разработки</li>
+        <li><span class="step-num">2</span> Попробуй Wispr Flow для голосового ввода</li>
+        <li><span class="step-num">3</span> Изучи NotebookLM для работы с документами</li>
+      </ul>
+    </div>
+    <div>
+      <h3>📈 Долгосрочные цели</h3>
+      <ul class="steps">
+        <li><span class="step-num">4</span> Построй мульти-агентную систему (Conductor)</li>
+        <li><span class="step-num">5</span> Автоматизируй 80% рутины в бизнесе</li>
+        <li><span class="step-num">6</span> Стань AI-оркестратором в своей сфере</li>
+      </ul>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 16: FINAL COVER -->
+<div class="slide cover">
+  <div class="deco-circle float" style="top:10%;left:8%;width:100px;height:100px;background:rgba(255,255,255,0.1);"></div>
+  <div class="deco-circle float-delay" style="bottom:12%;right:6%;width:70px;height:70px;background:rgba(255,255,255,0.08);"></div>
+  <div class="deco-star float-slow" style="top:25%;right:15%;color:rgba(255,255,255,0.15);">✦</div>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">Курс АССИСТ+ — Завершение</p>
+  <h1>Ты готов<br><span class="light">к следующему уровню</span></h1>
+  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">10 модулей пройдено. Теперь AI — твой главный инструмент. Используй его.</p>
+  <p style="color:rgba(255,255,255,0.5);margin-top:30px;font-size:14px;">© АССИСТ+</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+</div><!-- /slides -->
+
+<div class="nav">
+  <button onclick="prev()">◀</button>
+  <button onclick="next()">▶</button>
+</div>
+
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+
+function show(n) {
+  slides.forEach((s, i) => {
+    s.classList.remove('active');
+    if (i === n) s.classList.add('active');
+  });
+  document.querySelectorAll('.pagination').forEach(p => {
+    p.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === n ? ' active' : (i < n ? ' passed' : ''));
+      dot.onclick = () => { cur = i; show(cur); };
+      p.appendChild(dot);
+    }
+  });
+  document.querySelectorAll('.counter').forEach(c => {
+    c.textContent = String(n+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+  });
+}
+
+function next() { if (cur < total - 1) { cur++; show(cur); } }
+function prev() { if (cur > 0) { cur--; show(cur); } }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+  if (e.key === 'ArrowLeft') prev();
+});
+
+show(0);
+</script>
+</body>
+</html>

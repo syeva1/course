@@ -345,35 +345,47 @@ li::before {
   <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
 
-<!-- SLIDE 4 -->
+<!-- SLIDE 4: Выбор модели -->
 <div class="slide content" id="s4">
-  <h2>Claude для Excel и таблиц</h2>
-  <ul>
-    <li>Понимает структуру таблиц — вставьте данные прямо в чат</li>
-    <li>Пишет формулы: VLOOKUP, IF, SUMIFS — по описанию словами</li>
-    <li>Анализирует данные и находит закономерности</li>
-    <li>Создаёт сводки и отчёты из сырых чисел</li>
-  </ul>
-  <div class="code-block">
-Промпт: «Вот моя таблица расходов за март.<br>
-Напиши формулу, которая считает сумму<br>
-по категории «Еда» и показывает % от общих трат»
+  <h2>Какую <span style="color:var(--red)">модель</span> выбрать?</h2>
+  <p class="subtitle">В Cursor можно переключать модели под задачу</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;max-width:800px;">
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
+      <p style="margin:0;"><b>Креатив и тексты</b> → Claude Sonnet</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Лучший «человечный» слог, без клише. Посты, письма, описания</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
+      <p style="margin:0;"><b>Код и техника</b> → Claude Sonnet или GPT-4o</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Скрипты, HTML, автоматизация, исправление багов</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #2196F3;">
+      <p style="margin:0;"><b>Анализ и логика</b> → Gemini Pro или GPT-4o</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Отчёты, стратегии, разбор данных, поиск ошибок</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--gray-light);">
+      <p style="margin:0;"><b>Массовые задачи</b> → Auto (Cursor сам выберет)</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Черновики, переводы, обработка файлов — скорость важнее качества</p>
+    </div>
   </div>
+
+  <p style="margin-top:12px;"><span class="tag tip">СОВЕТ</span> Для начала оставь <b>Auto</b> — Cursor сам подберёт. Переключай вручную, когда поймёшь разницу</p>
   <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
 
-<!-- SLIDE 5 -->
+<!-- SLIDE 5: Автоматизация в Cursor -->
 <div class="slide content" id="s5">
-  <h2>Вайбкодинг бытовых задач</h2>
-  <p class="subtitle">Скрипты для себя — без знания программирования</p>
+  <h2>Автоматизация <span style="color:var(--red)">в Cursor</span></h2>
+  <p class="subtitle">Всё делаем внутри редактора — не выходя из Cursor</p>
   <ul>
-    <li>🖼 Скрипт для пакетной обработки фото (ресайз, watermark)</li>
-    <li>📄 Форма для сбора данных от клиентов</li>
-    <li>📁 Автопереименование файлов по шаблону</li>
-    <li>🔄 Конвертер форматов — PDF, CSV, JSON</li>
+    <li>Перетащи таблицу/файл в чат → <b>«Проанализируй и сделай сводку»</b></li>
+    <li>Скрипт для обработки фото → <b>«Напиши скрипт для ресайза всех png в папке»</b></li>
+    <li>Форма для клиентов → <b>«Создай HTML-форму с валидацией»</b></li>
+    <li>Конвертер → <b>«Конвертируй этот CSV в JSON»</b></li>
+    <li>Отчёт → <b>«Вот данные за месяц. Сделай отчёт с графиками»</b></li>
   </ul>
-  <p style="margin-top:16px;"><span class="tag tip">Совет</span> Скажите Claude: «Напиши скрипт для...» — и он напишет</p>
+  <p style="margin-top:12px;"><span class="tag important">КЛЮЧЕВОЕ</span> Не нужно искать отдельные сервисы. Cursor + агент = универсальный инструмент для любой автоматизации</p>
   <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
