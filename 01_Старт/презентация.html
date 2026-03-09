@@ -56,21 +56,25 @@ html, body {
 
 .slide.content {
   background: var(--bg);
-  /* no gradient */
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
   align-items: center;
   text-align: center;
 }
 
 /* Pagination dots */
 .pagination {
-  position: absolute; top: 30px; left: 50px;
-  display: flex; gap: 10px; z-index: 10;
+  position: fixed; top: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 10px; z-index: 100;
 }
 .dot {
   width: 14px; height: 14px; border-radius: 50%;
   border: 2px solid #ccc; background: transparent;
   transition: all 0.3s;
 }
+.dot { cursor: pointer; }
 .dot.active { background: var(--red); border-color: var(--red); }
 .dot.passed { background: var(--red); border-color: var(--red); opacity: 0.5; }
 
@@ -304,6 +308,10 @@ li::before {
 </style>
 </head>
 <body>
+
+<div class="pagination" id="pag">
+  <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+</div>
 
 <div class="slides">
 
