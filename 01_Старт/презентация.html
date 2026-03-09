@@ -57,8 +57,8 @@ html, body {
 .slide.content {
   background: var(--bg);
   background-image:
-    radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
+    radial-gradient(circle, rgba(0,0,0,0.07) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
   align-items: center;
   text-align: center;
 }
@@ -249,7 +249,7 @@ li::before {
   .slide.cover { padding: 40px 20px 80px; }
 
   /* Pagination dots */
-  .pagination { top: 12px; left: 15px; gap: 6px; }
+  .pagination { top: 10px; left: 50%; transform: translateX(-50%); gap: 6px; }
   .dot { width: 10px; height: 10px; }
 
   /* Counter */
