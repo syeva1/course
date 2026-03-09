@@ -391,56 +391,69 @@ print(response.choices[0].message.content)
 
 <!-- SLIDE 6: MCP -->
 <div class="slide content">
-  <h2><span style="color:var(--red)">MCP</span> — Model Context Protocol</h2>
-  <div class="subtitle">Новый стандарт подключения AI к инструментам</div>
-  <div class="two-col">
-    <div>
-      <h3>Что это?</h3>
-      <ul>
-        <li>Открытый протокол от Anthropic</li>
-        <li>Позволяет AI-модели подключаться к внешним инструментам</li>
-        <li>Файловая система, БД, API — через единый интерфейс</li>
-        <li>Работает в Cursor, Claude Desktop и других клиентах</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Зачем?</h3>
-      <ul>
-        <li>AI получает доступ к актуальным данным</li>
-        <li>Не нужно вручную копировать контекст</li>
-        <li>Стандартизация — один протокол вместо десятков</li>
-        <li>Безопасность — контролируемый доступ</li>
-      </ul>
-    </div>
-  </div>
+  <h2><span style="color:var(--red)">MCP</span> — подключаем AI к внешним сервисам</h2>
+  <div class="subtitle">Представь: агент в Cursor сам читает твою почту, календарь и таблицы</div>
+
+  <p style="margin-top:12px;"><b>Проблема:</b> Ты хочешь, чтобы AI-агент в Cursor работал с твоими данными — таблицей клиентов, почтой, календарём. Но агент не может просто взять и залезть в Google Sheets.</p>
+
+  <p style="margin-top:10px;"><b>Решение — MCP (Model Context Protocol):</b> Это «переходник», который подключает AI к внешним сервисам. Один раз настроил — агент видит твои данные.</p>
+
+  <h3 style="margin-top:16px;">Как это работает на практике:</h3>
+  <ul>
+    <li>Подключил <b>Google Sheets MCP</b> → агент читает и редактирует твои таблицы прямо из чата</li>
+    <li>Подключил <b>Gmail MCP</b> → агент читает письма и пишет ответы</li>
+    <li>Подключил <b>Calendar MCP</b> → агент видит расписание и планирует встречи</li>
+    <li>Подключил <b>PostgreSQL MCP</b> → агент делает запросы к базе данных</li>
+  </ul>
+
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 5.5: MCP практика -->
+<div class="slide content">
+  <h2>MCP в Cursor — <span style="color:var(--red)">пошагово</span></h2>
+  <div class="subtitle">Как подключить за 5 минут</div>
+
+  <ul class="steps" style="margin-top:16px;">
+    <li><span class="step-num">1</span> Открой <b>Cursor Settings → Tools & MCP</b></li>
+    <li><span class="step-num">2</span> Нажми <b>Add MCP Server</b></li>
+    <li><span class="step-num">3</span> Вставь конфигурацию сервера (JSON)</li>
+    <li><span class="step-num">4</span> Перезапусти Cursor</li>
+    <li><span class="step-num">5</span> Теперь в чате агента доступны новые инструменты</li>
+  </ul>
+
+  <h3 style="margin-top:14px;">Реальные примеры, когда MCP нужен:</h3>
+  <ul>
+    <li>Ты ведёшь клиентов в Google Sheets → подключи MCP → агент сам обновляет таблицу</li>
+    <li>У тебя база товаров в Notion → подключи MCP → агент ищет и редактирует записи</li>
+    <li>Ты хочешь, чтобы агент отправлял email → подключи Gmail MCP</li>
+  </ul>
+
+  <p style="margin-top:12px;"><span class="tag tip">СОВЕТ</span> Не подключай всё подряд. Подключи то, с чем работаешь каждый день. Одна интеграция = одна проблема решена.</p>
+
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
 <!-- SLIDE 7: RAG -->
 <div class="slide content">
-  <h2><span style="color:var(--red)">RAG</span> — AI + твои данные</h2>
-  <div class="subtitle">Retrieval Augmented Generation</div>
-  <div class="two-col">
-    <div>
-      <h3>Как работает</h3>
-      <ul>
-        <li>Твои документы разбиваются на части</li>
-        <li>Каждая часть превращается в вектор (эмбеддинг)</li>
-        <li>При вопросе — поиск релевантных частей</li>
-        <li>AI отвечает на основе найденных данных</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Применение</h3>
-      <ul>
-        <li>📚 База знаний компании</li>
-        <li>💬 Чат-бот по документации</li>
-        <li>📋 Ответы по регламентам и инструкциям</li>
-        <li>🔍 Поиск по внутренним файлам</li>
-      </ul>
-    </div>
-  </div>
+  <h2><span style="color:var(--red)">RAG</span> — чтобы AI знал ваш бизнес</h2>
+  <div class="subtitle">Как сделать, чтобы AI отвечал по ТВОИМ данным, а не общим знаниям</div>
+
+  <p style="margin-top:12px;"><b>Проблема:</b> Ты спрашиваешь AI «какие у нас условия доставки?» — а он отвечает общие фразы, потому что не знает твой бизнес.</p>
+
+  <p style="margin-top:10px;"><b>Решение — RAG:</b> Загружаешь свои документы (прайсы, инструкции, регламенты) → AI ищет ответ именно в них.</p>
+
+  <h3 style="margin-top:14px;">Где это используют:</h3>
+  <ul>
+    <li><b>Бот поддержки</b> — загрузил FAQ и инструкции → бот отвечает клиентам по ним</li>
+    <li><b>Внутренняя база знаний</b> — новый сотрудник задаёт вопрос → AI находит ответ в документах</li>
+    <li><b>Продажи</b> — загрузил каталог товаров → AI подбирает товар под запрос клиента</li>
+    <li><b>Юридика</b> — загрузил договоры → AI ищет нужные пункты</li>
+  </ul>
+
+  <p style="margin-top:12px;"><span class="tag tip">В CURSOR</span> Самый простой RAG — это @Codebase и @Doc из Модуля 02. Cursor уже умеет искать по твоим файлам!</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
