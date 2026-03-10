@@ -299,6 +299,10 @@ li::before {
 
 <div class="slides">
 
+<div class="pagination" id="pag"></div>
+
+<div class="slides">
+
 <!-- SLIDE 1: COVER -->
 <div class="slide cover active">
   <div class="deco-circle float" style="top:8%;right:8%;width:120px;height:120px;background:rgba(255,255,255,0.1);"></div>
@@ -306,42 +310,16 @@ li::before {
   <div class="deco-star float-slow" style="top:20%;left:12%;color:rgba(255,255,255,0.15);">✦</div>
   <p class="subtitle" style="color:rgba(255,255,255,0.7);">Модуль 05 — Курс АССИСТ+</p>
   <h1>Автоматизация<br><span class="light">и AI-агенты</span></h1>
-  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Перестань делать руками то, что AI может делать за тебя</p>
+  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Создай систему, которая работает на тебя — даже когда ты спишь</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 2: Что можно автоматизировать -->
-<div class="slide content">
-  <h2>Что можно автоматизировать?</h2>
-  <p class="subtitle">Конкретные задачи, которые Cursor делает быстрее тебя</p>
-  <div class="two-col">
-    <ul>
-      <li>Генерация отчётов и таблиц</li>
-      <li>Обработка и сортировка файлов</li>
-      <li>Парсинг данных с сайтов</li>
-    </ul>
-    <ul>
-      <li>Расчёты и аналитика</li>
-      <li>Конвертация форматов (PDF, CSV, JSON)</li>
-      <li>Рутинные операции с кодом</li>
-    </ul>
-  </div>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter"></div>
-</div>
-
-<!-- SLIDE 3: Модели — не влюбляйся -->
+<!-- SLIDE 2: Модели — не влюбляйся -->
 <div class="slide content">
   <h2>Какую <span style="color:var(--red)">модель</span> выбрать?</h2>
-  <p class="subtitle">Главное правило: не влюбляйся ни в одну модель</p>
-
-  <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:16px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);max-width:800px;margin:16px auto 12px;">
-    <p style="margin:0;font-weight:700;font-size:1.1em;">Модели обновляются каждый месяц</p>
-    <p style="margin:6px 0 0;color:var(--gray-light);">Сегодня лучшая — Claude, завтра — GPT, послезавтра — что-то новое. Не привязывайся к названиям. Привязывайся к <b>логике выбора</b>.</p>
-  </div>
-
-  <div class="two-col" style="max-width:900px;margin-top:12px;">
+  <p class="subtitle">Не влюбляйся ни в одну — они меняются каждый месяц</p>
+  <div class="two-col" style="max-width:900px;">
     <div>
       <h3>4 категории задач</h3>
       <ul>
@@ -350,241 +328,371 @@ li::before {
         <li><b style="color:#2196F3;">Анализ</b> — отчёты, данные, стратегии</li>
         <li><b style="color:var(--gray-light);">Массовые</b> — черновики, переводы</li>
       </ul>
-      <p style="margin-top:8px;"><span class="tag tip">СОВЕТ</span> Начни с <b>Auto</b> — Cursor сам подберёт модель</p>
+      <p style="margin-top:8px;">Начни с <b>Auto</b> — Cursor сам подберёт</p>
     </div>
     <div>
-      <h3>Как проверять</h3>
+      <h3>Как проверять актуальность</h3>
       <ul>
-        <li>Заходи на <b>lmarena.ai</b> — живой рейтинг моделей</li>
-        <li>Там люди голосуют вслепую за лучший ответ</li>
-        <li>Рейтинг обновляется каждую неделю</li>
+        <li>Заходи на <b>lmarena.ai</b> — живой рейтинг</li>
+        <li>Люди голосуют вслепую за лучший ответ</li>
+        <li>Обновляется каждую неделю</li>
         <li>Не верь блогерам — верь <b>бенчмаркам</b></li>
       </ul>
+      <p style="margin-top:8px;"><span class="tag important">ПРАВИЛО</span> Модели — как отвёртки. Лучшей нет, есть подходящая</p>
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 4: Тройной прогон -->
+<!-- SLIDE 3: Тройной прогон -->
 <div class="slide content">
   <h2>Метод <span style="color:var(--red)">«Тройной прогон»</span></h2>
-  <p class="subtitle">Если задача важная — не доверяй одной модели</p>
+  <p class="subtitle">Важная задача? Не доверяй одной модели</p>
   <ul class="steps" style="max-width:700px;margin-top:16px;">
-    <li><span class="step-num">1</span> <span>Сделай запрос в <b>первой модели</b> (например Claude)</span></li>
-    <li><span class="step-num">2</span> <span>Тот же запрос во <b>второй модели</b> (например GPT)</span></li>
-    <li><span class="step-num">3</span> <span><b>Сравни результаты</b> — возьми лучшее из обоих</span></li>
+    <li><span class="step-num">1</span> <span>Сделай запрос в <b>Claude</b></span></li>
+    <li><span class="step-num">2</span> <span>Тот же запрос в <b>GPT</b> (переключи внизу чата)</span></li>
+    <li><span class="step-num">3</span> <span><b>Сравни</b> — возьми лучшее из обоих</span></li>
   </ul>
-  <p style="margin-top:16px;max-width:700px;">Переключить модель: внизу окна чата есть <b>выпадающий список</b> — просто нажми на название текущей модели и выбери другую.</p>
-  <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);max-width:700px;margin:12px auto 0;">
-    <p style="margin:0;"><span class="tag important">ЗАПОМНИ</span> Модели — это инструменты, как отвёртки. Лучшей нет, есть <b>подходящая</b>.</p>
-  </div>
+  <p style="margin-top:16px;max-width:700px;"><b>Где переключить:</b> внизу окна чата — нажми на название модели → выпадающий список → выбери другую.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 5: Автоматизация в Cursor — конкретные примеры -->
-<div class="slide content">
-  <h2>Автоматизация <span style="color:var(--red)">в Cursor</span></h2>
-  <p class="subtitle">Конкретные запросы — копируй и используй</p>
-  <ul>
-    <li>Перетащи таблицу в чат → <b>«Проанализируй и сделай сводку»</b></li>
-    <li>Скрипт для обработки фото → <b>«Напиши скрипт для ресайза всех png в папке»</b></li>
-    <li>Форма для клиентов → <b>«Создай HTML-форму с валидацией»</b></li>
-    <li>Конвертер → <b>«Конвертируй этот CSV в JSON»</b></li>
-    <li>Отчёт → <b>«Вот данные за месяц. Сделай отчёт с выводами»</b></li>
-  </ul>
-  <p style="margin-top:12px;"><span class="tag important">КЛЮЧЕВОЕ</span> Не нужно искать отдельные сервисы. Cursor + агент = универсальный инструмент</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter"></div>
-</div>
-
-<!-- SLIDE 6: Что такое AI-агент -->
+<!-- SLIDE 4: Что такое AI-агент -->
 <div class="slide content">
   <h2>Что такое AI-агент?</h2>
-  <p class="subtitle">Не просто чат — цифровой сотрудник</p>
-  <ul>
-    <li><strong>Роль</strong> — кто он: ассистент, аналитик, копирайтер</li>
-    <li><strong>Контекст</strong> — что знает: файлы, данные, история</li>
-    <li><strong>Задачи</strong> — что делает: отвечает, анализирует, пишет</li>
-    <li><strong>Правила</strong> — как себя ведёт: тон, границы, формат</li>
-  </ul>
-  <p style="margin-top:16px;"><span class="tag important">Ключевое</span> Агент = Роль + Контекст + Задачи + Правила</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter"></div>
-</div>
-
-<!-- SLIDE 7: Агент vs Промпт -->
-<div class="slide content">
-  <h2>Агент vs Промпт — <span style="color:var(--red)">разница</span></h2>
-  <p class="subtitle">Почему агент в 10 раз лучше одноразового запроса</p>
-  <div class="two-col">
+  <p class="subtitle">Не чат — а сотрудник, который помнит всё о тебе</p>
+  <div class="two-col" style="max-width:900px;">
     <div>
-      <h3>Промпт</h3>
+      <h3>Обычный чат</h3>
       <ul>
-        <li>«Напиши пост про подбор ассистентов»</li>
-        <li>AI выдаёт шаблонный текст без стиля</li>
-        <li>Каждый раз объясняешь: кто ЦА, тон, примеры</li>
-        <li>Результат: «Уважаемые коллеги…» — мусор</li>
+        <li>Каждый раз с чистого листа</li>
+        <li>Не знает твой бизнес</li>
+        <li>Каждый раз объясняешь: кто ты, что делаешь, какой тон</li>
+        <li>Результат: шаблонная вода</li>
       </ul>
     </div>
     <div>
-      <h3>Агент-копирайтер</h3>
+      <h3>AI-агент</h3>
       <ul>
-        <li>«Напиши пост про подбор ассистентов»</li>
-        <li>Агент УЖЕ знает: бренд, аудиторию, тон</li>
-        <li>У него есть примеры лучших постов</li>
-        <li>Результат: текст, который можно публиковать</li>
+        <li><b>Помнит</b> — читает файлы о тебе при каждом запуске</li>
+        <li><b>Знает</b> — бизнес, клиентов, стиль</li>
+        <li>Ты пишешь 1 строку — он выдаёт точный результат</li>
+        <li>Как штатный сотрудник, а не случайный фрилансер</li>
       </ul>
     </div>
   </div>
-  <p style="margin-top:12px;"><span class="tag tip">Аналогия</span> Промпт — фрилансер, которому каждый раз объясняешь бриф. Агент — штатный сотрудник.</p>
+  <p style="margin-top:12px;"><span class="tag important">Ключевое</span> Агент = файлы с контекстом, которые AI читает автоматически</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 8: Скиллы > Промпты -->
+<!-- SLIDE 5: Структура проекта (кейс Миши) -->
 <div class="slide content">
-  <h2>Скиллы &gt; Промпты</h2>
-  <p class="subtitle">Тренд 2026 — переиспользуемые компоненты</p>
-  <ul>
-    <li><strong>Промпт</strong> — текст, который копируют и вставляют. Одноразовый</li>
-    <li><strong>Скилл</strong> — папка с инструкциями, скриптами, шаблонами. Переиспользуемый</li>
-    <li>Скиллы можно <span class="highlight">версионировать</span> через Git</li>
-    <li>Скиллы можно <span class="highlight">переиспользовать</span> между проектами</li>
-    <li>Скиллы можно <span class="highlight">улучшать</span> по обратной связи</li>
-  </ul>
-  <p style="margin-top:16px;"><span class="tag tip">Формула</span> Агент = базовая конфигурация + набор скиллов</p>
+  <h2>Структура проекта — <span style="color:var(--red)">пошагово</span></h2>
+  <p class="subtitle">Как организовать папки, чтобы AI помнил контекст</p>
+  <div class="two-col" style="max-width:900px;">
+    <div>
+      <div class="code-block" style="font-size:12px;text-align:left;">
+my_project/<br>
+├── README.md<br>
+├── .cursor/<br>
+│   └── rules/<br>
+│       ├── general.mdc<br>
+│       ├── copywriter.mdc<br>
+│       └── analyst.mdc<br>
+├── docs/<br>
+│   ├── о_компании.md<br>
+│   ├── целевая_аудитория.md<br>
+│   └── примеры_постов.md<br>
+├── lessons.md<br>
+└── src/
+      </div>
+    </div>
+    <div>
+      <h3>Что за файлы</h3>
+      <ul>
+        <li><b>README.md</b> — Cursor читает первым</li>
+        <li><b>.cursor/rules/*.mdc</b> — правила для AI</li>
+        <li><b>docs/</b> — контекст: бизнес, ЦА, примеры</li>
+        <li><b>lessons.md</b> — ошибки AI, чтобы не повторял</li>
+      </ul>
+      <p style="margin-top:8px;"><span class="tag tip">ГЛАВНОЕ</span> Cursor читает эти файлы <b>автоматически</b> — тебе не нужно каждый раз объяснять контекст</p>
+    </div>
+  </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 9: Cursor Rules пошагово -->
+<!-- SLIDE 6: Создаём .mdc файл — пошагово -->
 <div class="slide content">
-  <h2>Cursor Rules — <span style="color:var(--red)">пошагово</span></h2>
-  <p class="subtitle">Создаём файл, который превращает Cursor в сотрудника</p>
+  <h2>Создаём правило — <span style="color:var(--red)">за 2 минуты</span></h2>
+  <p class="subtitle">Файл .mdc = инструкция для AI-сотрудника</p>
   <ul class="steps" style="max-width:750px;">
-    <li><span class="step-num">1</span> В проекте создай папку <code>.cursor/rules/</code></li>
-    <li><span class="step-num">2</span> Внутри создай файл <code>assistant.mdc</code></li>
-    <li><span class="step-num">3</span> Заполни по шаблону ниже</li>
-    <li><span class="step-num">4</span> Cursor автоматически прочитает и будет следовать</li>
+    <li><span class="step-num">1</span> <span>В проекте создай папку: <code>.cursor/rules/</code></span></li>
+    <li><span class="step-num">2</span> <span>Создай файл: <code>assistant.mdc</code></span></li>
+    <li><span class="step-num">3</span> <span>Вставь шаблон (ниже) и замени под свой бизнес</span></li>
+    <li><span class="step-num">4</span> <span>Готово — Cursor прочитает автоматически</span></li>
   </ul>
-  <div class="code-block" style="max-width:750px;font-size:13px;">
-# .cursor/rules/assistant.mdc
----
-description: "Копирайтер АССИСТ+"
-globs: ["**/*"]
----
-## Роль
-Ты — копирайтер компании АССИСТ+.
-Аудитория: предприниматели 25-45 лет.
-Тон: экспертный, живой, без канцелярита.
-
-## Контекст
-- Компания подбирает бизнес-ассистентов
-- Ценности: скорость, качество, забота
+  <div class="code-block" style="max-width:750px;font-size:12px;text-align:left;">
+---<br>
+description: "Копирайтер АССИСТ+"<br>
+globs: ["**/*"]<br>
+alwaysApply: true<br>
+---<br>
+## Роль<br>
+Ты — копирайтер компании АССИСТ+.<br>
+Аудитория: предприниматели 25-45 лет.<br>
+Тон: экспертный, живой, без канцелярита.<br>
+<br>
+## Контекст<br>
+Читай файлы из docs/ — там описание бизнеса, ЦА, примеры.<br>
+<br>
+## Правила<br>
+- Не используй фразы «Уважаемые коллеги», «Стоит отметить»<br>
+- Пиши как человек, а не как робот
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 10: Маркетинговый скилл — пример -->
+<!-- SLIDE 7: Создаём контекстные файлы -->
 <div class="slide content">
-  <h2>Скилл в деле — <span style="color:var(--red)">конкретный пример</span></h2>
-  <p class="subtitle">Скинул задачу → агент знает твой бренд → результат в 10 раз лучше</p>
-  <div class="two-col">
+  <h2>Заполняем <span style="color:var(--red)">контекст</span></h2>
+  <p class="subtitle">Чем больше AI знает — тем лучше результат</p>
+  <div class="two-col" style="max-width:900px;">
     <div>
-      <h3>Без скилла</h3>
-      <ul>
-        <li>«Напиши лендинг для моего бизнеса»</li>
-        <li>AI: шаблонная страница без УТП</li>
-        <li>Нет твоих цен, отзывов, кейсов</li>
-        <li>Нужно переписывать 80%</li>
-      </ul>
+      <h3>docs/о_компании.md</h3>
+      <div class="code-block" style="font-size:11px;text-align:left;">
+# АССИСТ+<br>
+HR-агентство по подбору<br>
+бизнес-ассистентов.<br>
+<br>
+## Услуги<br>
+- Подбор ассистента за 5 дней<br>
+- Обучение ассистентов<br>
+- Аудит текущего ассистента<br>
+<br>
+## Цены<br>
+- Подбор: от 30 000 ₽<br>
+- Обучение: от 15 000 ₽
+      </div>
     </div>
     <div>
-      <h3>Со скиллом «лендинг»</h3>
-      <ul>
-        <li>«Напиши лендинг»</li>
-        <li>Агент читает: ЦА, УТП, цены, tone of voice</li>
-        <li>Результат: готовая структура + тексты</li>
-        <li>Осталось проверить и запустить</li>
-      </ul>
+      <h3>docs/целевая_аудитория.md</h3>
+      <div class="code-block" style="font-size:11px;text-align:left;">
+# Целевая аудитория<br>
+<br>
+## Кто наши клиенты<br>
+- Предприниматели 25-45 лет<br>
+- Выручка от 1 млн ₽/мес<br>
+- Тонут в рутине, нет времени<br>
+<br>
+## Боли<br>
+- «Делаю всё сам»<br>
+- «Нанимал — не подошли»<br>
+- «Не знаю, что делегировать»
+      </div>
+      <p style="margin-top:8px;"><span class="tag tip">ЛАЙФХАК</span> Попроси Cursor: «Задай мне вопросы о бизнесе и заполни эти файлы»</p>
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 11: Три агента — примеры -->
+<!-- SLIDE 8: Скиллы — папки с инструкциями -->
 <div class="slide content">
-  <h2>Три агента для <span style="color:var(--red)">любого бизнеса</span></h2>
-  <p class="subtitle">Начни с этих — они закроют 80% задач</p>
+  <h2>Скиллы — <span style="color:var(--red)">готовые инструкции</span></h2>
+  <p class="subtitle">Один раз написал — используешь бесконечно</p>
+  <div class="two-col" style="max-width:900px;">
+    <div>
+      <h3>Что такое скилл</h3>
+      <ul>
+        <li>Папка с файлом <b>SKILL.md</b> внутри</li>
+        <li>Описывает <b>одну задачу</b> детально</li>
+        <li>AI сам подтягивает нужный скилл</li>
+        <li>Можно копировать между проектами</li>
+      </ul>
+      <div class="code-block" style="font-size:11px;text-align:left;margin-top:8px;">
+.cursor/skills/<br>
+├── пост/<br>
+│   └── SKILL.md<br>
+├── лендинг/<br>
+│   └── SKILL.md<br>
+└── отчёт/<br>
+    └── SKILL.md
+      </div>
+    </div>
+    <div>
+      <h3>Пример: скилл «пост»</h3>
+      <div class="code-block" style="font-size:11px;text-align:left;">
+# Скилл: Пост для Telegram<br>
+<br>
+## Структура<br>
+1. Заголовок — цепляющий, 5-8 слов<br>
+2. Боль — описать проблему ЦА<br>
+3. Решение — что мы предлагаем<br>
+4. CTA — призыв к действию<br>
+<br>
+## Тон<br>
+Экспертный, но живой. Без<br>
+«Уважаемые», без «Данный».<br>
+<br>
+## Примеры хороших постов<br>
+(вставь 2-3 лучших поста)
+      </div>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 9: Hooks — автоматические проверки -->
+<div class="slide content">
+  <h2>Hooks — <span style="color:var(--red)">автопроверки</span></h2>
+  <p class="subtitle">Скрипты, которые AI не может проигнорировать</p>
+  <div class="two-col" style="max-width:900px;">
+    <div>
+      <h3>Зачем</h3>
+      <ul>
+        <li>Правила в .mdc — AI <b>может</b> проигнорировать</li>
+        <li>Hook — скрипт, который <b>запускается автоматически</b></li>
+        <li>Проверяет результат ДО того, как ты его увидишь</li>
+      </ul>
+      <h3 style="margin-top:12px;">Примеры</h3>
+      <ul>
+        <li>Проверить текст на «канцеляризмы»</li>
+        <li>Убедиться что код работает (запустить тесты)</li>
+        <li>Проверить что нет секретов (пароли, ключи)</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Как настроить</h3>
+      <div class="code-block" style="font-size:11px;text-align:left;">
+# .cursor/hooks/check_text.sh<br>
+<br>
+# Проверяет текст на мусорные фразы<br>
+if grep -qi "уважаемые коллеги\<br>
+|стоит отметить\<br>
+|данный инструмент" "$1"; then<br>
+&nbsp;&nbsp;echo "СТОП: нашёл канцеляризмы!"<br>
+&nbsp;&nbsp;exit 1<br>
+fi<br>
+echo "OK: текст чистый"
+      </div>
+      <p style="margin-top:8px;"><span class="tag warn">Продвинуто</span> Hooks — необязательно для старта. Сначала настрой .mdc и скиллы</p>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 10: Как создать бота с контекстом — полный путь -->
+<div class="slide content">
+  <h2>Бот с контекстом — <span style="color:var(--red)">полный путь</span></h2>
+  <p class="subtitle">От пустой папки до работающего AI-сотрудника</p>
+  <ul class="steps" style="max-width:800px;">
+    <li><span class="step-num">1</span> <span>Создай папку проекта: <code>mkdir my_assistant && cd my_assistant</code></span></li>
+    <li><span class="step-num">2</span> <span>Открой в Cursor: <code>File → Open Folder</code></span></li>
+    <li><span class="step-num">3</span> <span>Попроси AI: <b>«Создай структуру проекта: README.md, папку docs/, папку .cursor/rules/»</b></span></li>
+    <li><span class="step-num">4</span> <span>Заполни контекст: <b>«Задай мне 10 вопросов о моём бизнесе и заполни docs/»</b></span></li>
+    <li><span class="step-num">5</span> <span>Создай правило: <b>«Создай .cursor/rules/assistant.mdc на основе docs/»</b></span></li>
+    <li><span class="step-num">6</span> <span>Тестируй: задавай реальные задачи и смотри результат</span></li>
+    <li><span class="step-num">7</span> <span>Улучшай: записывай ошибки в <b>lessons.md</b></span></li>
+  </ul>
+  <p style="margin-top:8px;"><span class="tag important">ВАЖНО</span> AI сам создаст все файлы и папки! Тебе нужно только отвечать на вопросы о бизнесе</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 11: Конкретный диалог — как это выглядит -->
+<div class="slide content">
+  <h2>Как это выглядит <span style="color:var(--red)">в жизни</span></h2>
+  <p class="subtitle">Реальный диалог с Cursor</p>
+  <div style="max-width:750px;display:flex;flex-direction:column;gap:8px;">
+    <div style="background:#E8F5E9;border-radius:12px;padding:10px 16px;text-align:left;">
+      <p style="margin:0;font-size:0.85em;"><b>Ты:</b> Напиши пост про то, что ассистент — это не расход, а инвестиция</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.9);border-radius:12px;padding:10px 16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:left;">
+      <p style="margin:0;font-size:0.85em;"><b>AI (прочитал .mdc + docs/):</b></p>
+      <p style="margin:6px 0 0;font-size:0.85em;color:var(--gray);">«Нанял ассистента за 30 000 ₽. Через месяц понял — это не расход.<br><br>За 4 недели он: разобрал 200 входящих, записал 15 клиентов на звонки, подготовил 8 КП.<br><br>Я освободил 3 часа в день. Посчитай сам, сколько стоит твой час. Вот и весь ROI.»</p>
+    </div>
+    <p style="font-size:0.85em;color:var(--gray-light);margin-top:4px;">Без скилла AI написал бы: «Уважаемые предприниматели! Рады сообщить, что наша услуга по подбору ассистентов...»</p>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 12: Три агента для бизнеса -->
+<div class="slide content">
+  <h2>Три .mdc файла — <span style="color:var(--red)">три сотрудника</span></h2>
+  <p class="subtitle">Создай в .cursor/rules/ по файлу на каждую роль</p>
   <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin-top:12px;">
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
-      <p style="margin:0;"><b>Агент-ассистент</b> — отвечает клиентам 24/7</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Обрабатывает запросы по FAQ, квалифицирует лиды, передаёт сложные кейсы человеку</p>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);text-align:left;">
+      <p style="margin:0;"><b>copywriter.mdc</b> — пишет тексты</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Посты, статьи, рассылки в стиле бренда. Знает ЦА, тон, примеры. Ты пишешь тему — получаешь готовый текст</p>
     </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
-      <p style="margin:0;"><b>Агент-копирайтер</b> — пишет тексты в стиле бренда</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Посты, статьи, рассылки. Знает tone of voice, ЦА, примеры</p>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;text-align:left;">
+      <p style="margin:0;"><b>assistant.mdc</b> — отвечает клиентам</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Обрабатывает запросы по FAQ и прайсу. Квалифицирует лидов. Сложные кейсы — передаёт тебе</p>
     </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #2196F3;">
-      <p style="margin:0;"><b>Агент-аналитик</b> — превращает данные в отчёты</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Читает таблицы, строит сводки, находит аномалии и предлагает решения</p>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #2196F3;text-align:left;">
+      <p style="margin:0;"><b>analyst.mdc</b> — анализирует данные</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Кинь CSV-таблицу → получи отчёт с выводами: конверсии, тренды, рекомендации</p>
+    </div>
+  </div>
+  <p style="margin-top:8px;"><span class="tag tip">КАК</span> Попроси Cursor: «Создай 3 .mdc файла для моего бизнеса на основе docs/»</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 13: lessons.md — как улучшать -->
+<div class="slide content">
+  <h2>lessons.md — <span style="color:var(--red)">память об ошибках</span></h2>
+  <p class="subtitle">AI учится на своих ошибках, если ты их запишешь</p>
+  <div class="two-col" style="max-width:900px;">
+    <div>
+      <h3>Как работает</h3>
+      <ul class="steps">
+        <li><span class="step-num">1</span> <span>AI сделал плохой результат</span></li>
+        <li><span class="step-num">2</span> <span>Ты записываешь в lessons.md</span></li>
+        <li><span class="step-num">3</span> <span>В .mdc добавляешь: «Читай lessons.md»</span></li>
+        <li><span class="step-num">4</span> <span>AI больше не повторяет эту ошибку</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Пример lessons.md</h3>
+      <div class="code-block" style="font-size:11px;text-align:left;">
+# Уроки<br>
+<br>
+## 2026-03-10<br>
+- НЕ используй слово «инновационный»<br>
+- В постах для ТГ: макс 1000 символов<br>
+- Цены всегда в рублях, не в долларах<br>
+<br>
+## 2026-03-08<br>
+- Заголовок: вопрос > утверждение<br>
+- CTA: ссылка, а не «напишите нам»
+      </div>
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 12: Воркфлоу vs Агенты -->
+<!-- SLIDE 14: 61 готовый агент -->
 <div class="slide content">
-  <h2><span style="color:var(--red)">Воркфлоу</span> vs <span style="color:var(--red)">Агенты</span></h2>
-  <p class="subtitle">Два подхода — когда какой</p>
-  <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px;max-width:800px;">
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
-      <p style="margin:0;"><b>Воркфлоу</b> — заранее известные шаги</p>
-      <p style="margin:4px 0 0;font-size:0.9em;">Сначала план → потом текст → потом проверка. Каждый шаг — отдельный запрос. <b>Предсказуемо</b></p>
-    </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
-      <p style="margin:0;"><b>Агент</b> — свободный исполнитель</p>
-      <p style="margin:4px 0 0;font-size:0.9em;">Даёшь задачу + инструменты. AI сам решает, как действовать. <b>Гибко, но менее предсказуемо</b></p>
-    </div>
-  </div>
-  <p style="margin-top:14px;"><span class="tag important">ПРАВИЛО</span> Воркфлоу — где можешь. Агент — где задача непредсказуема.</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter"></div>
-</div>
-
-<!-- SLIDE 13: Как улучшать -->
-<div class="slide content">
-  <h2>Как улучшать агентов</h2>
-  <p class="subtitle">Цикл lessons.md</p>
-  <ul class="steps">
-    <li><span class="step-num">1</span> <span>Агент выполняет задачу</span></li>
-    <li><span class="step-num">2</span> <span>Ты проверяешь результат</span></li>
-    <li><span class="step-num">3</span> <span>Записываешь ошибки в <strong>lessons.md</strong></span></li>
-    <li><span class="step-num">4</span> <span>Агент читает lessons.md перед следующей задачей</span></li>
-    <li><span class="step-num">5</span> <span>Качество растёт с каждой итерацией</span></li>
-  </ul>
-  <p style="margin-top:16px;"><span class="tag tip">Формула</span> Больше итераций → умнее агент → меньше правок</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter"></div>
-</div>
-
-<!-- SLIDE 14: 61 агент — топ 5 -->
-<div class="slide content">
-  <h2>61 готовый агент — <span style="color:var(--red)">топ 5</span></h2>
-  <p class="subtitle">Начни с этих — результат уже сегодня</p>
+  <h2>61 готовый агент — <span style="color:var(--red)">бери и используй</span></h2>
+  <p class="subtitle">Не нужно писать с нуля — скопируй и адаптируй</p>
   <ul style="max-width:750px;">
-    <li><b>Копирайтер</b> — пишет посты, статьи, рассылки в стиле бренда</li>
-    <li><b>Генератор лендингов</b> — создаёт структуру и тексты посадочных страниц</li>
-    <li><b>Клиентский ассистент</b> — отвечает на вопросы по базе знаний 24/7</li>
-    <li><b>SMM-стратег</b> — планирует контент на неделю/месяц</li>
-    <li><b>Аналитик отчётов</b> — превращает таблицы в понятные отчёты</li>
+    <li><b>Копирайтер</b> — посты, статьи, рассылки в стиле бренда</li>
+    <li><b>Генератор лендингов</b> — структура и тексты посадочных страниц</li>
+    <li><b>Клиентский ассистент</b> — отвечает по базе знаний 24/7</li>
+    <li><b>SMM-стратег</b> — контент-план на неделю/месяц</li>
+    <li><b>Аналитик отчётов</b> — таблицу в понятный отчёт</li>
   </ul>
-  <p style="margin-top:12px;"><span class="tag important">Репо</span> Все 61 агент: /agency-agents/ — готовые конфигурации</p>
+  <p style="margin-top:12px;">Все 61 агент в папке <b>/agency-agents/</b> — готовые .md файлы. Скопируй в свой .cursor/rules/ и поменяй название компании.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
@@ -594,12 +702,12 @@ globs: ["**/*"]
   <h2>Частые ошибки</h2>
   <p class="subtitle">Чего избегать</p>
   <ul>
-    <li><span class="tag warn">Ошибка</span> Слишком общая роль — «будь умным ассистентом»</li>
-    <li><span class="tag warn">Ошибка</span> Нет примеров — агент не понимает формат ответа</li>
-    <li><span class="tag warn">Ошибка</span> Нет границ — агент берётся за то, что не умеет</li>
-    <li><span class="tag warn">Ошибка</span> Нет итераций — создал и забыл, не улучшаешь</li>
-    <li><span class="tag warn">Ошибка</span> Один мега-агент вместо команды специалистов</li>
-    <li><span class="tag warn">Ошибка</span> Влюбился в одну модель и не пробуешь другие</li>
+    <li><span class="tag warn">Ошибка</span> <b>Пустой проект</b> — нет README, нет docs/, нет .mdc. AI работает вслепую</li>
+    <li><span class="tag warn">Ошибка</span> <b>«Будь умным»</b> — слишком общая роль. Пиши конкретно: кто, для кого, в каком стиле</li>
+    <li><span class="tag warn">Ошибка</span> <b>Нет примеров</b> — AI не понимает какой результат ты хочешь. Покажи 2-3 хороших примера</li>
+    <li><span class="tag warn">Ошибка</span> <b>Создал и забыл</b> — не ведёшь lessons.md, не улучшаешь агента</li>
+    <li><span class="tag warn">Ошибка</span> <b>Один мега-агент</b> — лучше 3 узких (копирайтер, ассистент, аналитик) чем 1 универсальный</li>
+    <li><span class="tag warn">Ошибка</span> <b>Влюбился в модель</b> — используешь только Claude, не пробуешь GPT и наоборот</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
@@ -608,26 +716,16 @@ globs: ["**/*"]
 <!-- SLIDE 16: Практика -->
 <div class="slide content">
   <h2>Практика</h2>
-  <p class="subtitle">Два задания — автоматизация + агент</p>
-  <div class="two-col" style="max-width:850px;">
-    <div>
-      <h3>Задание 1: Автоматизация</h3>
-      <ul class="steps">
-        <li><span class="step-num">1</span> <span>Выбери рутинную задачу из своей работы</span></li>
-        <li><span class="step-num">2</span> <span>Попроси Cursor автоматизировать её</span></li>
-        <li><span class="step-num">3</span> <span>Замерь время: вручную vs с AI</span></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Задание 2: AI-агент</h3>
-      <ul class="steps">
-        <li><span class="step-num">1</span> <span>Выбери роль агента для бизнеса</span></li>
-        <li><span class="step-num">2</span> <span>Создай .cursor/rules/agent.mdc</span></li>
-        <li><span class="step-num">3</span> <span>Протестируй на 5 реальных задачах</span></li>
-      </ul>
-    </div>
-  </div>
-  <p style="margin-top:16px;">Подробности → <b>практика.md</b></p>
+  <p class="subtitle">Создай своего AI-сотрудника за 15 минут</p>
+  <ul class="steps" style="max-width:750px;">
+    <li><span class="step-num">1</span> <span>Создай папку проекта, открой в Cursor</span></li>
+    <li><span class="step-num">2</span> <span>Попроси: <b>«Задай мне 10 вопросов о бизнесе и создай docs/»</b></span></li>
+    <li><span class="step-num">3</span> <span>Попроси: <b>«Создай .cursor/rules/assistant.mdc на основе docs/»</b></span></li>
+    <li><span class="step-num">4</span> <span>Дай агенту 5 реальных задач — оцени результат</span></li>
+    <li><span class="step-num">5</span> <span>Запиши ошибки в lessons.md — попроси исправиться</span></li>
+    <li><span class="step-num">⭐</span> <span><b>Бонус:</b> создай скилл для одной повторяющейся задачи</span></li>
+  </ul>
+  <p style="margin-top:12px;">Подробности → <b>практика.md</b></p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
@@ -637,8 +735,8 @@ globs: ["**/*"]
   <div class="deco-circle float" style="top:10%;left:8%;width:100px;height:100px;background:rgba(255,255,255,0.1);"></div>
   <div class="deco-star float-delay" style="bottom:20%;right:10%;color:rgba(255,255,255,0.15);font-size:50px;">✦</div>
   <p class="subtitle" style="color:rgba(255,255,255,0.7);">Модуль 05 — Итоги</p>
-  <h1>Автоматизируй рутину.<br><span class="light">Создай команду агентов.</span></h1>
-  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Один агент — хорошо. Система из агентов — бизнес-преимущество.</p>
+  <h1>Ты создал<br><span class="light">AI-сотрудника</span></h1>
+  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Структура проекта + .mdc правила + скиллы + lessons.md = AI, который работает на тебя</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
