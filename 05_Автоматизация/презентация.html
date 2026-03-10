@@ -345,31 +345,57 @@ li::before {
   <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
 
-<!-- SLIDE 4: Выбор модели -->
+<!-- SLIDE 4: Выбор модели — главное правило -->
 <div class="slide content" id="s4">
   <h2>Какую <span style="color:var(--red)">модель</span> выбрать?</h2>
-  <p class="subtitle">В Cursor можно переключать модели под задачу</p>
+  <p class="subtitle">Главное правило: не влюбляйся ни в одну модель</p>
 
-  <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;max-width:800px;">
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
-      <p style="margin:0;"><b>Креатив и тексты</b> → Claude Sonnet</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Лучший «человечный» слог, без клише. Посты, письма, описания</p>
-    </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
-      <p style="margin:0;"><b>Код и техника</b> → Claude Sonnet или GPT-4o</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Скрипты, HTML, автоматизация, исправление багов</p>
-    </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #2196F3;">
-      <p style="margin:0;"><b>Анализ и логика</b> → Gemini Pro или GPT-4o</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Отчёты, стратегии, разбор данных, поиск ошибок</p>
-    </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--gray-light);">
-      <p style="margin:0;"><b>Массовые задачи</b> → Auto (Cursor сам выберет)</p>
-      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Черновики, переводы, обработка файлов — скорость важнее качества</p>
-    </div>
+  <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:16px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);max-width:800px;margin:16px auto 12px;">
+    <p style="margin:0;font-weight:700;font-size:1.1em;">Модели обновляются каждый месяц</p>
+    <p style="margin:6px 0 0;color:var(--gray-light);">Сегодня лучшая — Claude, завтра — GPT, послезавтра — что-то новое. Не привязывайся к названиям. Привязывайся к <b>логике выбора</b>.</p>
   </div>
 
-  <p style="margin-top:12px;"><span class="tag tip">СОВЕТ</span> Для начала оставь <b>Auto</b> — Cursor сам подберёт. Переключай вручную, когда поймёшь разницу</p>
+  <div class="two-col" style="max-width:900px;margin-top:12px;">
+    <div>
+      <h3>4 категории задач</h3>
+      <ul>
+        <li><b style="color:var(--red);">Креатив</b> — тексты, посты, письма</li>
+        <li><b style="color:#4CAF50;">Код</b> — скрипты, HTML, баги</li>
+        <li><b style="color:#2196F3;">Анализ</b> — отчёты, данные, стратегии</li>
+        <li><b style="color:var(--gray-light);">Массовые</b> — черновики, переводы</li>
+      </ul>
+      <p style="margin-top:8px;"><span class="tag tip">СОВЕТ</span> Начни с <b>Auto</b> — Cursor сам подберёт модель</p>
+    </div>
+    <div>
+      <h3>Как проверять</h3>
+      <ul>
+        <li>Заходи на <b>lmarena.ai</b> — живой рейтинг моделей</li>
+        <li>Там люди голосуют вслепую за лучший ответ</li>
+        <li>Рейтинг обновляется каждую неделю</li>
+        <li>Не верь блогерам — верь <b>бенчмаркам</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class="counter"></div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+</div>
+
+<!-- SLIDE 4b: Тройной прогон -->
+<div class="slide content" id="s4b">
+  <h2>Метод <span style="color:var(--red)">«Тройной прогон»</span></h2>
+  <p class="subtitle">Если задача важная — не доверяй одной модели</p>
+
+  <ul class="steps" style="max-width:700px;margin-top:16px;">
+    <li><span class="step-num">1</span> <span>Сделай запрос в <b>первой модели</b> (например Claude)</span></li>
+    <li><span class="step-num">2</span> <span>Тот же запрос во <b>второй модели</b> (например GPT)</span></li>
+    <li><span class="step-num">3</span> <span><b>Сравни результаты</b> — возьми лучшее из обоих</span></li>
+  </ul>
+
+  <p style="margin-top:16px;max-width:700px;">Переключить модель: внизу окна чата есть <b>выпадающий список</b> — просто нажми на название текущей модели и выбери другую.</p>
+
+  <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);max-width:700px;margin:12px auto 0;">
+    <p style="margin:0;"><span class="tag important">ЗАПОМНИ</span> Модели — это инструменты, как отвёртки. Для разных задач — разные. Лучшей нет, есть <b>подходящая</b>.</p>
+  </div>
   <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
