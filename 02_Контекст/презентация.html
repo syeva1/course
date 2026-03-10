@@ -34,7 +34,7 @@ html, body {
   width: 100%; height: 100%;
   display: flex; flex-direction: column;
   justify-content: center;
-  padding: 60px 80px;
+  padding: 60px 80px 100px;
   opacity: 0; pointer-events: none;
   transition: opacity 0.5s ease, transform 0.4s ease;
   transform: translateX(40px);
@@ -234,13 +234,13 @@ li::before {
   .slides { width: 100%; height: 100%; position: relative; overflow: hidden; }
   .slide {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    padding: 40px 18px 90px; display: flex; flex-direction: column;
+    padding: 40px 18px 110px; display: flex; flex-direction: column;
     justify-content: center; align-items: center; overflow-y: auto;
     -webkit-overflow-scrolling: touch; transform: none !important;
     opacity: 0; pointer-events: none; transition: opacity 0.35s ease;
   }
   .slide.active { opacity: 1; pointer-events: all; }
-  .slide.cover { padding: 30px 18px 90px; justify-content: center; }
+  .slide.cover { padding: 30px 18px 110px; justify-content: center; }
   .pagination {
     top: 8px; left: 50%; transform: translateX(-50%); gap: 5px;
     padding: 4px 10px; background: rgba(255,255,255,0.7);
@@ -313,7 +313,7 @@ li::before {
   <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Почему одни получают от AI шедевры, а другие — мусор?<br>Разница — в контексте.</p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">01 / 18</div>
+  <div class="counter">01 / 20</div>
 </div>
 
 <!-- SLIDE 2 -->
@@ -327,7 +327,7 @@ li::before {
     <li>Дай AI контекст — и он станет экспертом</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 18</div>
+  <div class="counter">02 / 20</div>
 </div>
 
 <!-- SLIDE 3 -->
@@ -347,7 +347,7 @@ li::before {
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 18</div>
+  <div class="counter">03 / 20</div>
 </div>
 
 <!-- SLIDE 4 -->
@@ -362,7 +362,7 @@ li::before {
   </ul>
   <div class="code-block" style="max-width:500px;margin:16px auto;">@ → выпадающий список →<br>@File, @Codebase, @Web, @Doc, @Git...</div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 18</div>
+  <div class="counter">04 / 20</div>
 </div>
 
 <!-- SLIDE 5 -->
@@ -385,7 +385,7 @@ li::before {
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 18</div>
+  <div class="counter">05 / 20</div>
 </div>
 
 <!-- SLIDE 6 -->
@@ -408,7 +408,7 @@ li::before {
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">06 / 18</div>
+  <div class="counter">06 / 20</div>
 </div>
 
 <!-- SLIDE 7 -->
@@ -423,7 +423,7 @@ li::before {
   <p style="margin-top:12px;max-width:700px;"><b>Реальный пример:</b> Ты делаешь Telegram-бота. Спрашиваешь «как отправить фото?» — AI выдаёт устаревший код. Добавляешь <span class="highlight">@Doc python-telegram-bot</span> — и получаешь рабочий код из актуальной документации.</p>
   <div class="code-block" style="max-width:600px;margin:16px auto;">@Doc python-telegram-bot<br>Как отправить фото пользователю с подписью?</div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">07 / 18</div>
+  <div class="counter">07 / 20</div>
 </div>
 
 <!-- SLIDE 8 -->
@@ -439,7 +439,7 @@ li::before {
   <div class="code-block" style="max-width:600px;margin:16px auto;">@Git Что изменилось за последние 2 дня?<br>Найди, какой коммит мог сломать форму заявки</div>
   <p style="margin-top:8px;max-width:600px;">→ AI: «В коммите от вчера удалена строка с обработчиком submit в form.js»</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">08 / 18</div>
+  <div class="counter">08 / 20</div>
 </div>
 
 <!-- SLIDE 9 -->
@@ -461,7 +461,7 @@ li::before {
     </div>
   </div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">09 / 18</div>
+  <div class="counter">09 / 20</div>
 </div>
 
 <!-- SLIDE 10 -->
@@ -476,7 +476,7 @@ li::before {
   </ul>
   <div class="code-block" style="max-width:550px;margin:16px auto;">## О проекте<br>Агентство по подбору бизнес-ассистентов<br>ЦА: предприниматели с выручкой от 1 млн/мес<br>Тон: профессиональный, но дружелюбный</div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">10 / 18</div>
+  <div class="counter">10 / 20</div>
 </div>
 
 <!-- SLIDE 11 -->
@@ -495,7 +495,55 @@ li::before {
   </div>
   <p style="margin-top:16px;"><b>Понятные имена = лучший контекст = лучший результат</b></p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">11 / 18</div>
+  <div class="counter">11 / 20</div>
+</div>
+
+<!-- SLIDE: Бизнес-контекст -->
+<div class="slide content" id="s11a_biz">
+  <h2>Бизнес-контекст</h2>
+  <p class="subtitle">AI должен знать о твоём бизнесе всё — один раз</p>
+  <p style="margin-bottom:16px;max-width:700px;">Создай папку с описанием бизнеса. AI будет обращаться к ней при каждой задаче — и давать ответы <b>конкретно под тебя</b>, а не общие шаблоны.</p>
+  <div class="two-col" style="max-width:900px;">
+    <div>
+      <h3>Что описать</h3>
+      <ul>
+        <li><b>Чем занимается компания</b> — сфера, услуги, продукт</li>
+        <li><b>Целевая аудитория</b> — кто клиенты, их боли</li>
+        <li><b>Команда</b> — сколько человек, роли</li>
+        <li><b>Тон общения</b> — формальный, дружелюбный, экспертный</li>
+        <li><b>Конкуренты</b> — от кого отличаемся</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Пример структуры</h3>
+      <div class="code-block" style="font-size:12px;">МОЙ_БИЗНЕС/<br>├── README.md<br>├── 01_О_компании/<br>│   ├── описание.md<br>│   └── услуги.md<br>├── 02_Клиенты/<br>│   └── портрет_ЦА.md<br>├── 03_Маркетинг/<br>│   └── контент_план.md<br>└── 00_Inbox/</div>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+</div>
+
+<!-- SLIDE: Личный контекст -->
+<div class="slide content" id="s11a_personal">
+  <h2>Личный контекст</h2>
+  <p class="subtitle">AI помогает не только в работе — настрой его под жизнь</p>
+  <p style="margin-bottom:16px;max-width:700px;">Создай папку «Личное» — и AI станет помощником во <b>всём</b>: здоровье, путешествия, обучение, финансы.</p>
+  <div class="two-col" style="max-width:900px;">
+    <div>
+      <h3>Как создать за 1 минуту</h3>
+      <ul class="steps">
+        <li><span class="step-num">1</span> <span>Открой Composer (<b>Cmd+I</b>)</span></li>
+        <li><span class="step-num">2</span> <span>Выбери режим <b>Plan</b></span></li>
+        <li><span class="step-num">3</span> <span>Напиши: «Создай структуру папки Личное. Спроси, что мне важно»</span></li>
+        <li><span class="step-num">4</span> <span>AI задаст вопросы и создаст <b>под тебя</b></span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Пример</h3>
+      <div class="code-block" style="font-size:12px;">МОЯ_ЖИЗНЬ/<br>├── README.md<br>├── Здоровье/<br>│   ├── анализы/<br>│   └── тренировки/<br>├── Путешествия/<br>│   └── идеи_поездок/<br>├── Обучение/<br>│   └── курсы/<br>├── Финансы/<br>└── Распределение/</div>
+      <p style="margin-top:8px;"><span class="tag tip">ЛАЙФХАК</span> Папка «Распределение» = Inbox для нового</p>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
 
 <!-- SLIDE 11.5: README часть 1 -->
@@ -519,7 +567,7 @@ li::before {
   </ul>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">12 / 18</div>
+  <div class="counter">12 / 20</div>
 </div>
 
 <!-- SLIDE 11.6: README часть 2 — пусть Cursor напишет -->
@@ -535,7 +583,7 @@ li::before {
   <p style="margin-top:16px;"><span class="tag tip">ЛАЙФХАК</span> Делай это для <b>каждого нового проекта</b>. Один запрос — и у проекта есть визитка, которую Cursor будет читать каждый раз при открытии.</p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">13 / 18</div>
+  <div class="counter">13 / 20</div>
 </div>
 
 <!-- SLIDE 12 -->
@@ -550,7 +598,7 @@ li::before {
   </ul>
   <div class="code-block" style="max-width:550px;margin:16px auto;"># .cursorrules<br>Я — владелец HR-агентства АССИСТ+<br>Подбираем бизнес-ассистентов<br>Стек: HTML, CSS, JS<br>Тон: дружелюбный эксперт</div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">14 / 18</div>
+  <div class="counter">14 / 20</div>
 </div>
 
 <!-- SLIDE 13 -->
@@ -573,7 +621,7 @@ li::before {
   </div>
   <p style="margin-top:20px;font-weight:700;font-size:1.1em;">Настрой контекст один раз — используй бесконечно</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">15 / 18</div>
+  <div class="counter">15 / 20</div>
 </div>
 
 <!-- SLIDE 14 -->
@@ -588,7 +636,7 @@ li::before {
     <li><span class="tag warn">⚠️</span> <b>Игнорируешь Notepad</b> — удобный способ без повторений</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">16 / 18</div>
+  <div class="counter">16 / 20</div>
 </div>
 
 <!-- SLIDE 15 -->
@@ -603,7 +651,7 @@ li::before {
   </ul>
   <p style="margin-top:20px;">Подробности → <b>практика.md</b></p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">17 / 18</div>
+  <div class="counter">17 / 20</div>
 </div>
 
 <!-- SLIDE 16: COVER FINAL -->
@@ -626,7 +674,7 @@ li::before {
   <p style="color:rgba(255,255,255,0.6);margin-top:30px;font-size:18px;">Следующий модуль: <b>Промпты — искусство формулировки</b></p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">18 / 18</div>
+  <div class="counter">18 / 20</div>
 </div>
 
 </div>
