@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>АССИСТ+ | Модуль 05 — Личная автоматизация</title>
+<title>АССИСТ+ | Модуль 05 — Автоматизация и AI-агенты</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -300,53 +300,39 @@ li::before {
 <div class="slides">
 
 <!-- SLIDE 1: COVER -->
-<div class="slide cover active" id="s1">
+<div class="slide cover active">
   <div class="deco-circle float" style="top:8%;right:8%;width:120px;height:120px;background:rgba(255,255,255,0.1);"></div>
   <div class="deco-circle float-delay" style="bottom:15%;left:5%;width:80px;height:80px;background:rgba(255,255,255,0.08);"></div>
   <div class="deco-star float-slow" style="top:20%;left:12%;color:rgba(255,255,255,0.15);">✦</div>
-
   <p class="subtitle" style="color:rgba(255,255,255,0.7);">Модуль 05 — Курс АССИСТ+</p>
-  <h1>Личная<br><span class="light">автоматизация</span></h1>
-  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">AI для жизни — убери рутину, освободи время для важного</p>
-
+  <h1>Автоматизация<br><span class="light">и AI-агенты</span></h1>
+  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Перестань делать руками то, что AI может делать за тебя</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter"></div>
 </div>
 
-<!-- SLIDE 2 -->
-<div class="slide content" id="s2">
-  <h2>Зачем автоматизировать?</h2>
-  <ul>
-    <li><strong>Время = деньги.</strong> 30 минут рутины в день — это 180 часов в год</li>
-    <li><strong>Рутина убивает мотивацию.</strong> Повторяющиеся задачи выматывают</li>
-    <li><strong>Ошибки от усталости.</strong> Автоматизация не забывает и не путает</li>
-    <li><strong>Фокус на важном.</strong> Мозг освобождается для творчества и решений</li>
-  </ul>
-  <div class="counter"></div>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-</div>
-
-<!-- SLIDE 3 -->
-<div class="slide content" id="s3">
+<!-- SLIDE 2: Что можно автоматизировать -->
+<div class="slide content">
   <h2>Что можно автоматизировать?</h2>
+  <p class="subtitle">Конкретные задачи, которые Cursor делает быстрее тебя</p>
   <div class="two-col">
     <ul>
-      <li>📋 Генерация отчётов и таблиц</li>
-      <li>📝 Обработка и сортировка файлов</li>
-      <li>📅 Парсинг данных с сайтов</li>
+      <li>Генерация отчётов и таблиц</li>
+      <li>Обработка и сортировка файлов</li>
+      <li>Парсинг данных с сайтов</li>
     </ul>
     <ul>
-      <li>💰 Расчёты и аналитика</li>
-      <li>🔄 Конвертация форматов (PDF, CSV, JSON)</li>
-      <li>🤖 Рутинные операции с кодом</li>
+      <li>Расчёты и аналитика</li>
+      <li>Конвертация форматов (PDF, CSV, JSON)</li>
+      <li>Рутинные операции с кодом</li>
     </ul>
   </div>
-  <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 4: Выбор модели — главное правило -->
-<div class="slide content" id="s4">
+<!-- SLIDE 3: Модели — не влюбляйся -->
+<div class="slide content">
   <h2>Какую <span style="color:var(--red)">модель</span> выбрать?</h2>
   <p class="subtitle">Главное правило: не влюбляйся ни в одну модель</p>
 
@@ -376,222 +362,285 @@ li::before {
       </ul>
     </div>
   </div>
-  <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 4b: Тройной прогон -->
-<div class="slide content" id="s4b">
+<!-- SLIDE 4: Тройной прогон -->
+<div class="slide content">
   <h2>Метод <span style="color:var(--red)">«Тройной прогон»</span></h2>
   <p class="subtitle">Если задача важная — не доверяй одной модели</p>
-
   <ul class="steps" style="max-width:700px;margin-top:16px;">
     <li><span class="step-num">1</span> <span>Сделай запрос в <b>первой модели</b> (например Claude)</span></li>
     <li><span class="step-num">2</span> <span>Тот же запрос во <b>второй модели</b> (например GPT)</span></li>
     <li><span class="step-num">3</span> <span><b>Сравни результаты</b> — возьми лучшее из обоих</span></li>
   </ul>
-
   <p style="margin-top:16px;max-width:700px;">Переключить модель: внизу окна чата есть <b>выпадающий список</b> — просто нажми на название текущей модели и выбери другую.</p>
-
   <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);max-width:700px;margin:12px auto 0;">
-    <p style="margin:0;"><span class="tag important">ЗАПОМНИ</span> Модели — это инструменты, как отвёртки. Для разных задач — разные. Лучшей нет, есть <b>подходящая</b>.</p>
+    <p style="margin:0;"><span class="tag important">ЗАПОМНИ</span> Модели — это инструменты, как отвёртки. Лучшей нет, есть <b>подходящая</b>.</p>
   </div>
-  <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 5: Автоматизация в Cursor -->
-<div class="slide content" id="s5">
+<!-- SLIDE 5: Автоматизация в Cursor — конкретные примеры -->
+<div class="slide content">
   <h2>Автоматизация <span style="color:var(--red)">в Cursor</span></h2>
-  <p class="subtitle">Всё делаем внутри редактора — не выходя из Cursor</p>
+  <p class="subtitle">Конкретные запросы — копируй и используй</p>
   <ul>
-    <li>Перетащи таблицу/файл в чат → <b>«Проанализируй и сделай сводку»</b></li>
+    <li>Перетащи таблицу в чат → <b>«Проанализируй и сделай сводку»</b></li>
     <li>Скрипт для обработки фото → <b>«Напиши скрипт для ресайза всех png в папке»</b></li>
     <li>Форма для клиентов → <b>«Создай HTML-форму с валидацией»</b></li>
     <li>Конвертер → <b>«Конвертируй этот CSV в JSON»</b></li>
-    <li>Отчёт → <b>«Вот данные за месяц. Сделай отчёт с графиками»</b></li>
+    <li>Отчёт → <b>«Вот данные за месяц. Сделай отчёт с выводами»</b></li>
   </ul>
-  <p style="margin-top:12px;"><span class="tag important">КЛЮЧЕВОЕ</span> Не нужно искать отдельные сервисы. Cursor + агент = универсальный инструмент для любой автоматизации</p>
-  <div class="counter"></div>
+  <p style="margin-top:12px;"><span class="tag important">КЛЮЧЕВОЕ</span> Не нужно искать отдельные сервисы. Cursor + агент = универсальный инструмент</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 6 -->
-<div class="slide content" id="s6">
-  <h2>Автоматические отчёты и сводки</h2>
-  <p class="subtitle">Конкретные запросы — копируй и используй</p>
+<!-- SLIDE 6: Что такое AI-агент -->
+<div class="slide content">
+  <h2>Что такое AI-агент?</h2>
+  <p class="subtitle">Не просто чат — цифровой сотрудник</p>
   <ul>
-    <li><b>Еженедельный отчёт:</b> перетащи заметки в чат → <div class="code-block" style="margin:4px 0;padding:8px 12px;font-size:12px;">Вот мои заметки за неделю. Сделай отчёт: что сделано, что нет, приоритеты на следующую неделю</div></li>
-    <li><b>Финансовый отчёт:</b> <div class="code-block" style="margin:4px 0;padding:8px 12px;font-size:12px;">@File расходы.csv — Разбей по категориям, покажи топ-3 статьи расходов, дай рекомендации по экономии</div></li>
-    <li><b>Дайджест:</b> <div class="code-block" style="margin:4px 0;padding:8px 12px;font-size:12px;">@Web Найди 5 свежих статей про подбор ассистентов. Из каждой — 2 ключевые идеи</div></li>
+    <li><strong>Роль</strong> — кто он: ассистент, аналитик, копирайтер</li>
+    <li><strong>Контекст</strong> — что знает: файлы, данные, история</li>
+    <li><strong>Задачи</strong> — что делает: отвечает, анализирует, пишет</li>
+    <li><strong>Правила</strong> — как себя ведёт: тон, границы, формат</li>
   </ul>
-  <div class="counter"></div>
+  <p style="margin-top:16px;"><span class="tag important">Ключевое</span> Агент = Роль + Контекст + Задачи + Правила</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 7 -->
-<div class="slide content" id="s7">
-  <h2>AI для обучения</h2>
-  <p class="subtitle">Правильный подход — не делегируй, а спрашивай</p>
-  <div class="quote">
-    Исследования показывают: студенты, которые использовали AI для <em>объяснения</em> материала, учились лучше тех, кто просто копировал ответы.
-  </div>
-  <ul>
-    <li>❌ «Реши за меня задачу» — вы ничему не учитесь</li>
-    <li>✅ «Объясни принцип» → «Теперь я попробую сам» → «Проверь»</li>
-    <li>✅ «Задай мне вопросы по теме, чтобы проверить понимание»</li>
-    <li>✅ «Разбери мою ошибку — почему неправильно?»</li>
-  </ul>
-  <div class="counter"></div>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-</div>
-
-<!-- SLIDE 8 -->
-<div class="slide content" id="s8">
-  <h2>AI для текстов</h2>
+<!-- SLIDE 7: Агент vs Промпт -->
+<div class="slide content">
+  <h2>Агент vs Промпт — <span style="color:var(--red)">разница</span></h2>
+  <p class="subtitle">Почему агент в 10 раз лучше одноразового запроса</p>
   <div class="two-col">
     <div>
-      <h3>Что писать с AI</h3>
+      <h3>Промпт</h3>
       <ul>
-        <li>Деловые письма и ответы</li>
-        <li>Посты в соцсети</li>
-        <li>Резюме и сопроводительные</li>
-        <li>Описания товаров и услуг</li>
+        <li>«Напиши пост про подбор ассистентов»</li>
+        <li>AI выдаёт шаблонный текст без стиля</li>
+        <li>Каждый раз объясняешь: кто ЦА, тон, примеры</li>
+        <li>Результат: «Уважаемые коллеги…» — мусор</li>
       </ul>
     </div>
     <div>
-      <h3>Как правильно</h3>
+      <h3>Агент-копирайтер</h3>
       <ul>
-        <li>Давайте контекст и тон</li>
-        <li>Указывайте аудиторию</li>
-        <li>Просите 2-3 варианта</li>
-        <li>Редактируйте под себя</li>
+        <li>«Напиши пост про подбор ассистентов»</li>
+        <li>Агент УЖЕ знает: бренд, аудиторию, тон</li>
+        <li>У него есть примеры лучших постов</li>
+        <li>Результат: текст, который можно публиковать</li>
       </ul>
     </div>
   </div>
-  <div class="counter"></div>
+  <p style="margin-top:12px;"><span class="tag tip">Аналогия</span> Промпт — фрилансер, которому каждый раз объясняешь бриф. Агент — штатный сотрудник.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 9 -->
-<div class="slide content" id="s9">
-  <h2>AI для планирования</h2>
-  <p class="subtitle">Конкретные запросы для Cursor</p>
+<!-- SLIDE 8: Скиллы > Промпты -->
+<div class="slide content">
+  <h2>Скиллы &gt; Промпты</h2>
+  <p class="subtitle">Тренд 2026 — переиспользуемые компоненты</p>
   <ul>
-    <li>📅 <strong>Ежедневник:</strong> <div class="code-block" style="margin:4px 0;padding:8px 12px;font-size:12px;">Вот мои задачи: [список]. Распредели по дням, утром — сложное, после обеда — рутину. Формат: таблица</div></li>
-    <li>🧩 <strong>Декомпозиция:</strong> <div class="code-block" style="margin:4px 0;padding:8px 12px;font-size:12px;">Разбей задачу «запустить рекламу в Telegram» на шаги по дням. Бюджет 50 тыс, срок 2 недели</div></li>
-    <li>📊 <strong>Ретроспектива:</strong> <div class="code-block" style="margin:4px 0;padding:8px 12px;font-size:12px;">Вот что я планировал на неделю: [план]. Вот что сделал: [факт]. Проанализируй, почему не успел, и скорректируй план на следующую неделю</div></li>
+    <li><strong>Промпт</strong> — текст, который копируют и вставляют. Одноразовый</li>
+    <li><strong>Скилл</strong> — папка с инструкциями, скриптами, шаблонами. Переиспользуемый</li>
+    <li>Скиллы можно <span class="highlight">версионировать</span> через Git</li>
+    <li>Скиллы можно <span class="highlight">переиспользовать</span> между проектами</li>
+    <li>Скиллы можно <span class="highlight">улучшать</span> по обратной связи</li>
   </ul>
-  <div class="counter"></div>
+  <p style="margin-top:16px;"><span class="tag tip">Формула</span> Агент = базовая конфигурация + набор скиллов</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 10 -->
-<div class="slide content" id="s10">
-  <h2>Начинайте по чуть-чуть</h2>
-  <p class="subtitle">Не 500 функций сразу — одна в неделю</p>
+<!-- SLIDE 9: Cursor Rules пошагово -->
+<div class="slide content">
+  <h2>Cursor Rules — <span style="color:var(--red)">пошагово</span></h2>
+  <p class="subtitle">Создаём файл, который превращает Cursor в сотрудника</p>
+  <ul class="steps" style="max-width:750px;">
+    <li><span class="step-num">1</span> В проекте создай папку <code>.cursor/rules/</code></li>
+    <li><span class="step-num">2</span> Внутри создай файл <code>assistant.mdc</code></li>
+    <li><span class="step-num">3</span> Заполни по шаблону ниже</li>
+    <li><span class="step-num">4</span> Cursor автоматически прочитает и будет следовать</li>
+  </ul>
+  <div class="code-block" style="max-width:750px;font-size:13px;">
+# .cursor/rules/assistant.mdc
+---
+description: "Копирайтер АССИСТ+"
+globs: ["**/*"]
+---
+## Роль
+Ты — копирайтер компании АССИСТ+.
+Аудитория: предприниматели 25-45 лет.
+Тон: экспертный, живой, без канцелярита.
+
+## Контекст
+- Компания подбирает бизнес-ассистентов
+- Ценности: скорость, качество, забота
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 10: Маркетинговый скилл — пример -->
+<div class="slide content">
+  <h2>Скилл в деле — <span style="color:var(--red)">конкретный пример</span></h2>
+  <p class="subtitle">Скинул задачу → агент знает твой бренд → результат в 10 раз лучше</p>
+  <div class="two-col">
+    <div>
+      <h3>Без скилла</h3>
+      <ul>
+        <li>«Напиши лендинг для моего бизнеса»</li>
+        <li>AI: шаблонная страница без УТП</li>
+        <li>Нет твоих цен, отзывов, кейсов</li>
+        <li>Нужно переписывать 80%</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Со скиллом «лендинг»</h3>
+      <ul>
+        <li>«Напиши лендинг»</li>
+        <li>Агент читает: ЦА, УТП, цены, tone of voice</li>
+        <li>Результат: готовая структура + тексты</li>
+        <li>Осталось проверить и запустить</li>
+      </ul>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 11: Три агента — примеры -->
+<div class="slide content">
+  <h2>Три агента для <span style="color:var(--red)">любого бизнеса</span></h2>
+  <p class="subtitle">Начни с этих — они закроют 80% задач</p>
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin-top:12px;">
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
+      <p style="margin:0;"><b>Агент-ассистент</b> — отвечает клиентам 24/7</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Обрабатывает запросы по FAQ, квалифицирует лиды, передаёт сложные кейсы человеку</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
+      <p style="margin:0;"><b>Агент-копирайтер</b> — пишет тексты в стиле бренда</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Посты, статьи, рассылки. Знает tone of voice, ЦА, примеры</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:12px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #2196F3;">
+      <p style="margin:0;"><b>Агент-аналитик</b> — превращает данные в отчёты</p>
+      <p style="margin:4px 0 0;font-size:0.85em;color:var(--gray-light);">Читает таблицы, строит сводки, находит аномалии и предлагает решения</p>
+    </div>
+  </div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 12: Воркфлоу vs Агенты -->
+<div class="slide content">
+  <h2><span style="color:var(--red)">Воркфлоу</span> vs <span style="color:var(--red)">Агенты</span></h2>
+  <p class="subtitle">Два подхода — когда какой</p>
+  <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px;max-width:800px;">
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
+      <p style="margin:0;"><b>Воркфлоу</b> — заранее известные шаги</p>
+      <p style="margin:4px 0 0;font-size:0.9em;">Сначала план → потом текст → потом проверка. Каждый шаг — отдельный запрос. <b>Предсказуемо</b></p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:12px;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
+      <p style="margin:0;"><b>Агент</b> — свободный исполнитель</p>
+      <p style="margin:4px 0 0;font-size:0.9em;">Даёшь задачу + инструменты. AI сам решает, как действовать. <b>Гибко, но менее предсказуемо</b></p>
+    </div>
+  </div>
+  <p style="margin-top:14px;"><span class="tag important">ПРАВИЛО</span> Воркфлоу — где можешь. Агент — где задача непредсказуема.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
+</div>
+
+<!-- SLIDE 13: Как улучшать -->
+<div class="slide content">
+  <h2>Как улучшать агентов</h2>
+  <p class="subtitle">Цикл lessons.md</p>
   <ul class="steps">
-    <li><span class="step-num">1</span> Выберите одну раздражающую рутинную задачу</li>
-    <li><span class="step-num">2</span> Спросите AI, как её автоматизировать</li>
-    <li><span class="step-num">3</span> Реализуйте самый простой вариант</li>
-    <li><span class="step-num">4</span> Используйте неделю — доработайте</li>
-    <li><span class="step-num">5</span> Возьмите следующую задачу</li>
+    <li><span class="step-num">1</span> <span>Агент выполняет задачу</span></li>
+    <li><span class="step-num">2</span> <span>Ты проверяешь результат</span></li>
+    <li><span class="step-num">3</span> <span>Записываешь ошибки в <strong>lessons.md</strong></span></li>
+    <li><span class="step-num">4</span> <span>Агент читает lessons.md перед следующей задачей</span></li>
+    <li><span class="step-num">5</span> <span>Качество растёт с каждой итерацией</span></li>
   </ul>
-  <p style="margin-top:16px;"><span class="tag important">Важно</span> Лучше 1 работающая автоматизация, чем 50 в планах</p>
-  <div class="counter"></div>
+  <p style="margin-top:16px;"><span class="tag tip">Формула</span> Больше итераций → умнее агент → меньше правок</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 11 -->
-<div class="slide content" id="s11">
-  <h2>Нейронки для души</h2>
-  <p class="subtitle">Делай проекты мечты</p>
-  <ul>
-    <li>🎵 Напиши песню — Suno, Udio сгенерируют музыку по описанию</li>
-    <li>🎨 Нарисуй мечту — Midjourney, DALL-E визуализируют идеи</li>
-    <li>📖 Напиши книгу — Claude поможет со структурой и текстом</li>
-    <li>🎬 Сними видео — AI-инструменты для монтажа и эффектов</li>
-    <li>🏠 Спроектируй интерьер — AI-дизайн по фото комнаты</li>
+<!-- SLIDE 14: 61 агент — топ 5 -->
+<div class="slide content">
+  <h2>61 готовый агент — <span style="color:var(--red)">топ 5</span></h2>
+  <p class="subtitle">Начни с этих — результат уже сегодня</p>
+  <ul style="max-width:750px;">
+    <li><b>Копирайтер</b> — пишет посты, статьи, рассылки в стиле бренда</li>
+    <li><b>Генератор лендингов</b> — создаёт структуру и тексты посадочных страниц</li>
+    <li><b>Клиентский ассистент</b> — отвечает на вопросы по базе знаний 24/7</li>
+    <li><b>SMM-стратег</b> — планирует контент на неделю/месяц</li>
+    <li><b>Аналитик отчётов</b> — превращает таблицы в понятные отчёты</li>
   </ul>
-  <p style="margin-top:12px;color:var(--gray-light);font-style:italic;">AI убирает барьер «я не умею» — теперь умеете</p>
-  <div class="counter"></div>
+  <p style="margin-top:12px;"><span class="tag important">Репо</span> Все 61 агент: /agency-agents/ — готовые конфигурации</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 12 -->
-<div class="slide content" id="s12">
-  <h2>Примеры из жизни — что именно делают</h2>
-  <ul>
-    <li>💼 <strong>Ассистент</strong> — каждую пятницу перетаскивает заметки из Notion в чат Cursor → получает готовый отчёт для руководителя за 2 минуты вместо 40</li>
-    <li>📧 <strong>Предприниматель</strong> — написал в .cursorrules шаблон своего стиля ответов → теперь пишет «ответь клиенту на это» и получает готовое письмо в его тоне</li>
-    <li>📊 <strong>Фрилансер</strong> — перетаскивает CSV с расходами → «Сделай таблицу расходов по категориям + график» → готовый отчёт для клиента</li>
-    <li>🎓 <strong>Студент</strong> — «Объясни квантовую физику как будто мне 10 лет. Потом задай 5 вопросов для проверки» → AI-репетитор бесплатно</li>
-  </ul>
-  <div class="counter"></div>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-</div>
-
-<!-- SLIDE 13 -->
-<div class="slide content" id="s13">
+<!-- SLIDE 15: Частые ошибки -->
+<div class="slide content">
   <h2>Частые ошибки</h2>
+  <p class="subtitle">Чего избегать</p>
   <ul>
-    <li><span class="tag warn">Ошибка</span> Пытаться автоматизировать всё сразу — перегорите</li>
-    <li><span class="tag warn">Ошибка</span> Не проверять результат AI — всегда проверяйте</li>
-    <li><span class="tag warn">Ошибка</span> Делегировать обучение вместо понимания</li>
-    <li><span class="tag warn">Ошибка</span> Не сохранять удачные промпты — заведите заметку</li>
+    <li><span class="tag warn">Ошибка</span> Слишком общая роль — «будь умным ассистентом»</li>
+    <li><span class="tag warn">Ошибка</span> Нет примеров — агент не понимает формат ответа</li>
+    <li><span class="tag warn">Ошибка</span> Нет границ — агент берётся за то, что не умеет</li>
+    <li><span class="tag warn">Ошибка</span> Нет итераций — создал и забыл, не улучшаешь</li>
+    <li><span class="tag warn">Ошибка</span> Один мега-агент вместо команды специалистов</li>
+    <li><span class="tag warn">Ошибка</span> Влюбился в одну модель и не пробуешь другие</li>
   </ul>
-  <div class="counter"></div>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 14 -->
-<div class="slide content" id="s14">
-  <h2>Ваш набор инструментов</h2>
-  <div class="two-col">
+<!-- SLIDE 16: Практика -->
+<div class="slide content">
+  <h2>Практика</h2>
+  <p class="subtitle">Два задания — автоматизация + агент</p>
+  <div class="two-col" style="max-width:850px;">
     <div>
-      <h3>Текст и данные</h3>
-      <ul>
-        <li>Claude — универсальный помощник</li>
-        <li>ChatGPT — альтернатива</li>
-        <li>Google Sheets + AI — таблицы</li>
+      <h3>Задание 1: Автоматизация</h3>
+      <ul class="steps">
+        <li><span class="step-num">1</span> <span>Выбери рутинную задачу из своей работы</span></li>
+        <li><span class="step-num">2</span> <span>Попроси Cursor автоматизировать её</span></li>
+        <li><span class="step-num">3</span> <span>Замерь время: вручную vs с AI</span></li>
       </ul>
     </div>
     <div>
-      <h3>Творчество</h3>
-      <ul>
-        <li>Midjourney / DALL-E — картинки</li>
-        <li>Suno — музыка</li>
-        <li>Cursor — код без кода</li>
+      <h3>Задание 2: AI-агент</h3>
+      <ul class="steps">
+        <li><span class="step-num">1</span> <span>Выбери роль агента для бизнеса</span></li>
+        <li><span class="step-num">2</span> <span>Создай .cursor/rules/agent.mdc</span></li>
+        <li><span class="step-num">3</span> <span>Протестируй на 5 реальных задачах</span></li>
       </ul>
     </div>
   </div>
-  <div class="counter"></div>
+  <p style="margin-top:16px;">Подробности → <b>практика.md</b></p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter"></div>
 </div>
 
-<!-- SLIDE 15: PRACTICE -->
-<div class="slide content" id="s15">
-  <h2>Практика</h2>
-  <ul class="steps">
-    <li><span class="step-num">1</span> Создайте промпт для текста, который пишете регулярно</li>
-    <li><span class="step-num">2</span> Попросите Claude написать формулу для вашей таблицы</li>
-    <li><span class="step-num">3</span> Составьте план на неделю с помощью AI</li>
-  </ul>
-  <p style="margin-top:20px;"><span class="tag tip">Бонус</span> Сохраните все промпты в заметку «Мои автоматизации»</p>
-  <div class="counter"></div>
+<!-- SLIDE 17: FINAL COVER -->
+<div class="slide cover">
+  <div class="deco-circle float" style="top:10%;left:8%;width:100px;height:100px;background:rgba(255,255,255,0.1);"></div>
+  <div class="deco-star float-delay" style="bottom:20%;right:10%;color:rgba(255,255,255,0.15);font-size:50px;">✦</div>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">Модуль 05 — Итоги</p>
+  <h1>Автоматизируй рутину.<br><span class="light">Создай команду агентов.</span></h1>
+  <p style="color:rgba(255,255,255,0.8);max-width:500px;margin-top:20px;">Один агент — хорошо. Система из агентов — бизнес-преимущество.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-</div>
-
-<!-- SLIDE 16: FINAL COVER -->
-<div class="slide cover" id="s16">
-  <div class="deco float" style="top:12%;left:10%;font-size:50px;">🚀</div>
-  <div class="deco float-delay" style="bottom:18%;right:10%;font-size:45px;">✨</div>
-  <h1>Автоматизируйте<br><span class="light">одну задачу сегодня</span></h1>
-  <p style="font-size:clamp(14px,1.5vw,20px);opacity:0.9;max-width:500px;">
-    Через месяц у вас будет система.<br>Через год — суперсила.
-  </p>
   <div class="counter"></div>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
 </div>
 
 </div><!-- /slides -->
@@ -602,13 +651,14 @@ li::before {
 </div>
 
 <script>
+let cur = 0;
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
-let cur = 0;
 
 function show(n) {
   slides.forEach((s, i) => {
-    s.classList.toggle('active', i === n);
+    s.classList.remove('active');
+    if (i === n) s.classList.add('active');
   });
   document.querySelectorAll('.pagination').forEach(p => {
     p.innerHTML = '';
