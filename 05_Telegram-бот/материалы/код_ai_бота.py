@@ -1,104 +1,118 @@
-# AI-бот — Telegram-бот с подключённой нейросетью
-# Курс АССИСТ+, Модуль 06
-
-import os
-from dotenv import load_dotenv
-from openai import OpenAI
-from telegram import (
-    Update,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-)
-from telegram.ext import (
-    ApplicationBuilder,
-    CommandHandler,
-    MessageHandler,
-    CallbackQueryHandler,
-    filters,
-    ContextTypes,
-)
-
-load_dotenv()
-TOKEN = os.getenv("TELEGRAM_TOKEN")
-OPENAI_KEY = os.getenv("OPENAI_API_KEY")
-
-client = OpenAI(api_key=OPENAI_KEY)
-
-# Системный промпт — опишите ваш бизнес
-SYSTEM_PROMPT = """
-Ты — ассистент компании АССИСТ+.
-Мы подбираем бизнес-ассистентов для предпринимателей.
-Цены: от 30 000 ₽/мес. Срок подбора: 3-5 дней.
-Если клиент хочет оставить заявку — попроси имя и телефон.
-Отвечай дружелюбно, коротко и по делу.
+"""
+AI-консультант — Telegram-бот, который знает о бизнесе и отвечает клиентам.
+Курс АССИСТ+, Модуль 05.
 """
 
-# Меню с кнопками
-MAIN_KEYBOARD = InlineKeyboardMarkup([
-    [InlineKeyboardButton("📋 Услуги", callback_data="services")],
-    [InlineKeyboardButton("💰 Цены", callback_data="prices")],
-    [InlineKeyboardButton("📞 Связаться", callback_data="contact")],
-])
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import (
+    ApplicationBuilder, CommandHandler, MessageHandler,
+    CallbackQueryHandler, filters, ContextTypes
+)
+from openai import OpenAI
+from config import TELEGRAM_BOT_TOKEN
+
+# --- Настройки AI ---
+client = OpenAI()  # Использует OPENAI_API_KEY из .env
+
+SYSTEM_PROMPT = """
+Ты — AI-ассистент компании [НАЗВАНИЕ КОМПАНИИ].
+
+Наши услуги:
+- [Услуга 1] — [цена]
+- [Услуга 2] — [цена]
+- [Услуга 3] — [цена]
+
+Контакты:
+- Telegram: @username
+- Телефон: +7 (999) 123-45-67
+- Сайт: example.com
+
+Правила:
+- Отвечай вежливо и конкретно
+- Если не знаешь точный ответ — предложи связаться с менеджером
+- Не придумывай цены и услуги, которых нет в списке
+- Отвечай на русском языке
+"""
 
 
-async def start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    """Приветствие с кнопками."""
+# --- Команды ---
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        [InlineKeyboardButton("Наши услуги", callback_data="services")],
+        [InlineKeyboardButton("Цены", callback_data="prices")],
+        [InlineKeyboardButton("Связаться с нами", callback_data="contact")],
+    ]
+    markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Привет! Я AI-ассистент компании АССИСТ+.\n"
-        "Задайте вопрос или выберите из меню:",
-        reply_markup=MAIN_KEYBOARD,
+        "Привет! Я AI-помощник компании [НАЗВАНИЕ].\n\n"
+        "Задайте мне любой вопрос или выберите раздел:",
+        reply_markup=markup
     )
 
 
-async def handle_message(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    """Отвечает на сообщение с помощью AI."""
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": update.message.text},
-        ],
-        max_tokens=500,
-    )
-    answer = response.choices[0].message.content
-    await update.message.reply_text(answer)
-
-
-async def handle_button(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    """Обработка нажатий на кнопки."""
+async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
     responses = {
         "services": (
             "📋 Наши услуги:\n\n"
-            "• Подбор бизнес-ассистента\n"
-            "• Обучение ассистента под ваши задачи\n"
-            "• Замена ассистента, если не подошёл"
+            "1. [Услуга 1] — краткое описание\n"
+            "2. [Услуга 2] — краткое описание\n"
+            "3. [Услуга 3] — краткое описание\n\n"
+            "Задайте вопрос — отвечу подробнее!"
         ),
         "prices": (
-            "💰 Стоимость:\n\n"
-            "• Подбор ассистента — от 30 000 ₽\n"
-            "• Срок подбора — 3-5 рабочих дней\n"
-            "• Гарантийная замена — бесплатно"
+            "💰 Цены:\n\n"
+            "• [Услуга 1] — от [цена] р.\n"
+            "• [Услуга 2] — от [цена] р.\n"
+            "• [Услуга 3] — от [цена] р.\n\n"
+            "Точную стоимость рассчитаем индивидуально."
         ),
         "contact": (
             "📞 Свяжитесь с нами:\n\n"
-            "Напишите ваше имя и телефон, "
-            "и мы перезвоним в течение часа."
+            "Telegram: @username\n"
+            "Телефон: +7 (999) 123-45-67\n"
+            "Email: hello@example.com"
         ),
     }
 
-    text = responses.get(query.data, "Неизвестная команда")
-    await query.edit_message_text(text, reply_markup=MAIN_KEYBOARD)
+    text = responses.get(query.data, "Выберите раздел из меню.")
+    await query.edit_message_text(text)
 
 
+# --- AI-ответы ---
+async def ai_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_message = update.message.text
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",  # Дешёвая и быстрая модель
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_message}
+            ],
+            max_tokens=500
+        )
+        answer = response.choices[0].message.content
+    except Exception as e:
+        answer = (
+            "Извините, произошла ошибка. "
+            "Свяжитесь с нами напрямую: @username"
+        )
+
+    await update.message.reply_text(answer)
+
+
+# --- Запуск ---
 def main():
-    app = ApplicationBuilder().token(TOKEN).build()
+    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
+
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    app.add_handler(CallbackQueryHandler(handle_button))
-    print("AI-бот запущен...")
+    app.add_handler(CallbackQueryHandler(button_handler))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, ai_reply))
+
+    print("🤖 AI-консультант запущен!")
     app.run_polling()
 
 
