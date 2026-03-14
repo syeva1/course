@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>АССИСТ+ | Как проходить курс</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --red: #E63229; --red-light: #EF4444; --red-dark: #C41E1E; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --white: #FFFFFF; --bg: #F8F8F8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--black); position: relative; }
+.slides { position: relative; width: 100%; height: 100%; }
+.slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 60px 80px; opacity: 0; pointer-events: none; transition: opacity 0.5s ease, transform 0.4s ease; transform: translateX(40px); background: var(--bg); overflow-y: auto; }
+.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.cover { background: linear-gradient(135deg, #E63229 0%, #D42020 40%, #C41E1E 100%); color: white; text-align: center; justify-content: center; align-items: center; }
+.slide.content { background: var(--bg); background-image: radial-gradient(circle, rgba(200,200,210,0.5) 1.5px, transparent 1.5px); background-size: 22px 22px; align-items: center; text-align: center; padding-bottom: 120px; }
+.slide.content .card { background: white; border-radius: 20px; padding: 40px 50px; max-width: 800px; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); text-align: left; }
+.slide.cover h1 { font-size: 2.8em; font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+.slide.cover h1 .light { font-weight: 300; }
+.slide.cover p { font-size: 1.1em; opacity: 0.9; max-width: 600px; }
+.card h2 { color: var(--red); font-size: 1.5em; font-weight: 800; margin-bottom: 20px; }
+.card h3 { color: var(--black); font-size: 1.1em; font-weight: 700; margin: 18px 0 8px; }
+.card p, .card li { font-size: 0.95em; line-height: 1.7; color: var(--gray); }
+.card ul { padding-left: 20px; margin: 8px 0; }
+.card li { margin-bottom: 6px; }
+.card .highlight { color: var(--red); font-weight: 700; }
+.card .folder { background: #f5f5f5; border-radius: 10px; padding: 14px 18px; margin: 10px 0; font-family: monospace; font-size: 0.9em; line-height: 1.8; }
+.card .step-num { display: inline-block; width: 32px; height: 32px; background: var(--red); color: white; border-radius: 50%; text-align: center; line-height: 32px; font-weight: 800; font-size: 0.9em; margin-right: 10px; }
+.card .step { display: flex; align-items: flex-start; margin: 12px 0; }
+.card .step p { margin: 0; }
+.card .emoji-label { font-size: 1.3em; margin-right: 8px; }
+.card .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+.card .module-item { background: #f8f8f8; border-radius: 10px; padding: 12px 16px; border-left: 4px solid var(--red); }
+.card .module-item .num { font-weight: 800; color: var(--red); }
+.card .module-item .name { font-weight: 600; }
+.card .module-item .desc { font-size: 0.85em; color: var(--gray-light); }
+.pagination { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 100; }
+.dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #ccc; background: rgba(255,255,255,0.8); transition: all 0.3s; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+.dot.active { background: var(--red); border-color: var(--red); }
+.dot.passed { background: var(--red); border-color: var(--red); opacity: 0.5; }
+.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 16px; z-index: 100; }
+.nav button { width: 56px; height: 56px; border-radius: 50%; border: none; font-size: 1.4em; cursor: pointer; background: var(--red); color: white; box-shadow: 0 4px 15px rgba(230,50,41,0.4); transition: all 0.3s; }
+.nav button:hover { transform: scale(1.1); }
+.logo { position: fixed; bottom: 20px; right: 30px; font-weight: 900; font-size: 0.9em; color: rgba(0,0,0,0.15); z-index: 50; letter-spacing: 2px; }
+.cover .logo-text { font-weight: 900; font-size: 1em; letter-spacing: 3px; opacity: 0.7; margin-top: 30px; }
+
+@media (max-width: 768px) {
+  .slide { padding: 40px 24px; padding-bottom: 120px; }
+  .slide.cover h1 { font-size: 1.8em; }
+  .card { padding: 28px 24px !important; }
+  .card h2 { font-size: 1.2em; }
+  .card .module-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="pagination" id="pagination"></div>
+
+<div class="slides">
+
+<!-- Slide 1: Cover -->
+<div class="slide cover active">
+  <p style="font-size:0.9em;opacity:0.7;margin-bottom:10px;">Онбординг — Курс АССИСТ+</p>
+  <h1><span class="light">Как проходить</span><br>этот курс</h1>
+  <p>Навигация по модулям, папкам и файлам. Всё что нужно знать перед стартом.</p>
+  <div class="logo-text">АССИСТ+</div>
+</div>
+
+<!-- Slide 2: Структура курса -->
+<div class="slide content">
+  <div class="card">
+    <h2>Структура курса</h2>
+    <p>Курс состоит из <span class="highlight">8 модулей</span>. Проходи по порядку — каждый следующий опирается на предыдущий.</p>
+    <div class="module-grid">
+      <div class="module-item"><span class="num">01</span> <span class="name">Старт</span><div class="desc">Установка Cursor, первый проект</div></div>
+      <div class="module-item"><span class="num">02</span> <span class="name">Контекст</span><div class="desc">Настройка AI под себя</div></div>
+      <div class="module-item"><span class="num">03</span> <span class="name">Инструменты</span><div class="desc">Терминал, GitHub, расширения</div></div>
+      <div class="module-item"><span class="num">04</span> <span class="name">Агенты</span><div class="desc">.mdc файлы, мульти-агенты</div></div>
+      <div class="module-item"><span class="num">05</span> <span class="name">Telegram-бот</span><div class="desc">Создание ботов с AI</div></div>
+      <div class="module-item"><span class="num">06</span> <span class="name">API</span><div class="desc">Внешние сервисы, MCP</div></div>
+      <div class="module-item"><span class="num">07</span> <span class="name">Вайб-кодинг</span><div class="desc">Реальные продукты с нуля</div></div>
+      <div class="module-item"><span class="num">08</span> <span class="name">Справочник</span><div class="desc">Команды, кейсы, альтернативы</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Что в каждом модуле -->
+<div class="slide content">
+  <div class="card">
+    <h2>Что лежит в каждом модуле</h2>
+    <div class="folder">
+      XX_Название/<br>
+      ├── README.md &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Начни с него<br>
+      ├── XX_Название_презентация.html &nbsp;← Главные слайды<br>
+      ├── инструкция.md &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Делай по шагам<br>
+      ├── XX_практика.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Задания<br>
+      └── материалы/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;├── 📖 Для изучения/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← HTML-слайды<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Для Cursor/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← MD-файлы
+    </div>
+    <p style="margin-top:14px;"><span class="highlight">README.md</span> — всегда начинай с него. Там описание модуля и чему научишься.</p>
+  </div>
+</div>
+
+<!-- Slide 4: Две папки в материалах -->
+<div class="slide content">
+  <div class="card">
+    <h2>Две папки в материалах</h2>
+    
+    <h3><span class="emoji-label">📖</span> Для изучения</h3>
+    <p>HTML-презентации по каждой теме. Открой в браузере — листай как слайды. Удобно читать с телефона или компьютера. Это для <span class="highlight">твоего обучения</span>.</p>
+    
+    <h3 style="margin-top:24px;"><span class="emoji-label">📁</span> Для Cursor</h3>
+    <p>Те же материалы, но в формате .md (Markdown). Это для <span class="highlight">загрузки в Cursor</span>.</p>
+    <ul>
+      <li>Перетащи файл прямо в чат агента</li>
+      <li>Или положи в папку проекта</li>
+      <li>Cursor прочитает и будет использовать как базу знаний</li>
+    </ul>
+    <p style="margin-top:12px;background:#fff3f3;padding:12px;border-radius:8px;"><span class="highlight">Пример:</span> Перетащил шаблон_cursorrules.md → сказал «Настрой правила для моего проекта» → агент сделает</p>
+  </div>
+</div>
+
+<!-- Slide 5: Как проходить модуль -->
+<div class="slide content">
+  <div class="card">
+    <h2>Как проходить модуль</h2>
+    <div class="step"><span class="step-num">1</span><p><strong>Прочитай README.md</strong> — описание модуля, чему научишься, сколько времени</p></div>
+    <div class="step"><span class="step-num">2</span><p><strong>Посмотри презентацию</strong> — открой HTML-файл в браузере, листай слайды</p></div>
+    <div class="step"><span class="step-num">3</span><p><strong>Пройди инструкцию</strong> — открой инструкция.md, делай шаг за шагом прямо в Cursor</p></div>
+    <div class="step"><span class="step-num">4</span><p><strong>Изучи материалы</strong> — 📖 читай в браузере, 📁 загружай в Cursor</p></div>
+    <div class="step"><span class="step-num">5</span><p><strong>Сделай практику</strong> — 5 заданий: 2 по инструкции, 2 сам, 1 творческое</p></div>
+  </div>
+</div>
+
+<!-- Slide 6: Порядок модулей -->
+<div class="slide content">
+  <div class="card">
+    <h2>В каком порядке проходить</h2>
+    <p><span class="highlight">Строго по порядку</span> — каждый модуль опирается на предыдущий.</p>
+    <ul>
+      <li><strong>01–02</strong> — фундамент: установка + настройка под себя</li>
+      <li><strong>03–04</strong> — инструменты + агенты (основная работа)</li>
+      <li><strong>05–06</strong> — практика: боты + API (реальные проекты)</li>
+      <li><strong>07</strong> — вайб-кодинг (создание продуктов с нуля)</li>
+      <li><strong>08</strong> — справочник (возвращайся когда нужно)</li>
+    </ul>
+    <p style="margin-top:16px;background:#f0fff0;padding:12px;border-radius:8px;">Модуль 08 — не обязательно проходить подряд. Это шпаргалка, к которой возвращаешься по необходимости.</p>
+  </div>
+</div>
+
+<!-- Slide 7: Советы -->
+<div class="slide content">
+  <div class="card">
+    <h2>Советы перед стартом</h2>
+    <ul>
+      <li><strong>Не пропускай модули</strong> — от простого к сложному</li>
+      <li><strong>Делай практику</strong> — без неё знания не закрепятся</li>
+      <li><strong>Загружай файлы в Cursor</strong> — пусть AI знает то же, что и ты</li>
+      <li><strong>Не бойся ошибок</strong> — Cursor всегда поможет исправить</li>
+      <li><strong>Экспериментируй</strong> — меняй промпты, пробуй разные подходы</li>
+    </ul>
+    <p style="margin-top:20px;font-weight:700;color:var(--red);font-size:1.1em;">Готов? Переходи в 01_Старт →</p>
+  </div>
+</div>
+
+<!-- Slide 8: Final -->
+<div class="slide cover">
+  <p style="font-size:0.9em;opacity:0.7;margin-bottom:10px;">Курс АССИСТ+</p>
+  <h1><span class="light">Начинай с</span><br>01_Старт</h1>
+  <p>Удачи! Если что-то непонятно — перечитай этот онбординг или спроси в чате поддержки.</p>
+  <div class="logo-text">АССИСТ+</div>
+</div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button onclick="prev()" id="btn-prev">←</button>
+  <button onclick="next()" id="btn-next">→</button>
+</div>
+<div class="logo">АССИСТ+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let cur = 0;
+const pag = document.getElementById('pagination');
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => go(i);
+  pag.appendChild(d);
+});
+function go(n) {
+  slides[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.className = 'dot' + (i === cur ? ' active' : i < cur ? ' passed' : '');
+  });
+}
+function next() { if (cur < slides.length - 1) go(cur + 1); }
+function prev() { if (cur > 0) go(cur - 1); }
+document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === ' ') next(); if (e.key === 'ArrowLeft') prev(); });
+</script>
+</body>
+</html>
