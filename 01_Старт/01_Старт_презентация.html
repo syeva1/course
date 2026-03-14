@@ -173,9 +173,11 @@ li::before {
 
 .two-col {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 40px; align-items: start;
+  gap: 40px; align-items: stretch;
   text-align: left; width: 100%; max-width: 900px;
 }
+.two-col > div { display: flex; flex-direction: column; min-height: 0; }
+.two-col > div ul { flex: 1; }
 .steps { text-align: left; }
 .code-block { text-align: left; }
 
@@ -422,6 +424,7 @@ li::before {
         <li>Предприниматели, которые хотят автоматизировать бизнес</li>
         <li>Ассистенты, которые хотят делать больше за меньше времени</li>
         <li>Все, кто устал от рутины</li>
+        <li>Те, кто хочет идти в одну ногу с трендами</li>
       </ul>
     </div>
     <div>
@@ -467,7 +470,7 @@ li::before {
 
   <div class="two-col">
     <div>
-      <h3>🪟 Windows</h3>
+      <h3>Windows</h3>
       <ul class="steps">
         <li><span class="step-num">1</span> Открой скачанный <b>.exe</b> файл</li>
         <li><span class="step-num">2</span> Нажимай «Далее» → «Установить»</li>
@@ -476,7 +479,7 @@ li::before {
       </ul>
     </div>
     <div>
-      <h3>🍎 macOS</h3>
+      <h3>macOS</h3>
       <ul class="steps">
         <li><span class="step-num">1</span> Открой скачанный <b>.dmg</b> файл</li>
         <li><span class="step-num">2</span> Перетащи Cursor в <b>Applications</b></li>
@@ -487,6 +490,7 @@ li::before {
   </div>
 
   <p style="margin-top:20px;"><span class="tag tip">СОВЕТ</span> При первом запуске Cursor предложит импортировать настройки из VS Code — если не знаешь что это, просто пропусти</p>
+  <p style="margin-top:12px;font-size:0.9em;color:var(--gray-light);"><b>Что такое VS Code?</b> Visual Studio Code — бесплатный редактор кода от Microsoft. Cursor построен на его основе. VS Code нужен разработчикам для написания кода; в Cursor те же возможности плюс встроенный AI. Если ты не пользовался VS Code — просто пропусти импорт.</p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">04 / 18</div>
@@ -504,6 +508,8 @@ li::before {
     <li><span class="step-num">4</span> Подтверди email, если нужно</li>
   </ul>
 
+  <p style="margin-top:20px;"><span class="tag important">ВАЖНО</span> Лучше создать один аккаунт и не менять его потом — так сохраняется история и настройки. Выбери способ входа (Google, GitHub или Email), который удобнее всего использовать постоянно.</p>
+
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">05 / 18</div>
 </div>
@@ -513,23 +519,26 @@ li::before {
 
   <h2><span style="color:var(--red)">Тарифы</span> Cursor</h2>
 
-  <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;max-width:800px;width:100%;">
-    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:18px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);border-left:4px solid #4CAF50;">
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;max-width:800px;width:100%;">
+    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:12px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);">
       <p style="margin:0;"><b style="font-size:1.2em;">Free — $0</b></p>
-      <p style="margin:6px 0 0;">50 умных + 200 базовых запросов/мес. <b>Хватит на курс</b></p>
+      <p style="margin:4px 0 0;">50 умных + 200 базовых запросов/мес. <b>На курс не хватит</b></p>
     </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:18px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);border-left:4px solid var(--red);">
+    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:12px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);">
       <p style="margin:0;"><b style="font-size:1.2em;">Pro — $20/мес</b></p>
-      <p style="margin:6px 0 0;">500 умных, безлимит базовых. <b>Для ежедневной работы</b></p>
+      <p style="margin:4px 0 0;">500 умных, безлимит базовых. <b>Для ежедневной работы</b></p>
     </div>
-    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:18px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);border-left:4px solid #1A1A1A;">
+    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:12px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);">
       <p style="margin:0;"><b style="font-size:1.2em;">Pro+ — $60/мес</b></p>
-      <p style="margin:6px 0 0;">3x больше лимитов Agent. <b>Для сложных проектов</b></p>
+      <p style="margin:4px 0 0;">3x больше лимитов Agent. <b>Для сложных проектов</b></p>
+    </div>
+    <div style="background:rgba(255,255,255,0.85);border-radius:14px;padding:12px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.25),0 4px 12px rgba(0,0,0,0.15);">
+      <p style="margin:0;"><b style="font-size:1.2em;">Business — $200/мес</b></p>
+      <p style="margin:4px 0 0;">Тариф в Cursor для команд и больших объёмов. Выше лимиты на умные запросы и Agent. <b>Для активной работы всей командой</b></p>
     </div>
   </div>
 
-  <p style="margin-top:20px;">💡 Начни с Free — когда лимиты кончатся, бери Pro</p>
-  <p style="font-size:0.85em;color:var(--gray-light);">Как оплатить из России — см. <b>оплата_из_РФ.md</b></p>
+  <p style="margin-top:14px;max-width:800px;">💡 Начни с Free — когда лимиты кончатся, бери Pro. Есть возможность доплачивать за потраченные токены сверх лимита.</p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">06 / 18</div>
@@ -576,6 +585,7 @@ li::before {
   </ul>
 
   <p style="margin-top:20px;"><span class="tag tip">СОВЕТ</span> Эти две панели — твоё рабочее пространство. Справа файлы, слева AI. Всё остальное пока не трогай</p>
+  <p style="margin-top:12px;font-size:0.9em;color:var(--gray-light);">Расположение панелей в Cursor может меняться — мы описываем базовую настройку. Вы можете настроить интерфейс под себя.</p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">08 / 18</div>
@@ -694,45 +704,8 @@ li::before {
   <div class="counter">13 / 18</div>
 </div>
 
-<!-- ============ SLIDE 11: ИТЕРАЦИЯ ============ -->
-<div class="slide content" id="s11">
-
-  <h2>Шаг 8. <span style="color:var(--red)">Улучшай</span> результат</h2>
-  <div class="subtitle">Не понравилось? Скажи AI, что изменить.</div>
-
-  <p>Примеры команд для улучшения:</p>
-  <div class="code-block" style="font-size:14px;">
-    <span style="color:var(--red);font-weight:700">"Сделай дизайн более современным, добавь градиент"</span><br><br>
-    <span style="color:var(--red);font-weight:700">"Измени цвета на фирменные: красный #E63229 и чёрный"</span><br><br>
-    <span style="color:var(--red);font-weight:700">"Добавь секцию с отзывами клиентов"</span><br><br>
-    <span style="color:var(--red);font-weight:700">"Сделай адаптивным для телефона"</span>
-  </div>
-
-  <p style="margin-top:16px;"><span class="tag tip">ПРИНЦИП</span> Промпт → Результат → Уточнение → Лучший результат. Это и есть вайбкодинг!</p>
-
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">14 / 18</div>
-</div>
-
-<!-- ============ SLIDE 11.5: DRAG & DROP ============ -->
-<div class="slide content" id="s11b">
-
-  <h2><span style="color:var(--red)">Перетаскивай</span> файлы в чат</h2>
-
-  <ul class="steps" style="margin-top:20px;">
-    <li><span class="step-num">1</span> Перетащи <b>.cursorrules</b> в чат агента</li>
-    <li><span class="step-num">2</span> Напиши: <span style="color:var(--red);font-weight:700">«Примени эти правила к проекту»</span></li>
-    <li><span class="step-num">3</span> Агент сам всё настроит — не нужно лезть в настройки вручную</li>
-  </ul>
-
-  <p style="margin-top:20px;"><span class="tag tip">ЛАЙФХАК</span> Любые файлы и папки можно перетаскивать в чат. Агент будет работать именно с ними. Хочешь переделать конкретный файл — кинь его в чат и скажи, что изменить.</p>
-
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">15 / 18</div>
-</div>
-
-<!-- ============ SLIDE 11.6: РЕЖИМЫ ============ -->
-<div class="slide content" id="s11c">
+<!-- ============ SLIDE 10.5: РЕЖИМЫ (вставлен после 10) ============ -->
+<div class="slide content" id="s10b">
 
   <h2>Режимы Cursor: <span style="color:var(--red)">Ask / Agent / Plan</span></h2>
 
@@ -750,6 +723,43 @@ li::before {
       <p style="margin:4px 0 0;">AI составляет план действий, ты подтверждаешь, потом он выполняет. <b>Используй для больших проектов</b> — чтобы не наломать дров</p>
     </div>
   </div>
+
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">14 / 18</div>
+</div>
+
+<!-- ============ SLIDE 11: ИТЕРАЦИЯ ============ -->
+<div class="slide content" id="s11">
+
+  <h2>Шаг 8. <span style="color:var(--red)">Улучшай</span> результат</h2>
+  <div class="subtitle">Не понравилось? Скажи AI, что изменить.</div>
+
+  <p>Примеры команд для улучшения:</p>
+  <div class="code-block" style="font-size:14px;">
+    <span style="color:var(--red);font-weight:700">"Сделай дизайн более современным, добавь градиент"</span><br><br>
+    <span style="color:var(--red);font-weight:700">"Измени цвета на фирменные: красный #E63229 и чёрный"</span><br><br>
+    <span style="color:var(--red);font-weight:700">"Добавь секцию с отзывами клиентов"</span><br><br>
+    <span style="color:var(--red);font-weight:700">"Сделай адаптивным для телефона"</span>
+  </div>
+
+  <p style="margin-top:16px;"><span class="tag tip">ПРИНЦИП</span> Промпт → Результат → Уточнение → Лучший результат. Это и есть вайбкодинг!</p>
+
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">15 / 18</div>
+</div>
+
+<!-- ============ SLIDE 11.5: DRAG & DROP ============ -->
+<div class="slide content" id="s11b">
+
+  <h2><span style="color:var(--red)">Перетаскивай</span> файлы в чат</h2>
+
+  <ul class="steps" style="margin-top:20px;">
+    <li><span class="step-num">1</span> Перетащи <b>.cursorrules</b> в чат агента</li>
+    <li><span class="step-num">2</span> Напиши: <span style="color:var(--red);font-weight:700">«Примени эти правила к проекту»</span></li>
+    <li><span class="step-num">3</span> Агент сам всё настроит — не нужно лезть в настройки вручную</li>
+  </ul>
+
+  <p style="margin-top:20px;"><span class="tag tip">ЛАЙФХАК</span> Любые файлы и папки можно перетаскивать в чат. Агент будет работать именно с ними. Хочешь переделать конкретный файл — кинь его в чат и скажи, что изменить.</p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">16 / 18</div>
@@ -806,7 +816,7 @@ li::before {
   <p style="color:rgba(255,255,255,0.6);margin-top:30px;font-size:18px;">Следующий модуль: <b>Контекст — главный секрет AI</b></p>
 
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">18 / 18</div>
+  <div class="counter">19 / 18</div>
 </div>
 
 </div>
