@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>АССИСТ+ | Вайб-кодинг — Справочник</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --red: #E63229; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --bg: #F8F8F8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--black); position: relative; }
+.slides { position: relative; width: 100%; height: 100%; }
+.slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 60px 80px; opacity: 0; pointer-events: none; transition: opacity 0.5s ease, transform 0.4s ease; transform: translateX(40px); background: var(--bg); }
+.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.cover { background: linear-gradient(135deg, #E63229 0%, #D42020 40%, #C41E1E 100%); color: white; text-align: center; justify-content: center; align-items: center; }
+.slide.content { background: var(--bg); background-image: radial-gradient(circle, rgba(200,200,210,0.5) 1.5px, transparent 1.5px); background-size: 22px 22px; align-items: center; text-align: center; }
+.pagination { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 100; }
+.dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #ccc; background: rgba(255,255,255,0.8); transition: all 0.3s; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+.dot.active { background: var(--red); border-color: var(--red); }
+.dot.passed { background: var(--red); border-color: var(--red); opacity: 0.5; }
+.logo { position: absolute; bottom: 30px; right: 50px; font-weight: 900; font-size: 20px; z-index: 10; }
+.logo .plus { color: var(--red); font-size: 0.55em; vertical-align: super; }
+.slide.cover .logo { color: white; }
+.slide.cover .logo .plus { color: white; }
+.slide.content .logo { color: var(--black); }
+h1, h2 { font-weight: 800; font-size: clamp(22px, 2.5vw, 36px); line-height: 1.15; margin-bottom: 14px; }
+p, li { font-weight: 400; font-size: clamp(14px, 1.3vw, 19px); line-height: 1.5; color: var(--gray); }
+.subtitle { font-weight: 300; font-style: italic; font-size: clamp(16px, 1.8vw, 24px); color: var(--gray-light); margin-bottom: 30px; }
+ul { list-style: none; padding: 0; text-align: left; }
+li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06); }
+li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; top: 10px; font-weight: bold; font-size: 1.2em; }
+.slide.content h2::after { content: ""; display: block; width: 50px; height: 3px; border-radius: 2px; background: var(--red); margin: 10px auto 0; }
+.slide.content ul { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 16px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); }
+.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; }
+.nav button { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); background: white; color: var(--red); font-size: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; }
+.nav button:hover { background: var(--red); color: white; }
+.slide.cover ~ .nav button { border-color: white; color: white; background: transparent; }
+.counter { position: absolute; top: 30px; right: 50px; font-size: 14px; font-weight: 600; color: var(--gray-light); z-index: 10; }
+.slide.cover .counter { color: rgba(255,255,255,0.6); }
+.slide.cover .subtitle { color: rgba(255,255,255,0.95); }
+.slide.cover p { color: rgba(255,255,255,0.95); }
+@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } }
+</style>
+</head>
+<body>
+<div class="pagination" id="pag"><div class="dot active"></div></div>
+<div class="slides">
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">15 правил вайб-кодинга</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">1–5</span></h2>
+  <ul style="max-width:560px;">
+    <li>Не начинай с нуля — шаблоны с GitHub</li>
+    <li>Рутину — AI-агенту (ты режиссёр)</li>
+    <li>Идеи через AI: «Какие проблемы малого бизнеса решить веб-приложением?»</li>
+    <li>Одна задача — один чат</li>
+    <li>Тестируй чаще, исправляй быстрее</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 05</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">6–10</span></h2>
+  <ul style="max-width:560px;">
+    <li>MVP важнее идеала с первой попытки</li>
+    <li>Говори, а не только печатай (голосовой ввод)</li>
+    <li>Вдохновляйся чужим кодом на GitHub</li>
+    <li>Ошибки — копируй в чат, не описывай</li>
+    <li>Сохраняй историю чатов и удачные промпты</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 05</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">11–15</span></h2>
+  <ul style="max-width:560px;">
+    <li>Ключи и пароли только в .env, .env в .gitignore</li>
+    <li>Регулярно git commit после шага</li>
+    <li>Деплой как можно раньше (Vercel / GitHub Pages)</li>
+    <li>Коллекционируй удачные промпты (prompts/)</li>
+    <li>Получай удовольствие от процесса</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 05</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Чеклист перед стартом</span></h2>
+  <ul style="max-width:560px;">
+    <li>README.md, .gitignore (.env, node_modules)</li>
+    <li>.env с ключами, git init + первый коммит</li>
+    <li>Plan Mode → план → Agent Mode → первый шаг</li>
+    <li>Проверка в браузере, деплой</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 05</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Большие проекты и декомпозиция</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Проблема</span></h2>
+  <p style="max-width:560px;">AI «забывает» при новом чате. Решение: записывай всё — план перед началом (plan.md), итоги после каждого шага (progress.md). В новой сессии: «Прочитай plan.md и progress.md, продолжай».</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 05</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Декомпозиция</span></h2>
+  <p style="max-width:560px; margin-bottom:12px;">❌ Один запрос: «Создай систему с парсингом, AI, дашбордом и отчётами»</p>
+  <p style="max-width:560px;">✅ Шаг 1: план архитектуры → записал. Шаг 2: парсер → записал. Шаг 3: AI-обработка → записал. Один шаг = один чат, результат в файл.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 05</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Структура</span></h2>
+  <ul style="max-width:560px;">
+    <li>README.md — Cursor читает первым</li>
+    <li>plan.md — общий план</li>
+    <li>progress.md — что сделано</li>
+    <li>.cursor/rules/project.mdc — правила для AI</li>
+    <li>tasks/todo.md, lessons.md — осталось и уроки из ошибок</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 05</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Чеклист</span></h2>
+  <ul style="max-width:560px;">
+    <li>README подробный, plan.md и progress.md</li>
+    <li>Каждый шаг — отдельный чат</li>
+    <li>git commit после этапа</li>
+    <li>.mdc для повторяющихся паттернов, lessons.md для ошибок</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 05</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Деплой на GitHub Pages</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Что нужно</span></h2>
+  <ul style="max-width:560px;">
+    <li>Аккаунт github.com</li>
+    <li>Git установлен (или через Cursor)</li>
+    <li>Проект с index.html в корне</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 05</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Шаги</span></h2>
+  <ul style="max-width:560px;">
+    <li>1. GitHub → New repository (Public, без README)</li>
+    <li>2. В терминале: git init, add ., commit, remote add origin, push</li>
+    <li>3. Settings → Pages → Deploy from branch → main → / (root) → Save</li>
+    <li>4. Подожди 1–2 минуты</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 05</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Ссылка и обновление</span></h2>
+  <ul style="max-width:560px;">
+    <li>Сайт: https://USERNAME.github.io/REPO-NAME/</li>
+    <li>При каждом git push сайт обновляется автоматически (1–2 мин)</li>
+    <li>Свой домен: Settings → Pages → Custom domain + CNAME у регистратора</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 05</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Ограничения</span></h2>
+  <ul style="max-width:560px;">
+    <li>Только статика: HTML, CSS, JS</li>
+    <li>Нет серверного кода (Python, Node) — для него Vercel или VPS</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 05</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Деплой на VPS</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Зачем сервер</span></h2>
+  <p style="max-width:560px;">Проект на ПК работает, пока он включён. Сервер — 24/7. Закрыл ноутбук — бот/сайт на сервере продолжает работать.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 06</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Хостинги</span></h2>
+  <table>
+    <tr><th>Хостинг</th><th>Цена</th><th>Плюсы / минусы</th></tr>
+    <tr><td>Timeweb</td><td>от 300₽/мес</td><td>Русский интерфейс / зарубежные API блокируют</td></tr>
+    <tr><td>Beget</td><td>от 200₽/мес</td><td>Дёшево / ограниченные тарифы</td></tr>
+    <tr><td>Digital Ocean</td><td>от $4/мес</td><td>Зарубежные API работают / нужна зарубежная карта</td></tr>
+  </table>
+  <p style="margin-top:12px; font-size:0.9em;">Выбирай Ubuntu 24.04, 1 ГБ RAM хватит для бота.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 06</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Основные шаги</span></h2>
+  <ul style="max-width:560px;">
+    <li>Попроси Cursor: «План деплоя Python на Ubuntu»</li>
+    <li>Подключись: ssh root@IP</li>
+    <li>Установи Python, venv, зависимости</li>
+    <li>Перенеси файлы (SCP / Git clone)</li>
+    <li>Создай .env с секретами</li>
+    <li>Настрой systemd для автозапуска</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 06</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Обновление</span></h2>
+  <ul style="max-width:560px;">
+    <li>Через Git: git pull → systemctl restart mybot</li>
+    <li>Вручную: nano файл → systemctl restart</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 06</div>
+</div>
+<div class="slide content" id="s6">
+  <h2><span style="color:var(--red)">Россия и API</span></h2>
+  <p style="max-width:560px;">Российские хостинги блокируются Google, Anthropic, OpenAI. Если бот к зарубежным AI — используй Digital Ocean или VPN/прокси на сервере.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">06 / 06</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Идея в план</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Что выдаёт промпт</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Обзор проекта</strong> — что делает, для кого, ценность, сценарий</li>
+    <li><strong>Требования</strong> — функции, критерии успеха</li>
+    <li><strong>Пошаговый план</strong> — этапы с названием, действиями, файлами, проверкой</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 05</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Плюс</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Структура проекта</strong> — дерево папок и файлов</li>
+    <li><strong>Что понадобится</strong> — API, библиотеки, .env</li>
+    <li><strong>Подводные камни</strong> — что может сломаться, как тестировать</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 05</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Стиль</span></h2>
+  <p style="max-width:560px;">❌ «Имплементируй REST API с JWT»</p>
+  <p style="max-width:560px;">✅ «Создай сервер, который принимает запросы и проверяет, что пользователь залогинен»</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 05</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Как использовать</span></h2>
+  <ul style="max-width:560px;">
+    <li>Скопируй промпт → Cursor Plan Mode (Cmd+L)</li>
+    <li>Вставь, вместо [ВСТАВЬ ОПИСАНИЕ] напиши проект 3–5 предложениями</li>
+    <li>Проверь план → одобри → Agent Mode → «Реализуй шаг 1»</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 05</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Сравнение инструментов</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Кто есть кто</span></h2>
+  <table>
+    <tr><th></th><th>Cursor</th><th>Claude Code</th><th>Copilot</th><th>Lovable</th></tr>
+    <tr><td><strong>Что это</strong></td><td>AI-редактор (VS Code)</td><td>Терминальный агент</td><td>Помощник в VS Code</td><td>Конструктор сайтов</td></tr>
+    <tr><td><strong>Цена</strong></td><td>Free / $20 / $60</td><td>$17–20/мес</td><td>$10/мес</td><td>$20/мес</td></tr>
+    <tr><td><strong>Лучше всего</strong></td><td>Правки, мульти-файлы</td><td>Рефакторинг, дебаг</td><td>Автокомплит</td><td>Лендинги без кода</td></tr>
+  </table>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 05</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Кого выбрать</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Новичок</strong> → Cursor (низкий порог, Composer, Free)</li>
+    <li><strong>Только лендинг</strong> → Lovable (описал → получил сайт)</li>
+    <li><strong>Уже разбираешься</strong> → Claude Code (мощнее для больших проектов)</li>
+    <li><strong>Бюджет 0</strong> → Antigravity (бесплатно, Google модели)</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 05</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Для курса — Cursor</span></h2>
+  <ul style="max-width:560px;">
+    <li>Бизнес-ассистенты — не программисты</li>
+    <li>Визуальный интерфейс</li>
+    <li>Composer для мульти-файлов</li>
+    <li>Free тариф для обучения</li>
+    <li>Большое сообщество и документация</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 05</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Другие полезные</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Cline</strong> — бесплатный CLI, любые модели</li>
+    <li><strong>agtx</strong> — канбан для Claude Code</li>
+    <li><strong>DeepSite</strong> — генерация сайтов (Hugging Face)</li>
+    <li><strong>NotebookLM</strong> — ответы по загруженным документам</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 05</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Шаблон README</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Что включить</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Что это</strong> — одно предложение</li>
+    <li><strong>Для кого</strong> — кто будет пользоваться</li>
+    <li><strong>Функции</strong> — список возможностей</li>
+    <li><strong>Технологии</strong> — стек, библиотеки</li>
+    <li><strong>Дизайн</strong> — цвета, шрифт, адаптив</li>
+    <li><strong>Структура / Запуск</strong> — Cursor заполнит после Plan Mode</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 04</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Зачем</span></h2>
+  <p style="max-width:560px;">Cursor читает README.md первым. Чем подробнее описание — тем лучше код и план.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 04</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Как использовать</span></h2>
+  <p style="max-width:560px;">Скопируй шаблон, заполни, сохрани как README.md в корне проекта.</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 04</div>
+</div>
+</div>
+<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
+  <h1 style="font-size:2em;font-weight:900;">Шаблон лендинга</h1>
+</div>
+<div class="slide content" id="s2">
+  <h2><span style="color:var(--red)">Секции лендинга</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Герой-блок</strong> — заголовок, подзаголовок, CTA</li>
+    <li><strong>Услуги / Преимущества</strong> — 3 карточки</li>
+    <li><strong>О нас</strong> — кратко о компании</li>
+    <li><strong>Отзывы</strong> — 3 отзыва</li>
+    <li><strong>Форма</strong> — имя, телефон, сообщение</li>
+    <li><strong>Контакты</strong> — телефон, Telegram, email</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">02 / 05</div>
+</div>
+<div class="slide content" id="s3">
+  <h2><span style="color:var(--red)">Дизайн</span></h2>
+  <ul style="max-width:560px;">
+    <li>Основной цвет, шрифт</li>
+    <li>Стиль: современный / минималистичный / яркий</li>
+    <li>Обязательно адаптивный (мобилка + десктоп)</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">03 / 05</div>
+</div>
+<div class="slide content" id="s4">
+  <h2><span style="color:var(--red)">Технологии</span></h2>
+  <ul style="max-width:560px;">
+    <li>HTML + CSS + JavaScript (без фреймворков)</li>
+    <li>Один index.html или раздельные файлы</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">04 / 05</div>
+</div>
+<div class="slide content" id="s5">
+  <h2><span style="color:var(--red)">Как использовать</span></h2>
+  <p style="max-width:560px;">Скопируй шаблон, заполни целевая аудитория + секции + дизайн, вставь в Agent Mode → «Создай лендинг».</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">05 / 05</div>
+</div>
+</div>
+</div>
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+function show(n) {
+  slides.forEach((s, i) => { s.classList.remove('active'); if (i === n) s.classList.add('active'); });
+  document.querySelectorAll('.pagination').forEach(p => {
+    p.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === n ? ' active' : (i < n ? ' passed' : ''));
+      dot.onclick = () => { cur = i; show(cur); };
+      p.appendChild(dot);
+    }
+  });
+  document.querySelectorAll('.counter').forEach(c => { c.textContent = String(n+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0'); });
+}
+function next() { if (cur < total - 1) { cur++; show(cur); } }
+function prev() { if (cur > 0) { cur--; show(cur); } }
+document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); } if (e.key === 'ArrowLeft') prev(); });
+show(0);
+</script>
+</body>
+</html>
