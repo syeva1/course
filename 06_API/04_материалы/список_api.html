@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>АССИСТ+ | Шаблон лендинга</title>
+<title>АССИСТ+ | Полезные API для бизнеса</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root { --red: #E63229; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --bg: #F8F8F8; }
@@ -31,6 +31,9 @@ li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px solid rgba(
 li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; top: 10px; font-weight: bold; font-size: 1.2em; }
 .slide.content h2::after { content: ""; display: block; width: 50px; height: 3px; border-radius: 2px; background: var(--red); margin: 10px auto 0; }
 .slide.content ul { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 16px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); }
+table { border-collapse: collapse; max-width: 700px; width: 100%; background: rgba(255,255,255,0.85); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-size: clamp(13px, 1.2vw, 17px); }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.08); }
+th { background: var(--red); color: white; font-weight: 700; }
 .nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; }
 .nav button { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); background: white; color: var(--red); font-size: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; }
 .nav button:hover { background: var(--red); color: white; }
@@ -46,48 +49,61 @@ li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; 
 <div class="pagination" id="pag"><div class="dot active"></div></div>
 <div class="slides">
 <div class="slide cover active" id="s1">
-  <h1>Шаблон описания лендинга</h1>
-  <p class="subtitle">Для Cursor Agent Mode</p>
+  <h1>Полезные API для бизнеса</h1>
+  <p class="subtitle">Обзор сервисов для интеграций</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">01 / 05</div>
+  <div class="counter">01 / 06</div>
 </div>
 <div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Секции лендинга</span></h2>
+  <h2><span style="color:var(--red)">AI-модели</span></h2>
   <ul style="max-width:560px;">
-    <li><strong>Герой-блок</strong> — заголовок, подзаголовок, CTA</li>
-    <li><strong>Услуги / Преимущества</strong> — 3 карточки</li>
-    <li><strong>О нас</strong> — кратко о компании</li>
-    <li><strong>Отзывы</strong> — 3 отзыва</li>
-    <li><strong>Форма</strong> — имя, телефон, сообщение</li>
-    <li><strong>Контакты</strong> — телефон, Telegram, email</li>
+    <li><strong>Anthropic (Claude)</strong> — Claude 3.5/4, мощные языковые модели</li>
+    <li><strong>OpenAI</strong> — GPT-4o, o1 — генерация текста, изображений</li>
+    <li><strong>Google Gemini</strong> — Gemini Pro/Ultra, мультимодальные модели</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 05</div>
+  <div class="counter">02 / 06</div>
 </div>
 <div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Дизайн</span></h2>
+  <h2><span style="color:var(--red)">Мессенджеры</span></h2>
   <ul style="max-width:560px;">
-    <li>Основной цвет, шрифт</li>
-    <li>Стиль: современный / минималистичный / яркий</li>
-    <li>Обязательно адаптивный (мобилка + десктоп)</li>
+    <li><strong>Telegram Bot API</strong> — боты, уведомления, группы</li>
+    <li><strong>WhatsApp Business API</strong> — рассылки, чат-боты</li>
+    <li><strong>Slack API</strong> — интеграции для командной работы</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 05</div>
+  <div class="counter">03 / 06</div>
 </div>
 <div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Технологии</span></h2>
+  <h2><span style="color:var(--red)">Продуктивность</span></h2>
   <ul style="max-width:560px;">
-    <li>HTML + CSS + JavaScript (без фреймворков)</li>
-    <li>Один index.html или раздельные файлы</li>
+    <li><strong>Google Sheets API</strong> — чтение/запись таблиц</li>
+    <li><strong>Google Calendar API</strong> — управление событиями</li>
+    <li><strong>Notion API</strong> — базы данных, страницы, блоки</li>
+    <li><strong>Airtable API</strong> — гибкие базы данных</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 05</div>
+  <div class="counter">04 / 06</div>
 </div>
 <div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Как использовать</span></h2>
-  <p style="max-width:560px;">Скопируй шаблон, заполни целевая аудитория + секции + дизайн, вставь в Agent Mode → «Создай лендинг».</p>
+  <h2><span style="color:var(--red)">Платежи</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>ЮKassa</strong> — приём платежей в России</li>
+    <li><strong>Stripe</strong> — международные платежи</li>
+    <li><strong>Tinkoff API</strong> — эквайринг, счета</li>
+  </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 05</div>
+  <div class="counter">05 / 06</div>
+</div>
+<div class="slide content" id="s6">
+  <h2><span style="color:var(--red)">Автоматизация</span></h2>
+  <ul style="max-width:560px;">
+    <li><strong>Zapier</strong> — no-code связки сервисов</li>
+    <li><strong>Make (Integromat)</strong> — визуальная автоматизация</li>
+    <li><strong>n8n</strong> — open-source автоматизация</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">06 / 06</div>
 </div>
 </div>
 <div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>АССИСТ+ | Шаблон лендинга</title>
+<title>АССИСТ+ | Структура проекта для AI</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root { --red: #E63229; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --bg: #F8F8F8; }
@@ -31,6 +31,7 @@ li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px solid rgba(
 li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; top: 10px; font-weight: bold; font-size: 1.2em; }
 .slide.content h2::after { content: ""; display: block; width: 50px; height: 3px; border-radius: 2px; background: var(--red); margin: 10px auto 0; }
 .slide.content ul { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 16px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); }
+.code-block { background: #ECEDF2; color: var(--red); padding: 10px 14px; border-radius: 12px; font-family: 'Courier New', monospace; font-size: 10px; margin: 8px 0; border-left: 4px solid var(--red); line-height: 1.4; text-align: left; max-width: 620px; white-space: pre-wrap; }
 .nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; }
 .nav button { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); background: white; color: var(--red); font-size: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; }
 .nav button:hover { background: var(--red); color: white; }
@@ -39,53 +40,51 @@ li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; 
 .slide.cover .counter { color: rgba(255,255,255,0.6); }
 .slide.cover .subtitle { color: rgba(255,255,255,0.95); }
 .slide.cover p { color: rgba(255,255,255,0.95); }
-@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } }
+@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } .code-block { font-size: 9px; } }
 </style>
 </head>
 <body>
 <div class="pagination" id="pag"><div class="dot active"></div></div>
 <div class="slides">
 <div class="slide cover active" id="s1">
-  <h1>Шаблон описания лендинга</h1>
-  <p class="subtitle">Для Cursor Agent Mode</p>
+  <h1>Структура проекта для AI</h1>
+  <p class="subtitle">Чтобы Cursor работал эффективно</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">01 / 05</div>
 </div>
 <div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Секции лендинга</span></h2>
+  <h2><span style="color:var(--red)">Идеальная структура</span></h2>
   <ul style="max-width:560px;">
-    <li><strong>Герой-блок</strong> — заголовок, подзаголовок, CTA</li>
-    <li><strong>Услуги / Преимущества</strong> — 3 карточки</li>
-    <li><strong>О нас</strong> — кратко о компании</li>
-    <li><strong>Отзывы</strong> — 3 отзыва</li>
-    <li><strong>Форма</strong> — имя, телефон, сообщение</li>
-    <li><strong>Контакты</strong> — телефон, Telegram, email</li>
+    <li>README.md — Cursor читает первым</li>
+    <li>.cursor/rules/ — general, code, content, review</li>
+    <li>docs/ — architecture, decisions/</li>
+    <li>tasks/ — todo.md, lessons.md (уроки из ошибок)</li>
+    <li>config/ — style-guide, examples/</li>
+    <li>src/, tests/, .env в .gitignore</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">02 / 05</div>
 </div>
 <div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Дизайн</span></h2>
-  <ul style="max-width:560px;">
-    <li>Основной цвет, шрифт</li>
-    <li>Стиль: современный / минималистичный / яркий</li>
-    <li>Обязательно адаптивный (мобилка + десктоп)</li>
-  </ul>
+  <h2><span style="color:var(--red)">tasks/lessons.md</span></h2>
+  <p>После каждой ошибки AI — записывай: дата, ошибка, правило. AI прочитает и не повторит. Один .mdc = одна роль. Примеры > инструкций. Маленькие файлы лучше больших (500 строк, не 5000).</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">03 / 05</div>
 </div>
 <div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Технологии</span></h2>
-  <ul style="max-width:560px;">
-    <li>HTML + CSS + JavaScript (без фреймворков)</li>
-    <li>Один index.html или раздельные файлы</li>
-  </ul>
+  <h2><span style="color:var(--red)">config/examples и docs/decisions</span></h2>
+  <p>Покажи AI хороший результат — один пример стоит 100 слов. В decisions/ пиши, ПОЧЕМУ выбрал решение — когда AI предложит изменить, увидит причину.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">04 / 05</div>
 </div>
 <div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Как использовать</span></h2>
-  <p style="max-width:560px;">Скопируй шаблон, заполни целевая аудитория + секции + дизайн, вставь в Agent Mode → «Создай лендинг».</p>
+  <h2><span style="color:var(--red)">Правила от Миши</span></h2>
+  <ul style="max-width:560px;">
+    <li>README — визитка, Cursor читает первым</li>
+    <li>Один .mdc = одна роль</li>
+    <li>Примеры > инструкции; lessons.md обновляй сразу</li>
+    <li>Маленькие файлы > большие</li>
+  </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
   <div class="counter">05 / 05</div>
 </div>

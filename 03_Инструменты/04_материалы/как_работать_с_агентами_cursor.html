@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>АССИСТ+ | Шаблон лендинга</title>
+<title>АССИСТ+ | Как работать с агентами в Cursor</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root { --red: #E63229; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --bg: #F8F8F8; }
@@ -31,6 +31,10 @@ li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px solid rgba(
 li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; top: 10px; font-weight: bold; font-size: 1.2em; }
 .slide.content h2::after { content: ""; display: block; width: 50px; height: 3px; border-radius: 2px; background: var(--red); margin: 10px auto 0; }
 .slide.content ul { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 16px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); }
+table { border-collapse: collapse; width: 100%; max-width: 580px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee; font-size: 13px; }
+th { background: var(--red); color: white; font-weight: 700; }
+.code-block { background: #ECEDF2; color: var(--red); padding: 10px 14px; border-radius: 12px; font-family: 'Courier New', monospace; font-size: 10px; margin: 8px 0; border-left: 4px solid var(--red); line-height: 1.4; text-align: left; max-width: 640px; white-space: pre-wrap; }
 .nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; }
 .nav button { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); background: white; color: var(--red); font-size: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; }
 .nav button:hover { background: var(--red); color: white; }
@@ -39,55 +43,61 @@ li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; 
 .slide.cover .counter { color: rgba(255,255,255,0.6); }
 .slide.cover .subtitle { color: rgba(255,255,255,0.95); }
 .slide.cover p { color: rgba(255,255,255,0.95); }
-@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } }
+@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } .code-block { font-size: 9px; } }
 </style>
 </head>
 <body>
 <div class="pagination" id="pag"><div class="dot active"></div></div>
 <div class="slides">
 <div class="slide cover active" id="s1">
-  <h1>Шаблон описания лендинга</h1>
-  <p class="subtitle">Для Cursor Agent Mode</p>
+  <h1>Как работать с агентами</h1>
+  <p class="subtitle">Полный гайд Cursor</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">01 / 05</div>
+  <div class="counter">01 / 06</div>
 </div>
 <div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Секции лендинга</span></h2>
-  <ul style="max-width:560px;">
-    <li><strong>Герой-блок</strong> — заголовок, подзаголовок, CTA</li>
-    <li><strong>Услуги / Преимущества</strong> — 3 карточки</li>
-    <li><strong>О нас</strong> — кратко о компании</li>
-    <li><strong>Отзывы</strong> — 3 отзыва</li>
-    <li><strong>Форма</strong> — имя, телефон, сообщение</li>
-    <li><strong>Контакты</strong> — телефон, Telegram, email</li>
-  </ul>
+  <h2><span style="color:var(--red)">Три режима</span></h2>
+  <table><thead><tr><th>Режим</th><th>Когда использовать</th></tr></thead><tbody>
+  <tr><td>Ask</td><td>Понять, как что-то работает</td></tr>
+  <tr><td>Plan</td><td>Новые задачи, составить план → одобрить</td></tr>
+  <tr><td>Agent</td><td>Делает сам: файлы, код, тесты</td></tr>
+  </tbody></table>
+  <p style="margin-top:10px;">Начинай с Plan → привыкнешь → Agent.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 05</div>
+  <div class="counter">02 / 06</div>
 </div>
 <div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Дизайн</span></h2>
-  <ul style="max-width:560px;">
-    <li>Основной цвет, шрифт</li>
-    <li>Стиль: современный / минималистичный / яркий</li>
-    <li>Обязательно адаптивный (мобилка + десктоп)</li>
-  </ul>
+  <h2><span style="color:var(--red)">Планируй перед кодом</span></h2>
+  <p>Cmd+L → Shift+Tab → Plan Mode. Опиши задачу → Cursor составит план → одобри → он начнёт. Сохраняй планы: «Save to workspace» → .cursor/plans/</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 05</div>
+  <div class="counter">03 / 06</div>
 </div>
 <div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Технологии</span></h2>
+  <h2><span style="color:var(--red)">Контекст и новый чат</span></h2>
   <ul style="max-width:560px;">
-    <li>HTML + CSS + JavaScript (без фреймворков)</li>
-    <li>Один index.html или раздельные файлы</li>
+    <li>Не перегружай контекст. Grep — точные совпадения, семантический поиск — по смыслу</li>
+    <li>Новый чат: другая задача, Cursor повторяет ошибки, закончил логическую единицу</li>
+    <li>Продолжай чат: итерируешь фичу, нужен контекст. @Past Chats — подтянуть прошлое</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 05</div>
+  <div class="counter">04 / 06</div>
 </div>
 <div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Как использовать</span></h2>
-  <p style="max-width:560px;">Скопируй шаблон, заполни целевая аудитория + секции + дизайн, вставь в Agent Mode → «Создай лендинг».</p>
+  <h2><span style="color:var(--red)">Rules и Worktree</span></h2>
+  <p>Rules (.cursor/rules/) — добавляй только когда Cursor повторяет ошибку. Worktree: дропдаун агента → Worktree → изолированная копия → Apply для слияния. Один промпт через разные модели → сравнить результаты.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 05</div>
+  <div class="counter">05 / 06</div>
+</div>
+<div class="slide content" id="s6">
+  <h2><span style="color:var(--red)">Главные принципы</span></h2>
+  <ul style="max-width:560px;">
+    <li>Конкретные промпты > расплывчатые</li>
+    <li>Итерируй настройки; ревьюй внимательно</li>
+    <li>Давай проверяемые цели (тесты, типы, линтеры)</li>
+    <li>Относись как к коллеге — план, объяснения, возражай</li>
+  </ul>
+  <div class="logo">АССИСТ<span class="plus">+</span></div>
+  <div class="counter">06 / 06</div>
 </div>
 </div>
 <div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>

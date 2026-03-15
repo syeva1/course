@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>АССИСТ+ | Шаблон лендинга</title>
+<title>АССИСТ+ | Шаблон файла О_СЕБЕ</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root { --red: #E63229; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --bg: #F8F8F8; }
@@ -31,6 +31,13 @@ li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px solid rgba(
 li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; top: 10px; font-weight: bold; font-size: 1.2em; }
 .slide.content h2::after { content: ""; display: block; width: 50px; height: 3px; border-radius: 2px; background: var(--red); margin: 10px auto 0; }
 .slide.content ul { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 16px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--red); color: white; font-weight: 800; font-size: 16px; margin-right: 12px; flex-shrink: 0; }
+.steps li { display: flex; align-items: flex-start; padding-left: 0; gap: 12px; }
+.steps li::before { content: none; }
+.code-block { background: #ECEDF2; color: var(--red); padding: 14px 18px; border-radius: 12px; font-family: 'Courier New', monospace; font-size: 12px; margin: 12px 0; border-left: 4px solid var(--red); line-height: 1.5; text-align: left; max-width: 680px; white-space: pre-wrap; }
+table { border-collapse: collapse; max-width: 700px; width: 100%; background: rgba(255,255,255,0.85); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-size: clamp(13px, 1.2vw, 17px); }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.08); }
+th { background: var(--red); color: white; font-weight: 700; }
 .nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; }
 .nav button { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); background: white; color: var(--red); font-size: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; }
 .nav button:hover { background: var(--red); color: white; }
@@ -39,55 +46,52 @@ li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; 
 .slide.cover .counter { color: rgba(255,255,255,0.6); }
 .slide.cover .subtitle { color: rgba(255,255,255,0.95); }
 .slide.cover p { color: rgba(255,255,255,0.95); }
-@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } }
+@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } .code-block { font-size: 10px; padding: 10px 12px; } }
 </style>
 </head>
 <body>
 <div class="pagination" id="pag"><div class="dot active"></div></div>
 <div class="slides">
 <div class="slide cover active" id="s1">
-  <h1>Шаблон описания лендинга</h1>
-  <p class="subtitle">Для Cursor Agent Mode</p>
+  <h1>Шаблон: файл О_СЕБЕ.md</h1>
+  <p class="subtitle">Скопируй, заполни, положи в корень проекта</p>
+  <p style="margin-top:20px;">Cursor будет читать и учитывать при каждом запросе.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">01 / 05</div>
+  <div class="counter">01 / 04</div>
 </div>
 <div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Секции лендинга</span></h2>
-  <ul style="max-width:560px;">
-    <li><strong>Герой-блок</strong> — заголовок, подзаголовок, CTA</li>
-    <li><strong>Услуги / Преимущества</strong> — 3 карточки</li>
-    <li><strong>О нас</strong> — кратко о компании</li>
-    <li><strong>Отзывы</strong> — 3 отзыва</li>
-    <li><strong>Форма</strong> — имя, телефон, сообщение</li>
-    <li><strong>Контакты</strong> — телефон, Telegram, email</li>
+  <h2><span style="color:var(--red)">Разделы шаблона</span></h2>
+  <ul style="max-width:600px;">
+    <li>Основное: имя, возраст, город, профессия, компания</li>
+    <li>Моя работа, мой бизнес (сфера, команда, клиенты)</li>
+    <li>Сильные и слабые стороны, интересы и хобби</li>
+    <li>Стиль общения (тон, длина ответов, язык)</li>
+    <li>Ценности, цели (месяц / 3 мес / год), типичный день</li>
+    <li>Инструменты, люди с которыми работаешь</li>
   </ul>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 05</div>
+  <div class="counter">02 / 04</div>
 </div>
 <div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Дизайн</span></h2>
-  <ul style="max-width:560px;">
-    <li>Основной цвет, шрифт</li>
-    <li>Стиль: современный / минималистичный / яркий</li>
-    <li>Обязательно адаптивный (мобилка + десктоп)</li>
+  <h2><span style="color:var(--red)">Как использовать</span></h2>
+  <ul class="steps" style="max-width:560px;">
+    <li><span class="step-num">1</span> Скопируй шаблон</li>
+    <li><span class="step-num">2</span> Создай файл <b>О_СЕБЕ.md</b> в корне проекта</li>
+    <li><span class="step-num">3</span> Заполни все поля (пропусти ненужные)</li>
+    <li><span class="step-num">4</span> Cursor будет автоматически видеть этот файл</li>
   </ul>
+  <p style="margin-top:14px;">Полный шаблон — в файле шаблон_файла_о_себе.md в папке материалы.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 05</div>
+  <div class="counter">03 / 04</div>
 </div>
 <div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Технологии</span></h2>
-  <ul style="max-width:560px;">
-    <li>HTML + CSS + JavaScript (без фреймворков)</li>
-    <li>Один index.html или раздельные файлы</li>
-  </ul>
+  <h2><span style="color:var(--red)">Бонус:</span> AI поможет заполнить</h2>
+  <p style="margin-bottom:10px;">Вставь пустой шаблон в Cursor (Cmd+L) и напиши:</p>
+  <div class="code-block">Задай мне вопросы по каждому разделу этого шаблона.
+На основе моих ответов заполни файл.</div>
+  <p>AI будет спрашивать по порядку — ты отвечаешь — он заполняет.</p>
   <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 05</div>
-</div>
-<div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Как использовать</span></h2>
-  <p style="max-width:560px;">Скопируй шаблон, заполни целевая аудитория + секции + дизайн, вставь в Agent Mode → «Создай лендинг».</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 05</div>
+  <div class="counter">04 / 04</div>
 </div>
 </div>
 <div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>
