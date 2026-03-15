@@ -6,221 +6,107 @@
 <title>АССИСТ+ | Telegram-бот — Справочник</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root { --red: #E63229; --black: #1A1A1A; --gray: #333333; --gray-light: #666666; --bg: #F8F8F8; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--black); position: relative; }
-.slides { position: relative; width: 100%; height: 100%; }
-.slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 60px 80px; opacity: 0; pointer-events: none; transition: opacity 0.5s ease, transform 0.4s ease; transform: translateX(40px); background: var(--bg); }
-.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
-.slide.cover { background: linear-gradient(135deg, #E63229 0%, #D42020 40%, #C41E1E 100%); color: white; text-align: center; justify-content: center; align-items: center; }
-.slide.content { background: var(--bg); background-image: radial-gradient(circle, rgba(200,200,210,0.5) 1.5px, transparent 1.5px); background-size: 22px 22px; align-items: center; text-align: center; }
-.pagination { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 100; }
-.dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #ccc; background: rgba(255,255,255,0.8); transition: all 0.3s; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
-.dot.active { background: var(--red); border-color: var(--red); }
-.dot.passed { background: var(--red); border-color: var(--red); opacity: 0.5; }
-.logo { position: absolute; bottom: 30px; right: 50px; font-weight: 900; font-size: 20px; z-index: 10; }
-.logo .plus { color: var(--red); font-size: 0.55em; vertical-align: super; }
-.slide.cover .logo { color: white; }
-.slide.cover .logo .plus { color: white; }
-.slide.content .logo { color: var(--black); }
-h1, h2 { font-weight: 800; font-size: clamp(22px, 2.5vw, 36px); line-height: 1.15; margin-bottom: 14px; }
-p, li { font-weight: 400; font-size: clamp(14px, 1.3vw, 19px); line-height: 1.5; color: var(--gray); }
-.subtitle { font-weight: 300; font-style: italic; font-size: clamp(16px, 1.8vw, 24px); color: var(--gray-light); margin-bottom: 30px; }
-ul { list-style: none; padding: 0; text-align: left; }
-li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06); }
-li::before { content: "▸"; color: var(--red); position: absolute; left: 10px; top: 10px; font-weight: bold; font-size: 1.2em; }
-.slide.content h2::after { content: ""; display: block; width: 50px; height: 3px; border-radius: 2px; background: var(--red); margin: 10px auto 0; }
-.slide.content ul { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 16px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.15); }
-table { border-collapse: collapse; max-width: 700px; width: 100%; background: rgba(255,255,255,0.85); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-size: clamp(13px, 1.2vw, 17px); }
-th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.08); }
-th { background: var(--red); color: white; font-weight: 700; }
-.nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; }
-.nav button { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); background: white; color: var(--red); font-size: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; }
-.nav button:hover { background: var(--red); color: white; }
-.slide.cover ~ .nav button { border-color: white; color: white; background: transparent; }
-.counter { position: absolute; top: 30px; right: 50px; font-size: 14px; font-weight: 600; color: var(--gray-light); z-index: 10; }
-.slide.cover .counter { color: rgba(255,255,255,0.6); }
-.slide.cover .subtitle { color: rgba(255,255,255,0.95); }
-.slide.cover p { color: rgba(255,255,255,0.95); }
-@media (max-width: 768px) { .slide { padding: 40px 18px 90px; } .counter { display: none; } .logo { bottom: 10px; right: 14px; font-size: 12px; } }
+:root{--red:#E63229;--red-light:#EF4444;--red-dark:#C41E1E;--black:#1A1A1A;--gray:#333;--gray-light:#666;--white:#FFF;--bg:#F8F8F8}*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--black)}
+.slides{position:relative;width:100%;height:100%}.slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:60px 80px 100px;opacity:0;pointer-events:none;transition:opacity .5s ease,transform .4s ease;transform:translateX(40px);background:var(--bg)}.slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
+.slide.cover{background:linear-gradient(135deg,#E63229 0%,#D42020 40%,#C41E1E 100%);color:#fff;text-align:center;justify-content:center;align-items:center}.slide.content{background:var(--bg);background-image:radial-gradient(circle,rgba(200,200,210,.5) 1.5px,transparent 1.5px);background-size:22px 22px;align-items:center;text-align:center}
+.pagination{position:fixed;top:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:100}.dot{width:14px;height:14px;border-radius:50%;border:2px solid #ccc;background:rgba(255,255,255,.8);transition:all .3s;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15)}.dot.active{background:var(--red);border-color:var(--red)}.dot.passed{background:var(--red);border-color:var(--red);opacity:.5}
+.logo{position:absolute;bottom:30px;right:50px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;letter-spacing:.02em;z-index:10}.logo .plus{color:var(--red);font-size:.55em;vertical-align:super;font-weight:700}.slide.cover .logo{color:#fff}.slide.cover .logo .plus{color:#fff}.slide.content .logo{color:var(--black)}
+h1{font-weight:900;font-size:clamp(36px,5vw,64px);line-height:1.05;margin-bottom:20px}h1 .light{font-weight:300;font-style:italic}h2{font-weight:800;font-size:clamp(22px,2.5vw,36px);line-height:1.15;margin-bottom:14px}h3{font-weight:700;font-size:clamp(16px,1.8vw,24px);margin-bottom:10px;color:var(--red)}
+p,li{font-weight:400;font-size:clamp(14px,1.3vw,19px);line-height:1.5;color:var(--gray)}.subtitle{font-weight:300;font-style:italic;font-size:clamp(16px,1.8vw,24px);color:var(--gray-light);margin-bottom:30px}
+ul{list-style:none;padding:0;text-align:left}li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid rgba(0,0,0,.06)}li::before{content:"\25B8";color:var(--red);position:absolute;left:10px;top:10px;font-weight:bold;font-size:1.2em}
+.slide.cover li::before{color:#fff}.slide.cover li{color:rgba(255,255,255,.95);border-bottom-color:rgba(255,255,255,.15)}
+.highlight{background:var(--red);color:#fff;padding:2px 8px;border-radius:4px;font-weight:600}
+.tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8em;font-weight:700;margin-right:8px}.tag.tip{background:#E8F5E9;color:#2E7D32}.tag.warn{background:#FFF3E0;color:#E65100}.tag.important{background:#FFEBEE;color:#C62828}
+.nav{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:12px}.nav button{width:50px;height:50px;border-radius:50%;border:2px solid var(--red);background:#fff;color:var(--red);font-size:20px;cursor:pointer;font-weight:bold;transition:all .2s;font-family:'Montserrat',sans-serif}.nav button:hover{background:var(--red);color:#fff}
+.counter{position:absolute;top:30px;right:50px;font-size:14px;font-weight:600;color:var(--gray-light);z-index:10}.slide.cover .counter{color:rgba(255,255,255,.6)}
+.slide.content h2::after{content:"";display:block;width:50px;height:3px;border-radius:2px;background:var(--red);margin:10px auto 0}
+.slide.content ul{background:rgba(255,255,255,.85);border-radius:16px;padding:16px 24px;box-shadow:0 12px 40px rgba(0,0,0,.25),0 4px 12px rgba(0,0,0,.15);backdrop-filter:blur(4px)}
+.quote{background:rgba(255,255,255,.9);border-left:4px solid var(--red);padding:20px 28px;border-radius:0 12px 12px 0;font-style:italic;font-size:clamp(15px,1.4vw,20px);color:var(--gray);margin:16px 0;max-width:700px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-size:16px;margin-right:12px;flex-shrink:0}.steps li{display:flex;align-items:flex-start;padding-left:0;gap:12px}.steps li::before{content:none}
+@media(max-width:768px){.slide{padding:40px 18px 110px;transform:none!important;transition:opacity .35s ease;overflow-y:auto;-webkit-overflow-scrolling:touch}.slide.cover{padding:30px 18px 110px}.pagination{top:8px;gap:5px;padding:4px 10px;background:rgba(255,255,255,.7);border-radius:20px;backdrop-filter:blur(6px)}.dot{width:8px;height:8px;border-width:1.5px}.counter{display:none}.logo{bottom:10px;right:14px;font-size:12px}h1{font-size:26px!important}h2{font-size:19px!important}p,li{font-size:13px!important}.subtitle{font-size:14px!important}.slide.content ul{padding:8px 12px;max-width:100%;width:100%}.nav{bottom:0;left:0;right:0;transform:none;width:100%;padding:10px 20px calc(env(safe-area-inset-bottom,8px)+10px);background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-top:1px solid rgba(0,0,0,.08);justify-content:space-between;gap:0}.nav button{width:60px;height:60px;font-size:22px}.quote{padding:12px 16px;font-size:13px!important}.step-num{width:26px;height:26px;font-size:12px}li{padding:5px 0 5px 22px}li::before{left:5px;top:6px;font-size:1em}.slide.content h2::after{width:30px;height:2px;margin-top:5px}}
+@media(max-width:380px){.slide{padding:35px 14px 85px}h1{font-size:22px!important}h2{font-size:17px!important}p,li{font-size:12px!important}.nav button{width:52px;height:52px;font-size:18px}.dot{width:6px;height:6px}}
 </style>
 </head>
 <body>
-<div class="pagination" id="pag"><div class="dot active"></div></div>
+<div class="pagination" id="pag"></div>
 <div class="slides">
-<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
-  <h1 style="font-size:2em;font-weight:900;">ТЗ: Бот-подружка для контекстов</h1>
+
+<div class="slide cover active">
+  <h1>Справочник<br><span class="light">Модуль 05 — Telegram-бот</span></h1>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">Создаём бота с нуля в Cursor</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
 </div>
-<div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Цель</span></h2>
-  <ul style="max-width:560px;">
-    <li>Принимает сообщения, файлы, голосовые, картинки, ссылки из Telegram</li>
-    <li>Сохраняет всё в папку «Распределение» внутри проекта Cursor</li>
-    <li>Транскрибирует голосовые и видео (AssemblyAI или Whisper)</li>
-    <li>Работает локально (когда компьютер включен)</li>
+<div class="slide content">
+  <h2>Оглавление</h2>
+  <p class="subtitle">Разделы справочника</p>
+  <ul style="max-width:750px;">
+    <li><strong>Вайбкодим бота</strong> — пошаговый путь от пустой папки до бота</li>
+    <li><strong>ТЗ бота</strong> — конкретный пример технического задания</li>
+    <li><strong>FAQ</strong> — частые вопросы</li>
   </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 05</div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
 </div>
-<div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Что бот умеет</span></h2>
-  <table>
-    <tr><th>Тип</th><th>Действие</th><th>Куда</th></tr>
-    <tr><td>Текст</td><td>.md файл</td><td>сообщения/</td></tr>
-    <tr><td>Голосовое</td><td>Транскрипт</td><td>транскрипты/</td></tr>
-    <tr><td>Видео</td><td>Аудио → транскрипт</td><td>транскрипты/</td></tr>
-    <tr><td>Документ</td><td>Сохраняет файл</td><td>документы/</td></tr>
-    <tr><td>Картинка</td><td>Сохраняет файл</td><td>изображения/</td></tr>
-    <tr><td>Ссылка</td><td>Заголовок + .md</td><td>ссылки/</td></tr>
-  </table>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 05</div>
+<div class="slide cover">
+  <h1>Вайбкодим бота<br><span class="light">с нуля</span></h1>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">От пустой папки до работающего бота</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
 </div>
-<div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Команды</span></h2>
-  <table>
-    <tr><th>Команда</th><th>Что делает</th></tr>
-    <tr><td>/start</td><td>Приветствие и инструкция</td></tr>
-    <tr><td>/help</td><td>Справка по командам</td></tr>
-    <tr><td>/status</td><td>Путь к папке и статистика</td></tr>
-    <tr><td>/list</td><td>Последние сохранённые файлы</td></tr>
-  </table>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 05</div>
-</div>
-<div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Структура папки</span></h2>
-  <ul style="max-width:560px; font-size: clamp(12px, 1.1vw, 16px);">
-    <li>Распределение/ → сообщения/, транскрипты/, документы/, изображения/, ссылки/, bot.log</li>
-    <li>Файлы с датой в имени (2026-03-09_14-30-15.md)</li>
+<div class="slide content">
+  <h2>Вайбкодим бота с нуля</h2>
+  <p class="subtitle">Пошаговый гайд</p>
+  <ul class="steps" style="max-width:750px;">
+    <li><span class="step-num">1</span><span>Создай папку проекта и открой в Cursor</span></li>
+    <li><span class="step-num">2</span><span>Получи токен бота у @BotFather в Telegram</span></li>
+    <li><span class="step-num">3</span><span>Создай <b>.env</b> файл с токеном (BOT_TOKEN=...)</span></li>
+    <li><span class="step-num">4</span><span>Попроси Agent: <b>«Создай Telegram-бота на aiogram»</b></span></li>
+    <li><span class="step-num">5</span><span>Добавь команды: /start, /help и обработку сообщений</span></li>
+    <li><span class="step-num">6</span><span>Протестируй локально: <b>python bot.py</b></span></li>
   </ul>
-  <p style="margin-top:14px;">Токен в .env, ограничение по ADMIN_ID.</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 05</div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
 </div>
-</div>
-<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
-  <h1 style="font-size:2em;font-weight:900;">ТЗ бота — шаблон</h1>
-</div>
-<div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Название, цель, аудитория</span></h2>
-  <ul style="max-width:560px;">
-    <li>Название бота (например: assist_helper_bot)</li>
-    <li>Цель — что бот должен делать, одним предложением</li>
-    <li>Целевая аудитория — клиенты / сотрудники / вы лично</li>
+<div class="slide content">
+  <h2>ТЗ бота — пример</h2>
+  <p class="subtitle">Готовое техническое задание для AI</p>
+  <ul style="max-width:750px;">
+    <li><strong>Что делаем:</strong> бот-помощник для ассистентов</li>
+    <li><strong>Стек:</strong> Python, aiogram 3.x, SQLite</li>
+    <li><strong>Функции:</strong> приветствие, FAQ по кнопкам, сохранение контекстов</li>
+    <li><span class="highlight">Лайфхак</span> Перетащи файл ТЗ в чат Cursor — AI создаст бота сам</li>
+    <li><strong>Шаблон ТЗ</strong> — используй файл ТЗ_бота_шаблон.md для своих проектов</li>
+    <li><span class="tag tip">Совет</span> Начни с минимума функций, расширяй итерациями</li>
   </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 05</div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
 </div>
-<div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Тип бота</span></h2>
-  <ul style="max-width:560px;">
-    <li>Автоответчик (FAQ по кнопкам)</li>
-    <li>AI-консультант (вопросы о бизнесе)</li>
-    <li>Контекст-сборщик (файлы в папки)</li>
-    <li>Модератор (управление группой)</li>
-    <li>Автоматизатор (парсинг, отчёты, уведомления)</li>
-    <li>Комбинированный</li>
+<div class="slide cover">
+  <h1>FAQ<br><span class="light"></span></h1>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">Частые вопросы</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
+</div>
+<div class="slide content">
+  <h2>FAQ</h2>
+  <p class="subtitle">Ответы на частые вопросы</p>
+  <ul style="max-width:750px;">
+    <li><strong>Нужно ли знать Python?</strong> — Нет. AI напишет код. Тебе нужно описать задачу</li>
+    <li><strong>Как получить токен бота?</strong> — Напиши @BotFather в Telegram, команда /newbot</li>
+    <li><strong>Бот работает только на моём компьютере?</strong> — Да, пока не задеплоишь на сервер</li>
+    <li><strong>Куда деплоить?</strong> — VPS (модуль 07) или бесплатные платформы (Railway, Render)</li>
+    <li><strong>Можно ли добавить AI в бота?</strong> — Да, подключи OpenAI/Claude API через MCP (модуль 06)</li>
+    <li><strong>Бот перестал работать. Что делать?</strong> — Проверь токен, интернет и логи в терминале</li>
   </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 05</div>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
 </div>
-<div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Функции и команды</span></h2>
-  <table>
-    <tr><th>Команда</th><th>Что делает</th></tr>
-    <tr><td>/start</td><td>...</td></tr>
-    <tr><td>/help</td><td>...</td></tr>
-    <tr><td>...</td><td>...</td></tr>
-  </table>
-  <p style="margin-top:14px;">Функции — список: что конкретно бот умеет (1, 2, 3…)</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 05</div>
-</div>
-<div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Интеграции</span></h2>
-  <ul style="max-width:560px;">
-    <li>OpenAI API (AI-ответы)</li>
-    <li>AssemblyAI (транскрибация)</li>
-    <li>Google Sheets (таблицы)</li>
-    <li>CRM (клиентская база)</li>
-    <li>Другое</li>
-  </ul>
-  <p style="margin-top:14px;">+ Где работает: локально или на сервере 24/7. Критерии готовности.</p>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 05</div>
-</div>
-</div>
-<div class="slide cover" style="background: linear-gradient(135deg, var(--red) 0%, #D42020 100%);">
-  <h1 style="font-size:2em;font-weight:900;">Вайбкодим бота с нуля</h1>
-</div>
-<div class="slide content" id="s2">
-  <h2><span style="color:var(--red)">Шаг 1: Регистрация бота</span></h2>
-  <ul style="max-width:560px;">
-    <li>Telegram → найди @BotFather</li>
-    <li>Отправь /newbot</li>
-    <li>Придумай название и username</li>
-    <li>BotFather пришлёт токен — скопируй и сохрани</li>
-  </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">02 / 05</div>
-</div>
-<div class="slide content" id="s3">
-  <h2><span style="color:var(--red)">Шаг 2: Создание в Cursor</span></h2>
-  <ul style="max-width:560px;">
-    <li>Создай папку проекта (например, my-bot/)</li>
-    <li>Открой в Cursor: File → Open Folder</li>
-    <li>Режим Agent в чате</li>
-    <li>Опиши бота и вставь токен — Cursor создаст файлы</li>
-    <li>Скопируй команду из чата и запусти в терминале</li>
-  </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">03 / 05</div>
-</div>
-<div class="slide content" id="s4">
-  <h2><span style="color:var(--red)">Шаг 3: Итерации</span></h2>
-  <ul style="max-width:560px;">
-    <li>Первая версия никогда не идеальна — это нормально</li>
-    <li>Описывай проблему в чате: «Бот не пишет, за что замьютил. Доработай.»</li>
-    <li>Добавляй команды: «Добавь /help со списком функций»</li>
-    <li>Цикл: получил → проверил → описал → Cursor исправил → проверил снова</li>
-  </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">04 / 05</div>
-</div>
-<div class="slide content" id="s5">
-  <h2><span style="color:var(--red)">Шаг 4: Деплой на сервер</span></h2>
-  <ul style="max-width:560px;">
-    <li>Арендуй VPS (Timeweb, Beget — от 300₽/мес, Ubuntu)</li>
-    <li>Попроси Cursor: «Напиши пошаговый план деплоя на Ubuntu»</li>
-    <li>Подключись: ssh root@[IP], перенеси файлы (nano bot.py)</li>
-    <li>Установи: pip install python-telegram-bot python-dotenv → python bot.py</li>
-  </ul>
-  <div class="logo">АССИСТ<span class="plus">+</span></div>
-  <div class="counter">05 / 05</div>
-</div>
-</div>
-</div>
+<div class="slide cover">
+  <h1>Конец<br><span class="light">справочника</span></h1>
+  <p class="subtitle" style="color:rgba(255,255,255,0.7);">Вернись к основному модулю и создай своего бота</p>
+  <div class="logo">АССИСТ<span class="plus">+</span></div><div class="counter"></div>
+</div></div>
+<div class="nav"><button onclick="prev()">&#8592;</button><button onclick="next()">&#8594;</button></div>
 <script>
-let cur = 0;
-const slides = document.querySelectorAll('.slide');
-const total = slides.length;
-function show(n) {
-  slides.forEach((s, i) => { s.classList.remove('active'); if (i === n) s.classList.add('active'); });
-  document.querySelectorAll('.pagination').forEach(p => {
-    p.innerHTML = '';
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === n ? ' active' : (i < n ? ' passed' : ''));
-      dot.onclick = () => { cur = i; show(cur); };
-      p.appendChild(dot);
-    }
-  });
-  document.querySelectorAll('.counter').forEach(c => { c.textContent = String(n+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0'); });
-}
-function next() { if (cur < total - 1) { cur++; show(cur); } }
-function prev() { if (cur > 0) { cur--; show(cur); } }
-document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); } if (e.key === 'ArrowLeft') prev(); });
+let cur=0;const slides=document.querySelectorAll('.slide'),total=slides.length;
+function show(n){slides.forEach((s,i)=>{s.classList.remove('active');if(i===n)s.classList.add('active')});document.querySelectorAll('.pagination').forEach(p=>{p.innerHTML='';for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===n?' active':(i<n?' passed':''));d.onclick=()=>{cur=i;show(cur)};p.appendChild(d)}});document.querySelectorAll('.counter').forEach(c=>{c.textContent=String(n+1).padStart(2,'0')+' / '+String(total).padStart(2,'0')})}
+function next(){if(cur<total-1){cur++;show(cur)}}function prev(){if(cur>0){cur--;show(cur)}}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}if(e.key==='ArrowLeft')prev()});
+let tx=0,ty=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY});document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;const dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){dx<0?next():prev()}});
 show(0);
 </script>
 </body>
